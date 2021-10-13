@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiendaApp">
         <activity
+            android:name=".Bienvenido"
+            android:exported="false" />
+        <activity
             android:name=".Formulario"
             android:exported="false" />
         <activity
