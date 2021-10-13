@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/dg_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Bienvenido">
@@ -23,6 +24,8 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#80114A"
+            app:cornerRadius="10dp"
             android:text="@string/pedir_cita" />
 
         <Space
@@ -33,6 +36,8 @@
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#80114A"
+            app:cornerRadius="10dp"
             android:text="@string/ver_citas" />
 
         <Space
@@ -43,6 +48,8 @@
             android:id="@+id/buttonCerrarSession"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#80114A"
+            app:cornerRadius="10dp"
             android:text="@string/cerrar_sesion" />
 
         <Space
