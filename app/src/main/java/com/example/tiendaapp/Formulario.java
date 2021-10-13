@@ -48,7 +48,7 @@ public class Formulario extends AppCompatActivity {
         et_ape1 = (EditText) findViewById(R.id.editTextApe1);
         et_ape2 = (EditText) findViewById(R.id.editTextApe2);
         et_n_telf = (EditText) findViewById(R.id.editTextTelf);
-        et_email = (EditText) findViewById(R.id.editTextEmail);
+        et_email = (EditText) findViewById(R.id.editTextEmail2);
         et_contraseña1 = (EditText) findViewById(R.id.editTextPass1);
         et_contraseña2 = (EditText) findViewById(R.id.editTextPass2);
         boton = (Button) findViewById(R.id.buttonRegistro2);

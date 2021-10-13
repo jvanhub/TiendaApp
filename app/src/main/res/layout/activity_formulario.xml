@@ -76,7 +76,7 @@
                 android:layout_height="19dp" />
 
             <EditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextEmail2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
