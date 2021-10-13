@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">TiendaApp</string>
+    <string name="num_telf">Introduce número de Telf</string>
+    <string name="pass">Introduce contrasña</string>
+    <string name="entrar">ENTRA!</string>
+    <string name="registrar">REGISTRATE!</string>
+    <string name="nombre">INTRODUCE NOMBRE</string>
+    <string name="ape1">INTRODUCE PRIMER APELLIDO</string>
+    <string name="ape2">INTRODUCE SEGUNDO APELLIDO</string>
+    <string name="num_telf2">INTRODUCE NÚMERO DE TELF</string>
+    <string name="email">INTRODUCE EMAIL</string>
+    <string name="passReg">INTRODUCE CONTRASEÑA</string>
+    <string name="passReg2">INTRODUCE CONFIRMA CONTRASEÑA</string>
+    <string name="confirmarReg">CONFIRMAR</string>
+</resources>
