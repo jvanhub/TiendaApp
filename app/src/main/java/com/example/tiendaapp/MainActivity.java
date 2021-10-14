@@ -16,14 +16,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
+
+    //Variabes de los activitys
     private EditText et_email;
     private EditText et_pass;
     private Button entrar;
     private Button registrar;
 
+    //Variables de recogida de datos.
     private String email="";
     private String pass="";
 
+    //Instancia de la clase FirebaseAuth.
     private FirebaseAuth mAuth;
 
     @Override
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         et_pass = (EditText) findViewById(R.id.editTextTextPass);
         entrar = (Button) findViewById(R.id.buttonEntrar);
 
+        //Método OnClick.
         entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vista) {
@@ -51,19 +56,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /*Método loggin, en el que se valida el email y la contraseña, si está todo correcto pasa al activity de Bienvenida,
+    * sino salta el Toast.
+    */
     public void login(){
         mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    startActivity(new Intent(MainActivity.this,Bienvenido.class));
-                    finish();
+                    startActivity(new Intent(MainActivity.this, Bienvenida.class));
+
                 }else{
                     Toast.makeText(MainActivity.this,"No se pudo iniciar sesion, compruebe los datos", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
+
+    //Método registrar que nos envía al activity formulario.
     public void registrar(View view){
         startActivity(new Intent(MainActivity.this,Formulario.class));
     }

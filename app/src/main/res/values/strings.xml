@@ -15,5 +15,9 @@
     <string name="pedir_cita">PEDIR CITA</string>
     <string name="ver_citas">VER CITAS</string>
     <string name="cerrar_sesion">CERRAR SESIÓN</string>
+    <string name="fecha">FECHA</string>
+    <string name="hora">HORA</string>
+    <string name="confirmarCita">CONFIRMAR</string>
+    <string name="fechaTv"> SELECCIONE FECHA</string>
 
 </resources>

@@ -5,7 +5,7 @@
     android:background="@drawable/dg_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Bienvenido">
+    tools:context=".Bienvenida">
 
     <LinearLayout
         android:layout_width="333dp"
@@ -21,7 +21,7 @@
             android:layout_height="47dp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button_pedir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#80114A"
@@ -33,7 +33,7 @@
             android:layout_height="47dp" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/button_ver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#80114A"
