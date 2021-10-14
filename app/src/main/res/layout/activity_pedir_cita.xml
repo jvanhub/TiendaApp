@@ -39,14 +39,12 @@
                 android:text="@string/fecha"
                 app:cornerRadius="10dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editTextTextFecha"
-                android:layout_width="134dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/fechaTv"
-                android:inputType="textPersonName" />
+                android:text="@string/fechaTv" />
 
         </LinearLayout>
 
@@ -72,11 +70,6 @@
                 android:text="TextView" />
 
         </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
 
         <Space
             android:layout_width="match_parent"

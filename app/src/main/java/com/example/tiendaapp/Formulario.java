@@ -98,17 +98,6 @@ public class Formulario extends AppCompatActivity {
 
                     mDatabase.child("Usuarios").push().setValue(map);
                     startActivity(new Intent(Formulario.this, MainActivity.class));
-
-                    /*addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task2) {
-                            if (task2.isSuccessful()){
-                                startActivity(new Intent(Formulario.this, MainActivity.class));
-                            }else{
-                                Toast.makeText(Formulario.this, "Error", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });*/
                 }else{
                     Toast.makeText(Formulario.this, "No se pudo registrar el usuario.", Toast.LENGTH_LONG).show();
                 }
