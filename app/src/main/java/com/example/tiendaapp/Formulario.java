@@ -94,9 +94,8 @@ public class Formulario extends AppCompatActivity {
                     map.put("emails",email);
                     map.put("contraseñas",contrasenya);
 
-                    String id = mAuth.getCurrentUser().getUid();
-
-                    mDatabase.child("Usuarios").push().setValue(map);
+                    String id = task.getResult().getUser().getUid();
+                    mDatabase.child("Usuarios").child(id).setValue(map);
                     startActivity(new Intent(Formulario.this, MainActivity.class));
                 }else{
                     Toast.makeText(Formulario.this, "No se pudo registrar el usuario.", Toast.LENGTH_LONG).show();

@@ -97,11 +97,13 @@ public class PedirCita extends AppCompatActivity {
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
                 String horaCita=selectedbutton.getText().toString();
+                String id = mAuth.getCurrentUser().getUid();
 
                 Toast.makeText(PedirCita.this,String.valueOf(radioId),Toast.LENGTH_LONG).show();
                 Map<String, Object> map = new HashMap<>();
                 map.put("fecha",fechaCompletaTv);
                 map.put("hora",horaCita);
+                map.put("uId",id);
 
                 mDatabase.child("Reservas").push().setValue(map);
             }
@@ -113,7 +115,7 @@ public class PedirCita extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         String fecha=snapshot.child("fecha").getValue().toString();
-                        String hora=snapshot.child("fecha").getValue().toString();
+                        String hora=snapshot.child("hora").getValue().toString();
                         if (fecha.equals(fechaCompletaTv) && hora.equals(horaCita) ){
 
                         }
@@ -123,7 +125,7 @@ public class PedirCita extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                })
+                });
                /* if(hora9.isChecked()){
                     horaCita="09:00";
 
