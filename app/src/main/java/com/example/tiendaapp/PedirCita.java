@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PedirCita extends AppCompatActivity {
-    private Button pedirFecha, pedirHora, confirmar;
+    private Button confirmar;
     private TextView fecha,hora;
     private String fechaCompletaTv="";
 
@@ -45,8 +45,6 @@ public class PedirCita extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedir_cita);
 
-        pedirFecha = (Button) findViewById(R.id.button_fecha);
-        pedirHora = (Button) findViewById(R.id.button_hora);
         confirmar = (Button) findViewById(R.id.button_confirmar);
         fecha = (TextView) findViewById(R.id.editTextTextFecha);
         mDatabase= FirebaseDatabase.getInstance().getReference();
