@@ -47,12 +47,13 @@ public class PedirCita extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedir_cita);
+
+        mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
 
         rg = (RadioGroup) findViewById(R.id.radioGroup);
@@ -99,64 +100,49 @@ public class PedirCita extends AppCompatActivity {
                 String horaCita=selectedbutton.getText().toString();
                 String id = mAuth.getCurrentUser().getUid();
 
-                Toast.makeText(PedirCita.this,String.valueOf(radioId),Toast.LENGTH_LONG).show();
+                Toast.makeText(PedirCita.this,String.valueOf(id),Toast.LENGTH_LONG).show();
                 Map<String, Object> map = new HashMap<>();
                 map.put("fecha",fechaCompletaTv);
                 map.put("hora",horaCita);
                 map.put("uId",id);
 
                 mDatabase.child("Reservas").push().setValue(map);
+                extraerValores();
             }
 
-            //Comprobacion radioButons.
-            public void checkButoon(){
+            //
+            public void extraerValores(){
                 mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        String fecha=snapshot.child("fecha").getValue().toString();
-                        String hora=snapshot.child("hora").getValue().toString();
-                        if (fecha.equals(fechaCompletaTv) && hora.equals(horaCita) ){
+                        for ( final DataSnapshot snapshot: dataSnapshot.getChildren()){
+                            mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String fecha=snapshot.child("fecha").getValue().toString();
+                                    String hora=snapshot.child("hora").getValue().toString();
+                                    Log.d("horaImaginaria",hora);
+                                    /* if (fecha.equals(fechaCompletaTv) && hora.equals(horaCita) ){
+                                    }*/
+                                }
 
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
+
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
                     }
                 });
-               /* if(hora9.isChecked()){
-                    horaCita="09:00";
-
-                }else if(hora10.isChecked()){
-                    horaCita="10:00";
-
-                }else if (hora11.isChecked()){
-                    horaCita="11:00";
-
-                }else if (hora12.isChecked()){
-                    horaCita="12:00";
-
-                }else if (hora15.isChecked()){
-                    horaCita="15:00";
-
-                }else if (hora16.isChecked()){
-                    horaCita="16:00";
-
-                }else if (hora17.isChecked()){
-                    horaCita="17:00";
-
-                }else if (hora18.isChecked()){
-                    horaCita="18:00";
-
-                }else if (hora19.isChecked()==true){
-                    horaCita="19:00";
-
-                }*/
             }
+
         });
     }
-
-
 }
