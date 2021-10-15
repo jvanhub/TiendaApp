@@ -134,8 +134,8 @@ public class PedirCita extends AppCompatActivity {
            selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
            texto = selectedbutton.getText().toString();
            Log.d("forBlu",texto);
-           i++;
         }
+
     }
     public void extraerValores(){
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
