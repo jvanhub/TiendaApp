@@ -30,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import java.util.Date;
@@ -37,6 +38,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PedirCita extends AppCompatActivity {
+    ArrayList <RadioButton> arrayRadioButtons = new ArrayList<>();
+
     private RadioButton hora9, hora10, hora11, hora12 ,hora15 ,hora16, hora17, hora18, hora19;
     private RadioGroup rg;
     private Button confirmar;
@@ -58,6 +61,7 @@ public class PedirCita extends AppCompatActivity {
 
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         fecha = (TextView) findViewById(R.id.editTextTextFecha);
+
         confirmar = (Button) findViewById(R.id.button_confirmar);
         hora9 = (RadioButton) findViewById(R.id.radiobutton9_00);
         hora10 = (RadioButton) findViewById(R.id.radiobutton10_00);
@@ -84,7 +88,9 @@ public class PedirCita extends AppCompatActivity {
                         //String fechaCita=year + "/" + (month + 1) + "/" + dayOfMonth;
                         fechaCompletaTv =dayOfMonth + "/" + (month + 1) + "/" + year;
                         fecha.setText(fechaCompletaTv);
+                        extraerValores();
                     }
+
                 }
                 ,anyo,mes,dia);
                 datePikerDialog.show();
@@ -97,52 +103,54 @@ public class PedirCita extends AppCompatActivity {
 
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
-                String horaCita=selectedbutton.getText().toString();
+                horaCita=selectedbutton.getText().toString();
                 String id = mAuth.getCurrentUser().getUid();
 
-                Toast.makeText(PedirCita.this,String.valueOf(id),Toast.LENGTH_LONG).show();
                 Map<String, Object> map = new HashMap<>();
                 map.put("fecha",fechaCompletaTv);
                 map.put("hora",horaCita);
                 map.put("uId",id);
 
                 mDatabase.child("Reservas").push().setValue(map);
-                extraerValores();
             }
 
-            //
-            public void extraerValores(){
-                mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        });
+    }
+    public void extraerValores(){
+        mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        for ( final DataSnapshot snapshot: dataSnapshot.getChildren()){
-                            mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    String fecha=snapshot.child("fecha").getValue().toString();
-                                    String hora=snapshot.child("hora").getValue().toString();
-                                    Log.d("horaImaginaria",hora);
-                                    /* if (fecha.equals(fechaCompletaTv) && hora.equals(horaCita) ){
-                                    }*/
-                                }
+                for ( final DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String fecha=snapshot.child("fecha").getValue().toString();
+                            String hora=snapshot.child("hora").getValue().toString();
+                            Log.d("horaImaginaria",hora);
+                            Log.d("citaCompletaTv",fechaCompletaTv);
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
+                            if (fecha.equals(fechaCompletaTv) && hora.equals(hora) ){
+                                Toast.makeText(PedirCita.this,"Cita Duplicada",Toast.LENGTH_LONG).show();
 
-                                }
-                            });
+                            }else{
+                                Toast.makeText(PedirCita.this,"Cita Correcta",Toast.LENGTH_LONG).show();
+                            }
                         }
 
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
-                    }
-                });
+                        }
+                    });
+                }
+
             }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
+            }
         });
     }
 }
