@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/dg_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/dg_color"
+    android:orientation="vertical"
     tools:context=".PedirCita">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/linearLayout8"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="21dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="21dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="100dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +39,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="97dp"
+                android:layout_height="64dp"
                 android:layout_weight="1" />
 
             <TextView
@@ -61,116 +53,110 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
-        </LinearLayout>
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <LinearLayout
+                <RadioButton
+                    android:id="@+id/radiobutton17_00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:minHeight="48dp"
+                    android:text="@string/HORA7" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton15_00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="@string/HORA5" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton9_00"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:minHeight="48dp"
+                    android:text="@string/HORA1" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton16_00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="@string/HORA6" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton12_00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="@string/HORA4" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton11_00"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="@string/HORA3" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton19_00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="@string/HORA9" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton10_00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="@string/HORA2" />
+
+                <RadioButton
+                    android:id="@+id/radiobutton18_00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:text="@string/HORA8" />
+
+            </RadioGroup>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button_confirmar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:backgroundTint="#80114A"
+                android:text="@string/confirmarCita"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+        </LinearLayout>
+    </ScrollView>
 
-                    <RadioButton
-                        android:id="@+id/radiobutton9_00"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/HORA1" />
-
-                    <RadioButton
-                        android:id="@+id/radiobutton10_00"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/HORA2" />
-
-                    <RadioButton
-                        android:id="@+id/radiobutton11_00"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/HORA3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radiobutton12_00"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/HORA4" />
-
-                    <RadioButton
-                        android:id="@+id/radiobutton15_00"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/HORA5" />
-
-                    <RadioButton
-                        android:id="@+id/radiobutton16_00"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/HORA6" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radiobutton17_00"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/HORA7" />
-
-                    <RadioButton
-                        android:id="@+id/radiobutton18_00"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/HORA8" />
-
-                    <RadioButton
-                        android:id="@+id/radiobutton19_00"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/HORA9" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/button_confirmar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:backgroundTint="#80114A"
-            android:text="@string/confirmarCita"
-            app:cornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

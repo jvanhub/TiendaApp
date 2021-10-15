@@ -40,6 +40,7 @@ public class PedirCita extends AppCompatActivity {
 
     private TextView fecha,hora;
     private String fechaCompletaTv="";
+    private String horaCita="";
 
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -89,15 +90,63 @@ public class PedirCita extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                    Toast.makeText(PedirCita.this, fechaCompletaTv,Toast.LENGTH_LONG).show();
-                   // String ides = mAuth.getCurrentUser().getUid();
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("fecha",fechaCompletaTv);
-                  //  map.put("idUsu",ides);
+                Toast.makeText(PedirCita.this, fechaCompletaTv,Toast.LENGTH_LONG).show();
+                // String ides = mAuth.getCurrentUser().getUid();
+                Toast.makeText(PedirCita.this,"he llegado aquí",Toast.LENGTH_LONG).show();
 
-                    mDatabase.child("Reservas").push().setValue(map);
+                int radioId = rg.getCheckedRadioButtonId();
+                //rg =findViewById(radioId);
+                RadioButton selectedbutton = findViewById(radioId);
+                String horaCita=selectedbutton.getText().toString();
 
+                Toast.makeText(PedirCita.this,String.valueOf(radioId),Toast.LENGTH_LONG).show();
+                Map<String, Object> map = new HashMap<>();
+                map.put("fecha",fechaCompletaTv);
+                map.put("hora",horaCita);
+
+                mDatabase.child("Reservas").push().setValue(map);
             }
+
+            //Comprobacion radioButons.
+            /*public String checkButoon(){
+
+                int radioId = rg.getCheckedRadioButtonId();
+                //rg =findViewById(radioId);
+                RadioButton selectedbutton = findViewById(radioId);
+                String horaCita2=selectedbutton.getText().toString();
+
+                if(hora9.isChecked()){
+                    horaCita="09:00";
+
+                }else if(hora10.isChecked()){
+                    horaCita="10:00";
+
+                }else if (hora11.isChecked()){
+                    horaCita="11:00";
+
+                }else if (hora12.isChecked()){
+                    horaCita="12:00";
+
+                }else if (hora15.isChecked()){
+                    horaCita="15:00";
+
+                }else if (hora16.isChecked()){
+                    horaCita="16:00";
+
+                }else if (hora17.isChecked()){
+                    horaCita="17:00";
+
+                }else if (hora18.isChecked()){
+                    horaCita="18:00";
+
+                }else if (hora19.isChecked()==true){
+                    horaCita="19:00";
+
+                }
+                return horaCita2;
+            }*/
         });
     }
+
+
 }
