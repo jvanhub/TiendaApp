@@ -18,9 +18,9 @@
     <string name="fecha">FECHA</string>
     <string name="hora">SELECCIONE LA HORA</string>
     <string name="confirmarCita">CONFIRMAR</string>
-    <string name="fechaTv"> PULSE PARA SELECCIONAR FECHA</string>
+    <string name="fechaTv"> PULSE AQUÍ PARA SELECCIONAR FECHA</string>
 
-    <string name="HORA1">9:00-10:00</string>
+    <string name="HORA1">09:00-10:00</string>
     <string name="HORA2">10:10-11:10</string>
     <string name="HORA3">11:20-12:20</string>
     <string name="HORA4">12:30-13:30</string>

@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +34,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PedirCita extends AppCompatActivity {
+    private RadioButton hora9, hora10, hora11, hora12 ,hora15 ,hora16, hora17, hora18, hora19;
+    private RadioGroup rg;
     private Button confirmar;
+
     private TextView fecha,hora;
     private String fechaCompletaTv="";
 
@@ -44,10 +49,19 @@ public class PedirCita extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedir_cita);
-
-        confirmar = (Button) findViewById(R.id.button_confirmar);
+        rg = (RadioGroup) findViewById(R.id.radioGroup);
         fecha = (TextView) findViewById(R.id.editTextTextFecha);
         mDatabase= FirebaseDatabase.getInstance().getReference();
+        confirmar = (Button) findViewById(R.id.button_confirmar);
+        hora9 = (RadioButton) findViewById(R.id.radiobutton9_00);
+        hora10 = (RadioButton) findViewById(R.id.radiobutton10_00);
+        hora11 = (RadioButton) findViewById(R.id.radiobutton11_00);
+        hora12 = (RadioButton) findViewById(R.id.radiobutton12_00);
+        hora15 = (RadioButton) findViewById(R.id.radiobutton15_00);
+        hora16 = (RadioButton) findViewById(R.id.radiobutton16_00);
+        hora17 = (RadioButton) findViewById(R.id.radiobutton17_00);
+        hora18 = (RadioButton) findViewById(R.id.radiobutton18_00);
+        hora19 = (RadioButton) findViewById(R.id.radiobutton19_00);
 
         fecha.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
