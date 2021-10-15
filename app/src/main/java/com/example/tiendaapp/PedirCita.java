@@ -22,8 +22,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,9 +53,10 @@ public class PedirCita extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedir_cita);
+        mDatabase= FirebaseDatabase.getInstance().getReference();
+
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         fecha = (TextView) findViewById(R.id.editTextTextFecha);
-        mDatabase= FirebaseDatabase.getInstance().getReference();
         confirmar = (Button) findViewById(R.id.button_confirmar);
         hora9 = (RadioButton) findViewById(R.id.radiobutton9_00);
         hora10 = (RadioButton) findViewById(R.id.radiobutton10_00);
@@ -90,12 +94,7 @@ public class PedirCita extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(PedirCita.this, fechaCompletaTv,Toast.LENGTH_LONG).show();
-                // String ides = mAuth.getCurrentUser().getUid();
-                Toast.makeText(PedirCita.this,"he llegado aquí",Toast.LENGTH_LONG).show();
-
                 int radioId = rg.getCheckedRadioButtonId();
-                //rg =findViewById(radioId);
                 RadioButton selectedbutton = findViewById(radioId);
                 String horaCita=selectedbutton.getText().toString();
 
@@ -108,14 +107,24 @@ public class PedirCita extends AppCompatActivity {
             }
 
             //Comprobacion radioButons.
-            /*public String checkButoon(){
+            public void checkButoon(){
+                mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                int radioId = rg.getCheckedRadioButtonId();
-                //rg =findViewById(radioId);
-                RadioButton selectedbutton = findViewById(radioId);
-                String horaCita2=selectedbutton.getText().toString();
+                        String fecha=snapshot.child("fecha").getValue().toString();
+                        String hora=snapshot.child("fecha").getValue().toString();
+                        if (fecha.equals(fechaCompletaTv) && hora.equals(horaCita) ){
 
-                if(hora9.isChecked()){
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                })
+               /* if(hora9.isChecked()){
                     horaCita="09:00";
 
                 }else if(hora10.isChecked()){
@@ -142,9 +151,8 @@ public class PedirCita extends AppCompatActivity {
                 }else if (hora19.isChecked()==true){
                     horaCita="19:00";
 
-                }
-                return horaCita2;
-            }*/
+                }*/
+            }
         });
     }
 
