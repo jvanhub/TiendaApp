@@ -75,6 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
+                    android:minHeight="48dp"
                     android:text="@string/HORA2" />
 
                 <RadioButton
@@ -84,6 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
+                    android:minHeight="48dp"
                     android:text="@string/HORA3" />
 
                 <RadioButton
@@ -92,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
+                    android:minHeight="48dp"
                     android:text="@string/HORA4" />
 
                 <RadioButton
@@ -100,6 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
+                    android:minHeight="48dp"
                     android:text="@string/HORA5" />
 
                 <RadioButton
@@ -108,6 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
+                    android:minHeight="48dp"
                     android:text="@string/HORA6" />
 
                 <RadioButton
@@ -125,6 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
+                    android:minHeight="48dp"
                     android:text="@string/HORA8" />
 
                 <RadioButton
@@ -133,6 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
+                    android:minHeight="48dp"
                     android:text="@string/HORA9" />
 
             </RadioGroup>

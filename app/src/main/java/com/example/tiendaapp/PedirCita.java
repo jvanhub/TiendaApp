@@ -39,13 +39,17 @@ import java.util.Map;
 
 public class PedirCita extends AppCompatActivity {
     ArrayList <RadioButton> arrayRadioButtons = new ArrayList<>();
+
     private RadioButton hora9, hora10, hora11, hora12 ,hora15 ,hora16, hora17, hora18, hora19;
     private RadioGroup rg;
     private Button confirmar;
 
-    private TextView fecha,hora;
+    private TextView fecha;
+
     private String fechaCompletaTv="";
     private String horaCita="";
+    private String fechaBBDD="";
+    private String horaBBDD="";
 
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -72,6 +76,16 @@ public class PedirCita extends AppCompatActivity {
         hora18 = (RadioButton) findViewById(R.id.radiobutton18_00);
         hora19 = (RadioButton) findViewById(R.id.radiobutton19_00);
 
+        arrayRadioButtons.add(hora9);
+        arrayRadioButtons.add(hora10);
+        arrayRadioButtons.add(hora11);
+        arrayRadioButtons.add(hora12);
+        arrayRadioButtons.add(hora15);
+        arrayRadioButtons.add(hora16);
+        arrayRadioButtons.add(hora17);
+        arrayRadioButtons.add(hora18);
+        arrayRadioButtons.add(hora19);
+
         fecha.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -86,7 +100,6 @@ public class PedirCita extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         fechaCompletaTv =dayOfMonth + "/" + (month + 1) + "/" + year;
                         fecha.setText(fechaCompletaTv);
-                        arraysRecor();
                         extraerValores();
                     }
                 }
@@ -115,28 +128,7 @@ public class PedirCita extends AppCompatActivity {
 
         });
     }
-    public void arraysRecor(){
-        arrayRadioButtons.add(hora9);
-        arrayRadioButtons.add(hora10);
-        arrayRadioButtons.add(hora11);
-        arrayRadioButtons.add(hora12);
-        arrayRadioButtons.add(hora15);
-        arrayRadioButtons.add(hora16);
-        arrayRadioButtons.add(hora17);
-        arrayRadioButtons.add(hora18);
-        arrayRadioButtons.add(hora19);
 
-        int radioId;
-        String texto;
-        RadioButton selectedbutton;
-
-       for (int i=0;i<arrayRadioButtons.size();i++){
-           selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
-           texto = selectedbutton.getText().toString();
-           Log.d("forBlu",texto);
-        }
-
-    }
     public void extraerValores(){
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -146,26 +138,19 @@ public class PedirCita extends AppCompatActivity {
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            String fecha=snapshot.child("fecha").getValue().toString();
-                            String hora=snapshot.child("hora").getValue().toString();
-                           /* Log.d("horaImaginaria",hora);
-                            Log.d("citaCompletaTv",fechaCompletaTv);*/
+                            fechaBBDD=snapshot.child("fecha").getValue().toString();
+                            horaBBDD=snapshot.child("hora").getValue().toString();
 
-                            if (fecha.equals(fechaCompletaTv) && hora.equals(hora) ){
-                                Toast.makeText(PedirCita.this,"Cita Duplicada",Toast.LENGTH_LONG).show();
-
-                            }else{
-                                Toast.makeText(PedirCita.this,"Cita Correcta",Toast.LENGTH_LONG).show();
-                            }
+                            comparador();
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
+                            Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
                         }
                     });
                 }
-
+                retornarEstado();
             }
 
             @Override
@@ -173,5 +158,32 @@ public class PedirCita extends AppCompatActivity {
                 Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public void comparador(){
+        String textoRB;
+        RadioButton selectedbutton;
+
+        for (int i=0;i<arrayRadioButtons.size();i++){
+            selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
+            textoRB = selectedbutton.getText().toString();
+
+            Log.d("forBlu",textoRB);
+
+            if (fechaBBDD.equals(fechaCompletaTv) && horaBBDD.equals(textoRB) ){
+                selectedbutton.setEnabled(false);
+            }
+        }
+
+    }
+
+    public void retornarEstado(){
+        String textoRB;
+        RadioButton selectedbutton;
+        for (int i=0;i<arrayRadioButtons.size();i++){
+            selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
+            selectedbutton.setEnabled(true);
+        }
+        rg.clearCheck();
     }
 }
