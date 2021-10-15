@@ -39,7 +39,6 @@ import java.util.Map;
 
 public class PedirCita extends AppCompatActivity {
     ArrayList <RadioButton> arrayRadioButtons = new ArrayList<>();
-
     private RadioButton hora9, hora10, hora11, hora12 ,hora15 ,hora16, hora17, hora18, hora19;
     private RadioGroup rg;
     private Button confirmar;
@@ -85,12 +84,11 @@ public class PedirCita extends AppCompatActivity {
                 DatePickerDialog datePikerDialog = new DatePickerDialog( PedirCita.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        //String fechaCita=year + "/" + (month + 1) + "/" + dayOfMonth;
                         fechaCompletaTv =dayOfMonth + "/" + (month + 1) + "/" + year;
                         fecha.setText(fechaCompletaTv);
+                        arraysRecor();
                         extraerValores();
                     }
-
                 }
                 ,anyo,mes,dia);
                 datePikerDialog.show();
@@ -104,6 +102,7 @@ public class PedirCita extends AppCompatActivity {
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
                 horaCita=selectedbutton.getText().toString();
+
                 String id = mAuth.getCurrentUser().getUid();
 
                 Map<String, Object> map = new HashMap<>();
@@ -116,6 +115,28 @@ public class PedirCita extends AppCompatActivity {
 
         });
     }
+    public void arraysRecor(){
+        arrayRadioButtons.add(hora9);
+        arrayRadioButtons.add(hora10);
+        arrayRadioButtons.add(hora11);
+        arrayRadioButtons.add(hora12);
+        arrayRadioButtons.add(hora15);
+        arrayRadioButtons.add(hora16);
+        arrayRadioButtons.add(hora17);
+        arrayRadioButtons.add(hora18);
+        arrayRadioButtons.add(hora19);
+
+        int radioId;
+        String texto;
+        RadioButton selectedbutton;
+
+       for (int i=0;i<arrayRadioButtons.size();i++){
+           selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
+           texto = selectedbutton.getText().toString();
+           Log.d("forBlu",texto);
+           i++;
+        }
+    }
     public void extraerValores(){
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -127,8 +148,8 @@ public class PedirCita extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             String fecha=snapshot.child("fecha").getValue().toString();
                             String hora=snapshot.child("hora").getValue().toString();
-                            Log.d("horaImaginaria",hora);
-                            Log.d("citaCompletaTv",fechaCompletaTv);
+                           /* Log.d("horaImaginaria",hora);
+                            Log.d("citaCompletaTv",fechaCompletaTv);*/
 
                             if (fecha.equals(fechaCompletaTv) && hora.equals(hora) ){
                                 Toast.makeText(PedirCita.this,"Cita Duplicada",Toast.LENGTH_LONG).show();
