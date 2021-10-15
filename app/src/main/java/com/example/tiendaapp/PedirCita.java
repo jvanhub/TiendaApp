@@ -38,19 +38,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PedirCita extends AppCompatActivity {
-    ArrayList <RadioButton> arrayRadioButtons = new ArrayList<>();
 
     private RadioButton hora9, hora10, hora11, hora12 ,hora15 ,hora16, hora17, hora18, hora19;
     private RadioGroup rg;
     private Button confirmar;
-
     private TextView fecha;
-
     private String fechaCompletaTv="";
     private String horaCita="";
     private String fechaBBDD="";
     private String horaBBDD="";
 
+    ArrayList <RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
 
@@ -76,6 +74,7 @@ public class PedirCita extends AppCompatActivity {
         hora18 = (RadioButton) findViewById(R.id.radiobutton18_00);
         hora19 = (RadioButton) findViewById(R.id.radiobutton19_00);
 
+        //Añade al array los refrrencias de l RadioButton.
         arrayRadioButtons.add(hora9);
         arrayRadioButtons.add(hora10);
         arrayRadioButtons.add(hora11);
@@ -86,15 +85,19 @@ public class PedirCita extends AppCompatActivity {
         arrayRadioButtons.add(hora18);
         arrayRadioButtons.add(hora19);
 
+        //Método para que cuando pulsamos sobre el TextView realice una acción.
         fecha.setOnClickListener(new View.OnClickListener() {
+
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
+
                Calendar calendario = Calendar.getInstance();
                int dia =calendario.get(Calendar.DAY_OF_MONTH);
                int mes = calendario.get(Calendar.MONTH);
                int anyo = calendario.get(Calendar.YEAR);
 
+               //Cuadro del calendario.
                 DatePickerDialog datePikerDialog = new DatePickerDialog( PedirCita.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -104,10 +107,14 @@ public class PedirCita extends AppCompatActivity {
                     }
                 }
                 ,anyo,mes,dia);
+
+                //Seleccionamos la fecha minima.
+                datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePikerDialog.show();
             }
         });
 
+        //Método para que cuando pulsamos sobre el button realice una acción.
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +122,6 @@ public class PedirCita extends AppCompatActivity {
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
                 horaCita=selectedbutton.getText().toString();
-
                 String id = mAuth.getCurrentUser().getUid();
 
                 Map<String, Object> map = new HashMap<>();
@@ -125,10 +131,10 @@ public class PedirCita extends AppCompatActivity {
 
                 mDatabase.child("Reservas").push().setValue(map);
             }
-
         });
     }
 
+    //Método que realiza la consulta en la base de datos para compararlos datos.
     public void extraerValores(){
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -140,7 +146,6 @@ public class PedirCita extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             fechaBBDD=snapshot.child("fecha").getValue().toString();
                             horaBBDD=snapshot.child("hora").getValue().toString();
-
                             comparador();
                         }
 
@@ -160,6 +165,7 @@ public class PedirCita extends AppCompatActivity {
         });
     }
 
+    //Método que recorre el array y compara los datos en la sabe de datos para desactivar radioButtons.
     public void comparador(){
         String textoRB;
         RadioButton selectedbutton;
@@ -168,15 +174,13 @@ public class PedirCita extends AppCompatActivity {
             selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
             textoRB = selectedbutton.getText().toString();
 
-            Log.d("forBlu",textoRB);
-
             if (fechaBBDD.equals(fechaCompletaTv) && horaBBDD.equals(textoRB) ){
                 selectedbutton.setEnabled(false);
             }
         }
-
     }
 
+    //Método que activa de nuevo los radioButtons cada vez que cambias de fecha.
     public void retornarEstado(){
         String textoRB;
         RadioButton selectedbutton;
