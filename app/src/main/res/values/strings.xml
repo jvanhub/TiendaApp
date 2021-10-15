@@ -16,8 +16,19 @@
     <string name="ver_citas">VER CITAS</string>
     <string name="cerrar_sesion">CERRAR SESIÓN</string>
     <string name="fecha">FECHA</string>
-    <string name="hora">HORA</string>
+    <string name="hora">SELECCIONE LA HORA</string>
     <string name="confirmarCita">CONFIRMAR</string>
-    <string name="fechaTv"> SELECCIONE FECHA</string>
+    <string name="fechaTv"> PULSE PARA SELECCIONAR FECHA</string>
+
+    <string name="HORA1">9:00-10:00</string>
+    <string name="HORA2">10:10-11:10</string>
+    <string name="HORA3">11:20-12:20</string>
+    <string name="HORA4">12:30-13:30</string>
+    <string name="HORA5">15:00-16:00</string>
+    <string name="HORA6">16:10-17:10</string>
+    <string name="HORA7">17:20-18:20</string>
+    <string name="HORA8">18:30-19:30</string>
+    <string name="HORA9">19:40-20:40</string>
+
 
 </resources>
