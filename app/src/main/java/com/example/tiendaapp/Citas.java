@@ -60,6 +60,7 @@ public class Citas extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for ( final DataSnapshot snapshot: dataSnapshot.getChildren()){
                     contador++;
+                    //Cuidado con el chil(id).
                     mDatabase.child("Reservas").child(id).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
