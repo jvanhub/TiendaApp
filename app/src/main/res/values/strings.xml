@@ -30,5 +30,10 @@
     <string name="HORA8">18:30-19:30</string>
     <string name="HORA9">19:40-20:40</string>
 
+    <string name="VerCita">VER</string>
+    <string name="modificarCita">MODIFICAR</string>
+    <string name="Atras">VOLVER</string>
+
+
 
 </resources>
