@@ -4,7 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +23,15 @@ import java.util.ArrayList;
 
 public class Citas extends AppCompatActivity {
     LinearLayout linearLayout = findViewById(R.id.linearCitas);
-    ArrayList<String> citas = new ArrayList<>();
-
+    TextView mostradorCitas = new TextView(this);
+    ArrayList<String> citas = new ArrayList<String>();
+    private int contador=0;
+    private Button verCita;
+    private Button modificarCita;
     private String fechaBBDD="";
     private String horaBBDD="";
+    private String uId="";
+    private String id;
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
 
@@ -33,20 +42,32 @@ public class Citas extends AppCompatActivity {
 
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
+        id = mAuth.getCurrentUser().getUid();
 
+        verCita = (Button) findViewById(R.id.buttonVerCitas);
+        modificarCita = (Button) findViewById(R.id.buttonModificarCitas);
+
+        verCita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recogerCitas();
+            }
+        });
     }
-    /*public void recogerCitas(){
+    public void recogerCitas(){
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 for ( final DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                    contador++;
+                    mDatabase.child("Reservas").child(id).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             fechaBBDD=snapshot.child("fecha").getValue().toString();
                             horaBBDD=snapshot.child("hora").getValue().toString();
-                            horaBBDD=snapshot.child("uId").getValue().toString();
+                            //uId=snapshot.child("uId").getValue().toString();
+                            almacenFechasHoras();
+                            mostrarFechasHoras();
                         }
 
                         @Override
@@ -63,25 +84,21 @@ public class Citas extends AppCompatActivity {
             }
         });
 
-    }*/
+    }
+    public void almacenFechasHoras(){
+            String fechaCompleta = fechaBBDD +" "+  horaBBDD;
+            citas.add(fechaCompleta);
+    }
 
-    /*public void crearLayaouts(){
+    public void mostrarFechasHoras(){
         for(int i = 0; i <citas.size(); i++ )
         {
-            TextView textView = new TextView(this);
-            textView.setText(citas.get(i));
+            mostradorCitas.setText(citas.get(i));
             //textView.setPadding(10,10,10,10);
-            linearLayout.addView(textView);
+            linearLayout.addView(mostradorCitas);
 
-            Log.d("MIRAAAAAA", String.valueOf(textView.getId()));
+            Log.d("MIRAAAAAA", String.valueOf(mostradorCitas.getId()));
 
-            if(textView.getId() ==0) {
-                textView.setTextColor(Color.RED);
-                textView.setPadding(10, 10, 10, 40);
-            }else {
-                textView.setTextColor(Color.BLUE);
-                textView.setPadding(10, 10, 10, 10);
-            }
         }
-    }*/
+    }
 }

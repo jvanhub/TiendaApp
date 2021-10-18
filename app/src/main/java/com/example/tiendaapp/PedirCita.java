@@ -108,7 +108,7 @@ public class PedirCita extends AppCompatActivity {
                 }
                 ,anyo,mes,dia);
 
-                //Seleccionamos la fecha minima.
+                //Seleccionamos la fecha mínima.
                 datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePikerDialog.show();
             }
@@ -127,9 +127,9 @@ public class PedirCita extends AppCompatActivity {
                 Map<String, Object> map = new HashMap<>();
                 map.put("fecha",fechaCompletaTv);
                 map.put("hora",horaCita);
-                map.put("uId",id);
-
-                mDatabase.child("Reservas").push().setValue(map);
+                //map.put("uId",id);
+                mDatabase.child("Reservas").child(id).setValue(map);
+                //mDatabase.child("Reservas").push().setValue(map);
             }
         });
     }
