@@ -94,7 +94,7 @@ public class Citas extends AppCompatActivity {
         for(int i = 0; i <citas.size(); i++ )
         {
             mostradorCitas.setText(citas.get(i));
-            //textView.setPadding(10,10,10,10);
+            mostradorCitas.setPadding(10,10,10,10);
             linearLayout.addView(mostradorCitas);
 
             Log.d("MIRAAAAAA", String.valueOf(mostradorCitas.getId()));

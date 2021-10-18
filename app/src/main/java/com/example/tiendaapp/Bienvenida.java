@@ -13,7 +13,7 @@ public class Bienvenida extends AppCompatActivity {
     //
     private Button cerrar_sesion;
     private Button pedir_cita;
-    private Button ver_cite;
+    private Button ver_cita;
 
     //
     private FirebaseAuth mAuth;
@@ -27,7 +27,7 @@ public class Bienvenida extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         pedir_cita = (Button) findViewById(R.id.button_pedir);
-        ver_cite = (Button) findViewById(R.id.button_ver);
+        ver_cita = (Button) findViewById(R.id.button_ver);
 
         cerrar_sesion = (Button) findViewById(R.id.buttonCerrarSession);
 
@@ -39,13 +39,12 @@ public class Bienvenida extends AppCompatActivity {
             }
         });
 
-        /*ver_cite.setOnClickListener(new View.OnClickListener() {
+        ver_cita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Bienvenida.this, .class));
-
+                startActivity(new Intent(Bienvenida.this, Citas.class));
             }
-        });*/
+        });
 
         cerrar_sesion.setOnClickListener(new View.OnClickListener() {
             @Override
