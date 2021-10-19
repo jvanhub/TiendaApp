@@ -67,6 +67,7 @@ public class Citas extends AppCompatActivity {
                             horaBBDD=snapshot.child("hora").getValue().toString();
                             uId=snapshot.child("uId").getValue().toString();
 
+      /**  Añadir accion si no hay citas y dar funcionalidad a botones y si es necesario incluir Volver atras**/
                             if (uId.equals(id)){
                                 insertElements();
                             }
