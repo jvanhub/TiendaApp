@@ -127,9 +127,9 @@ public class PedirCita extends AppCompatActivity {
                 Map<String, Object> map = new HashMap<>();
                 map.put("fecha",fechaCompletaTv);
                 map.put("hora",horaCita);
-                //map.put("uId",id);
-                mDatabase.child("Reservas").child(id).setValue(map);
-                //mDatabase.child("Reservas").push().setValue(map);
+                map.put("uId",id);
+                //mDatabase.child("Reservas").child(id).setValue(map);
+                mDatabase.child("Reservas").push().setValue(map);
             }
         });
     }
@@ -165,7 +165,7 @@ public class PedirCita extends AppCompatActivity {
         });
     }
 
-    //Método que recorre el array y compara los datos en la sabe de datos para desactivar radioButtons.
+    //Método que recorre el array y compara los datos en la base de datos para desactivar radioButtons.
     public void comparador(){
         String textoRB;
         RadioButton selectedbutton;

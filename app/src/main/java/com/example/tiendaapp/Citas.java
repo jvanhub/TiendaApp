@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,17 +23,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Citas extends AppCompatActivity {
-    LinearLayout linearLayout = findViewById(R.id.linearCitas);
-    TextView mostradorCitas = new TextView(this);
+   //LinearLayout linearLayout = findViewById(R.id.linearCitas);
+    //TextView mostradorCitas = new TextView(this);
     ArrayList<String> citas = new ArrayList<String>();
-    private int contador=0;
     private Button verCita;
     private Button modificarCita;
     private String fechaBBDD="";
     private String horaBBDD="";
     private String uId="";
     private String id;
-    FirebaseAuth mAuth;
+    FirebaseUser mAuth;
     DatabaseReference mDatabase;
 
     @Override
@@ -40,10 +40,9 @@ public class Citas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_citas);
 
-        mAuth=FirebaseAuth.getInstance();
+        mAuth=FirebaseAuth.getInstance().getCurrentUser();
         mDatabase= FirebaseDatabase.getInstance().getReference();
-        id = mAuth.getCurrentUser().getUid();
-
+        id = mAuth.getUid();
         verCita = (Button) findViewById(R.id.buttonVerCitas);
         modificarCita = (Button) findViewById(R.id.buttonModificarCitas);
 
@@ -58,17 +57,20 @@ public class Citas extends AppCompatActivity {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for ( final DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    contador++;
-                    //Cuidado con el chil(id).
-                    mDatabase.child("Reservas").child(id).addValueEventListener(new ValueEventListener() {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             fechaBBDD=snapshot.child("fecha").getValue().toString();
                             horaBBDD=snapshot.child("hora").getValue().toString();
-                            //uId=snapshot.child("uId").getValue().toString();
-                            almacenFechasHoras();
-                            mostrarFechasHoras();
+                            uId=snapshot.child("uId").getValue().toString();
+                          /*  String fechaCompleta = fechaBBDD +" "+  horaBBDD;
+                            citas.add(fechaCompleta);*/
+                             if (uId.equals(id)){
+                                 Log.d("valores",fechaBBDD);
+                                 Log.d("valores",horaBBDD);
+                                 Log.d("valores",uId);
+                             }
                         }
 
                         @Override
@@ -77,29 +79,32 @@ public class Citas extends AppCompatActivity {
                         }
                     });
                 }
+                //mostrarFechasHoras();
+               // citas.clear();
+
+               /* if (citas.size()==0){
+                    Toast.makeText(Citas.this,"NO TIENES NINGUNA CITA",Toast.LENGTH_LONG).show();
+                }else {
+                }*/
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(Citas.this,"Error BBDD",Toast.LENGTH_LONG).show();
             }
-        });
 
-    }
-    public void almacenFechasHoras(){
-            String fechaCompleta = fechaBBDD +" "+  horaBBDD;
-            citas.add(fechaCompleta);
+        });
     }
 
     public void mostrarFechasHoras(){
         for(int i = 0; i <citas.size(); i++ )
         {
+            Log.d("valores",citas.get(i));
+            /*
             mostradorCitas.setText(citas.get(i));
             mostradorCitas.setPadding(10,10,10,10);
-            linearLayout.addView(mostradorCitas);
-
-            Log.d("MIRAAAAAA", String.valueOf(mostradorCitas.getId()));
-
+            linearLayout.addView(mostradorCitas);*/
+            //Log.d("MIRAAAAAA", String.valueOf(mostradorCitas.getId()));
         }
     }
 }
