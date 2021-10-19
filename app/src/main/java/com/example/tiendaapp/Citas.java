@@ -2,6 +2,8 @@ package com.example.tiendaapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -21,13 +23,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Citas extends AppCompatActivity {
-   //LinearLayout linearLayout = findViewById(R.id.linearCitas);
-    //TextView mostradorCitas = new TextView(this);
     ArrayList<String> citas = new ArrayList<String>();
+    List<ListElemnt> elements;
     private Button verCita;
-    private Button modificarCita;
     private String fechaBBDD="";
     private String horaBBDD="";
     private String uId="";
@@ -44,7 +45,7 @@ public class Citas extends AppCompatActivity {
         mDatabase= FirebaseDatabase.getInstance().getReference();
         id = mAuth.getUid();
         verCita = (Button) findViewById(R.id.buttonVerCitas);
-        modificarCita = (Button) findViewById(R.id.buttonModificarCitas);
+        elements = new ArrayList<>();
 
         verCita.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,13 +65,12 @@ public class Citas extends AppCompatActivity {
                             fechaBBDD=snapshot.child("fecha").getValue().toString();
                             horaBBDD=snapshot.child("hora").getValue().toString();
                             uId=snapshot.child("uId").getValue().toString();
-                          /*  String fechaCompleta = fechaBBDD +" "+  horaBBDD;
-                            citas.add(fechaCompleta);*/
-                             if (uId.equals(id)){
+                            if (uId.equals(id)){
                                  Log.d("valores",fechaBBDD);
                                  Log.d("valores",horaBBDD);
                                  Log.d("valores",uId);
-                             }
+                                init();
+                            }
                         }
 
                         @Override
@@ -79,13 +79,7 @@ public class Citas extends AppCompatActivity {
                         }
                     });
                 }
-                //mostrarFechasHoras();
-               // citas.clear();
-
-               /* if (citas.size()==0){
-                    Toast.makeText(Citas.this,"NO TIENES NINGUNA CITA",Toast.LENGTH_LONG).show();
-                }else {
-                }*/
+                elements.clear();
             }
 
             @Override
@@ -96,15 +90,12 @@ public class Citas extends AppCompatActivity {
         });
     }
 
-    public void mostrarFechasHoras(){
-        for(int i = 0; i <citas.size(); i++ )
-        {
-            Log.d("valores",citas.get(i));
-            /*
-            mostradorCitas.setText(citas.get(i));
-            mostradorCitas.setPadding(10,10,10,10);
-            linearLayout.addView(mostradorCitas);*/
-            //Log.d("MIRAAAAAA", String.valueOf(mostradorCitas.getId()));
-        }
+    public void init(){
+        elements.add(new ListElemnt(fechaBBDD,horaBBDD));
+        ListAdapter listAdapter =  new ListAdapter(elements,this);
+        RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listAdapter);
     }
 }

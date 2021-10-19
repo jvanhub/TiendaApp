@@ -32,6 +32,12 @@
 
     <string name="VerCita">VER</string>
     <string name="modificarCita">MODIFICAR</string>
+    <string name="eliminarCita">ELIMINAR</string>
+
+    <string name="mostrarFechaCard">dd/mm/yyyy</string>
+    <string name="mostrarHoraCard">hh/mm</string>
+    <string name="citaCard">Cita:</string>
+
     <string name="Atras">VOLVER</string>
 
 
