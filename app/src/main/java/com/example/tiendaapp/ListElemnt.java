@@ -1,8 +1,9 @@
 package com.example.tiendaapp;
+//Clase que se encarga de crear los elementos que se van a utilizar para pasar la fecha y hora.
 
 public class ListElemnt {
-    public String fecha;
-    public String hora;
+    private String fecha;
+    private String hora;
 
     public ListElemnt(String fecha, String hora) {
         this.fecha = fecha;

@@ -12,17 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+//Esta clase relaciona la parte grafica con los datos (Fecha y Hora) que vamos ha tratar.
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
-    private List<ListElemnt>mData;
+    private List<ListElemnt>mData;//Esta lista tiene todos los datos de ListElement.
     private LayoutInflater mInflater;//Describe de que archivo proviene.
-    private Context context;//De que clase estamo llamando este adaptador.
+    private Context context;//Define de que clase estamos llamando este adaptador.
+
     public ListAdapter(List<ListElemnt> itemList, Context context){
         this.mInflater = LayoutInflater.from(context);
         this.context=context;
         this.mData = itemList;
     }
-
 
     @NonNull
     @Override
@@ -45,7 +46,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         mData=items;
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView mostrar, fecha, hora, idUsuario;
         Button modificar, eliminar;
@@ -57,14 +57,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             hora = itemView.findViewById(R.id.textViewHoraCard);
             modificar = itemView.findViewById(R.id.buttonModifi);
             eliminar = itemView.findViewById(R.id.buttonDelet);
-
-
         }
 
         void bindData(final ListElemnt item){
             fecha.setText(item.getFecha());
             hora.setText(item.getHora());
-
         }
     }
 }
