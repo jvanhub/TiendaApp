@@ -19,12 +19,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private LayoutInflater mInflater;//Describe de que archivo proviene.
     private Context context;//Define de que clase estamos llamando este adaptador.
 
+    //Constructor.
     public ListAdapter(List<ListElemnt> itemList, Context context){
         this.mInflater = LayoutInflater.from(context);
         this.context=context;
         this.mData = itemList;
     }
 
+    //A continuación damos la referencia de como se va a ver cada "tarjeta"
     @NonNull
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,16 +34,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return new ListAdapter.ViewHolder(view);
     }
 
+    //
     @Override
     public void onBindViewHolder(@NonNull ListAdapter.ViewHolder holder, int position) {
         holder.bindData(mData.get(position));
     }
 
+    //Método que devuelve el tamaño de elementos que hay en la lista.
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
+    //Este metodo sirve para redefinir los elementos de la lista.
     public void setItems(List<ListElemnt> items){
         mData=items;
     }
