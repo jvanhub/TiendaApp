@@ -74,7 +74,7 @@ public class PedirCita extends AppCompatActivity {
         hora18 = (RadioButton) findViewById(R.id.radiobutton18_00);
         hora19 = (RadioButton) findViewById(R.id.radiobutton19_00);
 
-        //Añade al array los refrrencias de l RadioButton.
+        //Añade al array los referencias del RadioButton.
         arrayRadioButtons.add(hora9);
         arrayRadioButtons.add(hora10);
         arrayRadioButtons.add(hora11);
@@ -108,7 +108,7 @@ public class PedirCita extends AppCompatActivity {
                 }
                 ,anyo,mes,dia);
 
-                //Seleccionamos la fecha mínima.
+                //Fecha mínima, para evitar citas de dias anteriores al actual.
                 datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePikerDialog.show();
             }
@@ -118,9 +118,14 @@ public class PedirCita extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!fechaCompletaTv.equals("") /*|| rg.getCheckedRadioButtonId()!=-1*/){
-                    int radioId = rg.getCheckedRadioButtonId();
-                    RadioButton selectedbutton = findViewById(radioId);
+                int radioId = rg.getCheckedRadioButtonId();
+                RadioButton selectedbutton = findViewById(radioId);
+
+                if (fechaCompletaTv.equals("")){
+                    Toast.makeText(PedirCita.this,"SELECCIONE FECHA",Toast.LENGTH_LONG).show();
+                }else if (rg.getCheckedRadioButtonId()==-1){
+                    Toast.makeText(PedirCita.this,"SELECCIONE HORA",Toast.LENGTH_LONG).show();
+                }else{
                     horaCita=selectedbutton.getText().toString();
                     String id = mAuth.getCurrentUser().getUid();
 
@@ -132,12 +137,7 @@ public class PedirCita extends AppCompatActivity {
                     mDatabase.child("Reservas").push().setValue(map);
                     startActivity(new Intent(PedirCita.this, Bienvenida.class));
                     Toast.makeText(PedirCita.this,"CITA CONFIRMADA",Toast.LENGTH_LONG).show();
-
-                }else{
-                    Toast.makeText(PedirCita.this,"SELECCIONE FECHA Y HORA",Toast.LENGTH_LONG).show();
-
                 }
-
             }
 
         });
@@ -148,7 +148,6 @@ public class PedirCita extends AppCompatActivity {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 for ( final DataSnapshot snapshot: dataSnapshot.getChildren()){
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -157,7 +156,6 @@ public class PedirCita extends AppCompatActivity {
                             horaBBDD=snapshot.child("hora").getValue().toString();
                             comparador();
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                             Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
@@ -166,7 +164,6 @@ public class PedirCita extends AppCompatActivity {
                 }
                 retornarEstado();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();

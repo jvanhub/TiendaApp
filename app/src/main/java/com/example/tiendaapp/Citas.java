@@ -71,7 +71,6 @@ public class Citas extends AppCompatActivity {
                                 insertElements();
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                             Toast.makeText(Citas.this,"Error BBDD",Toast.LENGTH_LONG).show();
