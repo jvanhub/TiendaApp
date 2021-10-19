@@ -26,8 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Citas extends AppCompatActivity {
-    ArrayList<String> citas = new ArrayList<String>();
-    List<ListElemnt> elements;
     private Button verCita;
     private String fechaBBDD="";
     private String horaBBDD="";
@@ -35,6 +33,7 @@ public class Citas extends AppCompatActivity {
     private String id;
     FirebaseUser mAuth;
     DatabaseReference mDatabase;
+    List<ListElemnt> elements;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,8 @@ public class Citas extends AppCompatActivity {
             }
         });
     }
+
+    //Se encarga de recger, comparar e insertar los datos junto con los elementos.
     public void recogerCitas(){
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -65,11 +66,9 @@ public class Citas extends AppCompatActivity {
                             fechaBBDD=snapshot.child("fecha").getValue().toString();
                             horaBBDD=snapshot.child("hora").getValue().toString();
                             uId=snapshot.child("uId").getValue().toString();
+
                             if (uId.equals(id)){
-                                 Log.d("valores",fechaBBDD);
-                                 Log.d("valores",horaBBDD);
-                                 Log.d("valores",uId);
-                                init();
+                                insertElements();
                             }
                         }
 
@@ -90,7 +89,8 @@ public class Citas extends AppCompatActivity {
         });
     }
 
-    public void init(){
+    //Método encargado de crear e introducir los datos en cada elemento.
+    public void insertElements(){
         elements.add(new ListElemnt(fechaBBDD,horaBBDD));
         ListAdapter listAdapter =  new ListAdapter(elements,this);
         RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
