@@ -118,19 +118,28 @@ public class PedirCita extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!fechaCompletaTv.equals("") /*|| rg.getCheckedRadioButtonId()!=-1*/){
+                    int radioId = rg.getCheckedRadioButtonId();
+                    RadioButton selectedbutton = findViewById(radioId);
+                    horaCita=selectedbutton.getText().toString();
+                    String id = mAuth.getCurrentUser().getUid();
 
-                int radioId = rg.getCheckedRadioButtonId();
-                RadioButton selectedbutton = findViewById(radioId);
-                horaCita=selectedbutton.getText().toString();
-                String id = mAuth.getCurrentUser().getUid();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("fecha",fechaCompletaTv);
+                    map.put("hora",horaCita);
+                    map.put("uId",id);
+                    //mDatabase.child("Reservas").child(id).setValue(map);
+                    mDatabase.child("Reservas").push().setValue(map);
+                    startActivity(new Intent(PedirCita.this, Bienvenida.class));
+                    Toast.makeText(PedirCita.this,"CITA CONFIRMADA",Toast.LENGTH_LONG).show();
 
-                Map<String, Object> map = new HashMap<>();
-                map.put("fecha",fechaCompletaTv);
-                map.put("hora",horaCita);
-                map.put("uId",id);
-                //mDatabase.child("Reservas").child(id).setValue(map);
-                mDatabase.child("Reservas").push().setValue(map);
+                }else{
+                    Toast.makeText(PedirCita.this,"SELECCIONE FECHA Y HORA",Toast.LENGTH_LONG).show();
+
+                }
+
             }
+
         });
     }
 

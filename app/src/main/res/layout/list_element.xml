@@ -26,6 +26,10 @@
             android:layout_height="wrap_content"
             android:text="@string/mostrarFechaCard" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/textViewHoraCard"
             android:layout_width="match_parent"
