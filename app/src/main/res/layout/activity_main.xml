@@ -9,8 +9,8 @@
 
 
     <LinearLayout
-        android:layout_width="366dp"
-        android:layout_height="653dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,9 +37,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:fontFamily="serif"
+            android:foregroundTint="#AFA7A7"
             android:hint="@string/num_telf"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textAlignment="viewStart"
+            android:textStyle="italic"
+            android:importantForAutofill="no" />
 
         <Space
             android:layout_width="match_parent"
@@ -50,9 +55,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:fontFamily="serif"
             android:hint="@string/pass"
             android:inputType="textPassword"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textAlignment="viewStart"
+            android:textStyle="italic"
+            android:importantForAutofill="no" />
 
         <Space
             android:layout_width="match_parent"
@@ -70,9 +79,12 @@
                 android:layout_weight="1"
 
                 android:backgroundTint="#80114A"
-                app:cornerRadius="10dp"
+                android:fontFamily="serif"
 
-                android:text="@string/entrar" />
+                android:text="@string/entrar"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:cornerRadius="10dp" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -86,10 +98,13 @@
                 android:layout_weight="1"
 
                 android:backgroundTint="#80114A"
-                app:cornerRadius="10dp"
+                android:fontFamily="serif"
 
                 android:onClick="registrar"
-                android:text="@string/registrar" />
+                android:text="@string/registrar"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:cornerRadius="10dp" />
         </LinearLayout>
 
     </LinearLayout>

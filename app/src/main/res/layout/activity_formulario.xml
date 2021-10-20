@@ -29,9 +29,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="@string/nombre"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
             <Space
                 android:layout_width="match_parent"
@@ -42,9 +44,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="@string/ape1"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
             <Space
                 android:layout_width="match_parent"
@@ -55,9 +59,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="@string/ape2"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
             <Space
                 android:layout_width="match_parent"
@@ -68,9 +74,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="@string/num_telf2"
                 android:inputType="number"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
             <Space
                 android:layout_width="match_parent"
@@ -81,9 +89,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
             <Space
                 android:layout_width="match_parent"
@@ -94,9 +104,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="@string/passReg"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
             <Space
                 android:layout_width="match_parent"
@@ -107,13 +119,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
                 android:hint="@string/passReg2"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="37dp" />
+                android:layout_height="22dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -127,12 +141,16 @@
 
                 <Button
                     android:id="@+id/buttonRegistro2"
-                    android:layout_width="288dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:backgroundTint="#80114A"
-                    app:cornerRadius="10dp"
-                    android:text="@string/confirmarReg" />
+                    android:gravity="center"
+                    android:text="@string/confirmarReg"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    app:cornerRadius="10dp" />
 
                 <Space
                     android:layout_width="269dp"

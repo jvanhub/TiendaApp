@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
         et_pass = (EditText) findViewById(R.id.editTextTextPass);
         Button entrar = (Button) findViewById(R.id.buttonEntrar);
 
-        /*Método OnClick del button Entrar.
-        Convierto el siguiente codigo en lambda.
+        /*Método OnClick del button Entrar. Convierto el siguiente codigo en lambda:
             entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vista) {

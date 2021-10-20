@@ -35,7 +35,9 @@
                 android:text="@string/fechaTv"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+                app:cornerRadius="100dp"
+                android:textSize="22sp"
+                />
 
             <Space
                 android:layout_width="match_parent"
@@ -52,7 +54,7 @@
                 android:text="@string/hora"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -146,7 +148,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="31dp"
+                android:layout_height="10dp"
                 android:layout_weight="1" />
 
             <Button
@@ -157,6 +159,7 @@
                 android:layout_marginEnd="50dp"
                 android:backgroundTint="#80114A"
                 android:text="@string/confirmarCita"
+                android:textAllCaps="false"
                 app:cornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
