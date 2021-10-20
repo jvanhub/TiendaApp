@@ -6,7 +6,7 @@
     app:cardCornerRadius="12dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="250sp"
         android:layout_height="match_parent"
         android:background="@drawable/bordes_redondos"
         android:orientation="vertical">
@@ -26,7 +26,11 @@
             android:id="@+id/textViewFechaCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/mostrarFechaCard" />
+            android:fontFamily="serif"
+            android:text="@string/mostrarFechaCard"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="italic" />
 
         <Space
             android:layout_width="match_parent"
@@ -36,7 +40,10 @@
             android:id="@+id/textViewHoraCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/mostrarHoraCard" />
+            android:fontFamily="serif"
+            android:text="@string/mostrarHoraCard"
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
 
     </LinearLayout>
