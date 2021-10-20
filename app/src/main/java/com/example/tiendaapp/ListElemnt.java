@@ -25,5 +25,4 @@ public class ListElemnt {
     public void setHora(String hora) {
         this.hora = hora;
     }
-
 }

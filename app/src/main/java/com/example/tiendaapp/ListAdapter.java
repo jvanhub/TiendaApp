@@ -16,8 +16,8 @@ import java.util.List;
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     private List<ListElemnt>mData;//Esta lista tiene todos los datos de ListElement.
-    private LayoutInflater mInflater;//Describe de que archivo proviene.
-    private Context context;//Define de que clase estamos llamando este adaptador.
+    private final LayoutInflater mInflater;//Describe de que archivo proviene.
+    public final Context context;//Define de que clase estamos llamando este adaptador.
 
     //Constructor.
     public ListAdapter(List<ListElemnt> itemList, Context context){
@@ -31,7 +31,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.list_element, null);
-        return new ListAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     //
@@ -51,8 +51,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         mData=items;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView mostrar, fecha, hora, idUsuario;
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+        TextView mostrar, fecha, hora;
         Button modificar, eliminar;
 
         ViewHolder(View itemView){

@@ -9,9 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -67,7 +64,7 @@ public class Citas extends AppCompatActivity {
                             horaBBDD=snapshot.child("hora").getValue().toString();
                             uId=snapshot.child("uId").getValue().toString();
 
-      /**  Añadir accion si no hay citas y dar funcionalidad a botones y si es necesario incluir Volver atras**/
+      /**  Añadir acción sino hay citas y dar funcionalidad a botones y si es necesario incluir Volver atras**/
                             if (uId.equals(id)){
                                 insertElements();
                             }

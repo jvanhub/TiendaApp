@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
     //Variabes de los activitys
     private EditText et_email;
     private EditText et_pass;
-    private Button entrar;
-    private Button registrar;
 
     //Variables de recogida de datos.
     private String email="";
@@ -39,20 +37,31 @@ public class MainActivity extends AppCompatActivity {
 
         et_email= (EditText) findViewById(R.id.editTextEmail1);
         et_pass = (EditText) findViewById(R.id.editTextTextPass);
-        entrar = (Button) findViewById(R.id.buttonEntrar);
+        Button entrar = (Button) findViewById(R.id.buttonEntrar);
 
-        //Método OnClick.
-        entrar.setOnClickListener(new View.OnClickListener() {
+        /*Método OnClick del button Entrar.
+        Convierto el siguiente codigo en lambda.
+            entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vista) {
                 email = et_email.getText().toString();
                 pass = et_pass.getText().toString();
-
                 if(email.isEmpty() || pass.isEmpty()){
                     Toast.makeText(MainActivity.this, "Completa los campos", Toast.LENGTH_LONG).show();
                 }else{
                     login();
                 }
+            }
+        });
+        */
+        entrar.setOnClickListener(vista -> {
+            email = et_email.getText().toString();
+            pass = et_pass.getText().toString();
+
+            if(email.isEmpty() || pass.isEmpty()){
+                Toast.makeText(MainActivity.this, "Completa los campos", Toast.LENGTH_LONG).show();
+            }else{
+                login();
             }
         });
     }

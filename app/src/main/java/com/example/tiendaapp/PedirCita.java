@@ -139,7 +139,6 @@ public class PedirCita extends AppCompatActivity {
                     Toast.makeText(PedirCita.this,"CITA CONFIRMADA",Toast.LENGTH_LONG).show();
                 }
             }
-
         });
     }
 
