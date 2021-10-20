@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
@@ -40,6 +42,7 @@ public class Citas extends AppCompatActivity {
         id = mAuth.getUid();
         Button verCita = (Button) findViewById(R.id.buttonVerCitas);
         Button verCitaActual = (Button) findViewById(R.id.buttonVerCitasActules);
+        Button volver=(Button) findViewById(R.id.buttonVolver2);
         elements = new ArrayList<>();
         elements2 = new ArrayList<>();
 
@@ -54,6 +57,13 @@ public class Citas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 recogerCitasActualizadas();
+            }
+        });
+
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Citas.this,Bienvenida.class));
             }
         });
     }

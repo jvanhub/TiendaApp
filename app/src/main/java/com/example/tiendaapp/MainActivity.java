@@ -38,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
         et_email= (EditText) findViewById(R.id.editTextEmail1);
         et_pass = (EditText) findViewById(R.id.editTextTextPass);
         Button entrar = (Button) findViewById(R.id.buttonEntrar);
+        Button registro =(Button) findViewById(R.id.buttonRegistro);
 
-        /*Método OnClick del button Entrar. Convierto el siguiente codigo en lambda:
-            entrar.setOnClickListener(new View.OnClickListener() {
+        //Método OnClick del button Entrar.
+        entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vista) {
                 email = et_email.getText().toString();
@@ -52,15 +53,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        */
-        entrar.setOnClickListener(vista -> {
-            email = et_email.getText().toString();
-            pass = et_pass.getText().toString();
 
-            if(email.isEmpty() || pass.isEmpty()){
-                Toast.makeText(MainActivity.this, "Completa los campos", Toast.LENGTH_LONG).show();
-            }else{
-                login();
+        registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,Formulario.class));
             }
         });
     }
@@ -80,10 +77,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    //Método registrar que nos envía al activity formulario.
-    public void registrar(View view){
-        startActivity(new Intent(MainActivity.this,Formulario.class));
     }
 }
