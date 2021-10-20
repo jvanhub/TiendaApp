@@ -13,7 +13,7 @@
         >
 
         <TextView
-            android:id="@+id/textViewCitasCard"
+            android:id="@+id/textViewCitasCard2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
@@ -24,7 +24,7 @@
             android:textStyle="bold|italic" />
 
         <TextView
-            android:id="@+id/textViewFechaCard"
+            android:id="@+id/textViewFechaCard2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mostrarFechaCard" />
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/textViewHoraCard"
+            android:id="@+id/textViewHoraCard2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mostrarHoraCard" />
