@@ -121,15 +121,13 @@ public class ModificarCita extends AppCompatActivity {
             public void onClick(View v) {
                 radioId = rg.getCheckedRadioButtonId();
                 selectedbutton = findViewById(radioId);
-
+                
                 if (fechaCompletaTv.equals("")){
                     Toast.makeText(ModificarCita.this,"SELECCIONE FECHA",Toast.LENGTH_LONG).show();
                 }else if (rg.getCheckedRadioButtonId()==-1){
                     Toast.makeText(ModificarCita.this,"SELECCIONE HORA",Toast.LENGTH_LONG).show();
                 }else{
-                    //
-                    modificador();
-
+                    recogerDatosBBDD();
                 }
             }
         });
@@ -188,54 +186,42 @@ public class ModificarCita extends AppCompatActivity {
         }
         rg.clearCheck();
     }
+
+    public void recogerDatosBBDD(){
+        mDatabase.child("Reservas").child(idRefTablaButton).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                fechaBBDD = snapshot.child("fecha").getValue().toString();
+                horaBBDD = snapshot.child("hora").getValue().toString();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ModificarCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
+            }
+        });
+        modificador();
+    }
+
     public void modificador(){
-            mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Calendar calendario = Calendar.getInstance();
-                    int dia =calendario.get(Calendar.DAY_OF_MONTH);
-                    int mes = (calendario.get(Calendar.MONTH)+1);
-                    int anyo = calendario.get(Calendar.YEAR);
-
-                    for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                        mDatabase.child("Reservas").child(idRefTablaButton).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                fechaBBDD=snapshot.child("fecha").getValue().toString();
-                                horaBBDD=snapshot.child("hora").getValue().toString();
-                                uId=snapshot.child("uId").getValue().toString();
-
-                                String extractFecha[] = fechaBBDD.split("/");
-                                if (uId.equals(id)){
-                                    if(Integer.parseInt(extractFecha[2]) - anyo < 0){
-                                    }else if(Integer.parseInt(extractFecha[1]) - mes< 0){
-                                    }else if(Integer.parseInt(extractFecha[0]) - dia< 0){
-                                    }else {
-                                        horaCita=selectedbutton.getText().toString();
-                                        Map<String, Object> map = new HashMap<>();
-                                        map.put("fecha",fechaCompletaTv);
-                                        map.put("hora",horaCita);
-                                        map.put("uId",uId);
-                                        //mDatabase.child("Reservas").child(id).setValue(map);
-                                        mDatabase.child("Reservas").push().setValue(map);
-                                        startActivity(new Intent(ModificarCita.this, Bienvenida.class));
-                                        Toast.makeText(ModificarCita.this,"CITA CONFIRMADA",Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(ModificarCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(ModificarCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
-                }
-            });
+        Calendar calendario = Calendar.getInstance();
+        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+        int mes = (calendario.get(Calendar.MONTH) + 1);
+        int anyo = calendario.get(Calendar.YEAR);
+        id = mAuth.getUid();
+        String extractFecha[] = fechaBBDD.split("/");
+        if (Integer.parseInt(extractFecha[2]) - anyo < 0) {
+        } else if (Integer.parseInt(extractFecha[1]) - mes < 0) {
+        } else if (Integer.parseInt(extractFecha[0]) - dia < 0) {
+        } else {
+            horaCita = selectedbutton.getText().toString();
+            Map<String, Object> map = new HashMap<>();
+            map.put("fecha", fechaCompletaTv);
+            map.put("hora", horaCita);
+            map.put("uId", id);
+            mDatabase.child("Reservas").child(idRefTablaButton).setValue(map);
+            //mDatabase.child("Reservas").push().setValue(map);
+            startActivity(new Intent(ModificarCita.this, Citas.class));
+        }
     }
 }
 
