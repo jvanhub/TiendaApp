@@ -79,11 +79,11 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(),ModificarCita.class);
-                    Toast.makeText(v.getContext(), btMod.getContentDescription(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(v.getContext(), btMod.getContentDescription(), Toast.LENGTH_SHORT).show();
+                    intent.putExtra("boton",btMod.getContentDescription());
                     v.getContext().startActivity(intent);
                 }
             });
         }
-
     }
 }

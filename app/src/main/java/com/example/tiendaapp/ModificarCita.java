@@ -40,7 +40,11 @@ public class ModificarCita extends AppCompatActivity {
     private String horaBBDD="";
     private String uId="";
     private String id;
+    private String idRefTablaButton;
+    RadioButton selectedbutton;
+    int radioId;
 
+    Bundle bundle;
     ArrayList <RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -49,6 +53,10 @@ public class ModificarCita extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_cita);
+
+        //Recibe datos (id del boton) desde ListaAdapter2.java -> bindData.
+        bundle = getIntent().getExtras();
+        idRefTablaButton = bundle.getString("boton");
 
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
@@ -111,26 +119,17 @@ public class ModificarCita extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int radioId = rg.getCheckedRadioButtonId();
-                RadioButton selectedbutton = findViewById(radioId);
+                radioId = rg.getCheckedRadioButtonId();
+                selectedbutton = findViewById(radioId);
 
                 if (fechaCompletaTv.equals("")){
                     Toast.makeText(ModificarCita.this,"SELECCIONE FECHA",Toast.LENGTH_LONG).show();
                 }else if (rg.getCheckedRadioButtonId()==-1){
                     Toast.makeText(ModificarCita.this,"SELECCIONE HORA",Toast.LENGTH_LONG).show();
                 }else{
+                    //
+                    modificador();
 
-                    horaCita=selectedbutton.getText().toString();
-                    String id = mAuth.getCurrentUser().getUid();
-
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("fecha",fechaCompletaTv);
-                    map.put("hora",horaCita);
-                    map.put("uId",id);
-                    //mDatabase.child("Reservas").child(id).setValue(map);
-                    mDatabase.child("Reservas").push().setValue(map);
-                    startActivity(new Intent(ModificarCita.this, Bienvenida.class));
-                    Toast.makeText(ModificarCita.this,"CITA CONFIRMADA",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -148,7 +147,6 @@ public class ModificarCita extends AppCompatActivity {
                             fechaBBDD=snapshot.child("fecha").getValue().toString();
                             horaBBDD=snapshot.child("hora").getValue().toString();
                             comparador();
-                           // modificador();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
@@ -189,6 +187,55 @@ public class ModificarCita extends AppCompatActivity {
             selectedbutton.setEnabled(true);
         }
         rg.clearCheck();
+    }
+    public void modificador(){
+            mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Calendar calendario = Calendar.getInstance();
+                    int dia =calendario.get(Calendar.DAY_OF_MONTH);
+                    int mes = (calendario.get(Calendar.MONTH)+1);
+                    int anyo = calendario.get(Calendar.YEAR);
+
+                    for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        mDatabase.child("Reservas").child(idRefTablaButton).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                fechaBBDD=snapshot.child("fecha").getValue().toString();
+                                horaBBDD=snapshot.child("hora").getValue().toString();
+                                uId=snapshot.child("uId").getValue().toString();
+
+                                String extractFecha[] = fechaBBDD.split("/");
+                                if (uId.equals(id)){
+                                    if(Integer.parseInt(extractFecha[2]) - anyo < 0){
+                                    }else if(Integer.parseInt(extractFecha[1]) - mes< 0){
+                                    }else if(Integer.parseInt(extractFecha[0]) - dia< 0){
+                                    }else {
+                                        horaCita=selectedbutton.getText().toString();
+                                        Map<String, Object> map = new HashMap<>();
+                                        map.put("fecha",fechaCompletaTv);
+                                        map.put("hora",horaCita);
+                                        map.put("uId",uId);
+                                        //mDatabase.child("Reservas").child(id).setValue(map);
+                                        mDatabase.child("Reservas").push().setValue(map);
+                                        startActivity(new Intent(ModificarCita.this, Bienvenida.class));
+                                        Toast.makeText(ModificarCita.this,"CITA CONFIRMADA",Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(ModificarCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(ModificarCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
+                }
+            });
     }
 }
 
