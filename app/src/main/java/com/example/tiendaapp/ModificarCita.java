@@ -88,7 +88,6 @@ public class ModificarCita extends AppCompatActivity {
 
         //Método para que cuando pulsamos sobre el TextView realice una acción.
         fecha.setOnClickListener(new View.OnClickListener() {
-
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
@@ -187,6 +186,7 @@ public class ModificarCita extends AppCompatActivity {
         rg.clearCheck();
     }
 
+    //Método que recoge el dato de la base de datos.
     public void recogerDatosBBDD(){
         mDatabase.child("Reservas").child(idRefTablaButton).addValueEventListener(new ValueEventListener() {
             @Override
@@ -202,6 +202,7 @@ public class ModificarCita extends AppCompatActivity {
         modificador();
     }
 
+    //Método que modifica los campos en la base de datos.
     public void modificador(){
         Calendar calendario = Calendar.getInstance();
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
