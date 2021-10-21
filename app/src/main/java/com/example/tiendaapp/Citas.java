@@ -80,13 +80,16 @@ public class Citas extends AppCompatActivity {
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            try {
+                                fechaBBDD=snapshot.child("fecha").getValue().toString();
+                                horaBBDD=snapshot.child("hora").getValue().toString();
+                                uId=snapshot.child("uId").getValue().toString();
 
-                            fechaBBDD=snapshot.child("fecha").getValue().toString();
-                            horaBBDD=snapshot.child("hora").getValue().toString();
-                            uId=snapshot.child("uId").getValue().toString();
+                                if (uId.equals(id)){
+                                    insertElements();
+                                }
+                            }catch (NullPointerException n){
 
-                            if (uId.equals(id)){
-                                insertElements();
                             }
                         }
                         @Override
@@ -128,26 +131,24 @@ public class Citas extends AppCompatActivity {
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            fechaBBDD=snapshot.child("fecha").getValue().toString();
-                            horaBBDD=snapshot.child("hora").getValue().toString();
-                            uId=snapshot.child("uId").getValue().toString();
-                            String extractFecha[] = fechaBBDD.split("/");
-                            idCita= snapshot.getKey();
-                            if (uId.equals(id)){
-                                if(Integer.parseInt(extractFecha[2]) - anyo < 0){
-                                }else if(Integer.parseInt(extractFecha[1]) - mes< 0){
-                                }else if(Integer.parseInt(extractFecha[0]) - dia< 0){
-                                }else {
-                                    try {
-                                        Thread.sleep(500);
+                            try {
+                                fechaBBDD=snapshot.child("fecha").getValue().toString();
+                                horaBBDD=snapshot.child("hora").getValue().toString();
+                                uId=snapshot.child("uId").getValue().toString();
+                                String extractFecha[] = fechaBBDD.split("/");
+                                idCita= snapshot.getKey();
+                                if (uId.equals(id)){
+                                    if(Integer.parseInt(extractFecha[2]) - anyo < 0){
+                                    }else if(Integer.parseInt(extractFecha[1]) - mes< 0){
+                                    }else if(Integer.parseInt(extractFecha[0]) - dia< 0){
+                                    }else {
                                         insertElementsActual();
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    } catch (NullPointerException n){
-
                                     }
                                 }
+                            }catch (NullPointerException n){
+
                             }
+
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {

@@ -143,9 +143,14 @@ public class PedirCita extends AppCompatActivity {
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            fechaBBDD=snapshot.child("fecha").getValue().toString();
-                            horaBBDD=snapshot.child("hora").getValue().toString();
-                            comparador();
+                            try {
+                                fechaBBDD=snapshot.child("fecha").getValue().toString();
+                                horaBBDD=snapshot.child("hora").getValue().toString();
+                                comparador();
+                            }catch (NullPointerException n){
+
+                            }
+
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
