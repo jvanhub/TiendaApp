@@ -30,7 +30,6 @@ public class Citas extends AppCompatActivity {
     FirebaseUser mAuth;
     DatabaseReference mDatabase;
     List<ListElemnt> elements;
-    List<ListElemnt> elements2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,6 @@ public class Citas extends AppCompatActivity {
         Button verCitaActual = (Button) findViewById(R.id.buttonVerCitasActules);
         Button volver=(Button) findViewById(R.id.buttonVolver2);
         elements = new ArrayList<>();
-        elements2 = new ArrayList<>();
 
         verCita.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,7 +141,7 @@ public class Citas extends AppCompatActivity {
                         }
                     });
                 }
-                elements2.clear();
+                elements.clear();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -152,8 +150,8 @@ public class Citas extends AppCompatActivity {
         });
     }
     public void insertElementsActual(){
-        elements2.add(new ListElemnt(fechaBBDD,horaBBDD));
-        ListAdapter2 listAdapter =  new ListAdapter2(elements2,this);
+        elements.add(new ListElemnt(fechaBBDD,horaBBDD));
+        ListAdapter2 listAdapter =  new ListAdapter2(elements,this);
         RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
