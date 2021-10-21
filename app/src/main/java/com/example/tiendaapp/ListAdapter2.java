@@ -13,6 +13,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 //Esta clase relaciona la parte grafica con los datos (Fecha y Hora) que vamos ha tratar.
@@ -61,9 +64,11 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView mostrar, fecha, hora;
         Button btMod, btElim;
+        DatabaseReference dbr;
 
         ViewHolder(View itemView){
             super(itemView);
+            dbr = FirebaseDatabase.getInstance().getReference();
             mostrar = itemView.findViewById(R.id.textViewCitasCard2);
             fecha = itemView.findViewById(R.id.textViewFechaCard2);
             hora = itemView.findViewById(R.id.textViewHoraCard2);
@@ -74,6 +79,14 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
         void bindData(final ListElemnt item){
             fecha.setText(item.getFecha());
             hora.setText(item.getHora());
+            btElim.setContentDescription(item.getIdCita());
+            btElim.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dbr.child("Reservas").child(btElim.getContentDescription().toString()).removeValue();
+                }
+            });
+
             btMod.setContentDescription(item.getIdCita());
             btMod.setOnClickListener(new View.OnClickListener() {
                 @Override

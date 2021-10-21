@@ -138,7 +138,14 @@ public class Citas extends AppCompatActivity {
                                 }else if(Integer.parseInt(extractFecha[1]) - mes< 0){
                                 }else if(Integer.parseInt(extractFecha[0]) - dia< 0){
                                 }else {
-                                    insertElementsActual();
+                                    try {
+                                        Thread.sleep(500);
+                                        insertElementsActual();
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    } catch (NullPointerException n){
+
+                                    }
                                 }
                             }
                         }
