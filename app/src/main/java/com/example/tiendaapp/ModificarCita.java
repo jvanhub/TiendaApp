@@ -1,9 +1,5 @@
 package com.example.tiendaapp;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -16,6 +12,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,11 +25,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class PedirCita extends AppCompatActivity {
+public class ModificarCita extends AppCompatActivity {
 
     private RadioButton hora9, hora10, hora11, hora12 ,hora15 ,hora16, hora17, hora18, hora19;
     private RadioGroup rg;
@@ -39,6 +38,8 @@ public class PedirCita extends AppCompatActivity {
     private String horaCita="";
     private String fechaBBDD="";
     private String horaBBDD="";
+    private String uId="";
+    private String id;
 
     ArrayList <RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
@@ -47,24 +48,24 @@ public class PedirCita extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedir_cita);
+        setContentView(R.layout.activity_modificar_cita);
 
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
 
-        rg = (RadioGroup) findViewById(R.id.radioGroup);
-        fecha = (TextView) findViewById(R.id.editTextTextFecha);
+        rg = (RadioGroup) findViewById(R.id.radioGroup_M);
+        fecha = (TextView) findViewById(R.id.editTextTextFecham);
 
-        confirmar = (Button) findViewById(R.id.button_confirmar);
-        hora9 = (RadioButton) findViewById(R.id.radiobutton9_00);
-        hora10 = (RadioButton) findViewById(R.id.radiobutton10_00);
-        hora11 = (RadioButton) findViewById(R.id.radiobutton11_00);
-        hora12 = (RadioButton) findViewById(R.id.radiobutton12_00);
-        hora15 = (RadioButton) findViewById(R.id.radiobutton15_00);
-        hora16 = (RadioButton) findViewById(R.id.radiobutton16_00);
-        hora17 = (RadioButton) findViewById(R.id.radiobutton17_00);
-        hora18 = (RadioButton) findViewById(R.id.radiobutton18_00);
-        hora19 = (RadioButton) findViewById(R.id.radiobutton19_00);
+        confirmar = (Button) findViewById(R.id.button_confirmar_m);
+        hora9 = (RadioButton) findViewById(R.id.radiobutton9_00m);
+        hora10 = (RadioButton) findViewById(R.id.radiobutton10_00m);
+        hora11 = (RadioButton) findViewById(R.id.radiobutton11_00m);
+        hora12 = (RadioButton) findViewById(R.id.radiobutton12_00m);
+        hora15 = (RadioButton) findViewById(R.id.radiobutton15_00m);
+        hora16 = (RadioButton) findViewById(R.id.radiobutton16_00m);
+        hora17 = (RadioButton) findViewById(R.id.radiobutton17_00m);
+        hora18 = (RadioButton) findViewById(R.id.radiobutton18_00m);
+        hora19 = (RadioButton) findViewById(R.id.radiobutton19_00m);
 
         //Añade al array los referencias del RadioButton.
         arrayRadioButtons.add(hora9);
@@ -90,7 +91,7 @@ public class PedirCita extends AppCompatActivity {
                int anyo = calendario.get(Calendar.YEAR);
 
                //Cuadro del calendario.
-                DatePickerDialog datePikerDialog = new DatePickerDialog( PedirCita.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePikerDialog = new DatePickerDialog( ModificarCita.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         fechaCompletaTv =dayOfMonth + "/" + (month + 1) + "/" + year;
@@ -114,10 +115,11 @@ public class PedirCita extends AppCompatActivity {
                 RadioButton selectedbutton = findViewById(radioId);
 
                 if (fechaCompletaTv.equals("")){
-                    Toast.makeText(PedirCita.this,"SELECCIONE FECHA",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ModificarCita.this,"SELECCIONE FECHA",Toast.LENGTH_LONG).show();
                 }else if (rg.getCheckedRadioButtonId()==-1){
-                    Toast.makeText(PedirCita.this,"SELECCIONE HORA",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ModificarCita.this,"SELECCIONE HORA",Toast.LENGTH_LONG).show();
                 }else{
+
                     horaCita=selectedbutton.getText().toString();
                     String id = mAuth.getCurrentUser().getUid();
 
@@ -127,8 +129,8 @@ public class PedirCita extends AppCompatActivity {
                     map.put("uId",id);
                     //mDatabase.child("Reservas").child(id).setValue(map);
                     mDatabase.child("Reservas").push().setValue(map);
-                    startActivity(new Intent(PedirCita.this, Bienvenida.class));
-                    Toast.makeText(PedirCita.this,"CITA CONFIRMADA",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(ModificarCita.this, Bienvenida.class));
+                    Toast.makeText(ModificarCita.this,"CITA CONFIRMADA",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -146,10 +148,11 @@ public class PedirCita extends AppCompatActivity {
                             fechaBBDD=snapshot.child("fecha").getValue().toString();
                             horaBBDD=snapshot.child("hora").getValue().toString();
                             comparador();
+                           // modificador();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
+                            Toast.makeText(ModificarCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -157,7 +160,7 @@ public class PedirCita extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
+                Toast.makeText(ModificarCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -188,3 +191,4 @@ public class PedirCita extends AppCompatActivity {
         rg.clearCheck();
     }
 }
+

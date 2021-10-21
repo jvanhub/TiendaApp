@@ -1,12 +1,15 @@
 package com.example.tiendaapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,8 +19,8 @@ import java.util.List;
 public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> {
 
     private List<ListElemnt>mData;//Esta lista tiene todos los datos de ListElement.
-    private final LayoutInflater mInflater;//Describe de que archivo proviene.
-    public final Context context;//Define de que clase estamos llamando este adaptador.
+    private LayoutInflater mInflater;//Describe de que archivo proviene.
+    public Context context;//Define de que clase estamos llamando este adaptador.
 
     //Constructor.
     public ListAdapter2(List<ListElemnt> itemList, Context context){
@@ -25,6 +28,10 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
         this.context=context;
         this.mData = itemList;
     }
+    public ListAdapter2(){
+
+    }
+
 
     //A continuación damos la referencia de como se va a ver cada "tarjeta"
     @NonNull
@@ -62,12 +69,21 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
             hora = itemView.findViewById(R.id.textViewHoraCard2);
             btMod = itemView.findViewById(R.id.buttonModifi);
             btElim = itemView.findViewById(R.id.buttonDelet);
-
         }
 
         void bindData(final ListElemnt item){
             fecha.setText(item.getFecha());
             hora.setText(item.getHora());
+            btMod.setContentDescription(item.getIdCita());
+            btMod.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(),ModificarCita.class);
+                    Toast.makeText(v.getContext(), btMod.getContentDescription(), Toast.LENGTH_SHORT).show();
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
+
     }
 }

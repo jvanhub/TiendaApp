@@ -4,10 +4,12 @@ package com.example.tiendaapp;
 public class ListElemnt {
     private String fecha;
     private String hora;
+    private String idCita;
 
-    public ListElemnt(String fecha, String hora) {
+    public ListElemnt(String fecha, String hora, String idCita) {
         this.fecha = fecha;
         this.hora = hora;
+        this.idCita = idCita;
     }
 
     public String getFecha() {
@@ -24,5 +26,13 @@ public class ListElemnt {
 
     public void setHora(String hora) {
         this.hora = hora;
+    }
+
+    public String getIdCita() {
+        return idCita;
+    }
+
+    public void setIdCita(String idCita) {
+        this.idCita = idCita;
     }
 }

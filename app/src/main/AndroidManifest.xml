@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiendaApp">
         <activity
+            android:name=".ModificarCita"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".Citas"
             android:exported="true"
             android:screenOrientation="portrait"/>
