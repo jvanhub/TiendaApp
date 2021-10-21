@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="250sp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@drawable/bordes_redondos"
-        android:orientation="vertical">
+        >
 
         <TextView
             android:id="@+id/textViewCitasCard2"
@@ -28,7 +29,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:text="@string/mostrarFechaCard"
-            android:textAlignment="viewStart"
             android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="italic" />
@@ -44,13 +44,13 @@
             android:fontFamily="serif"
             android:text="@string/mostrarHoraCard"
             android:textColor="#000000"
+            android:textColorHint="#000000"
             android:textSize="16sp"
             android:textStyle="italic" />
-
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonModifi"
@@ -71,7 +71,7 @@
                 android:text="@string/eliminarCita"
                 android:textAllCaps="false"
                 app:cornerRadius="10dp" />
-        </LinearLayout>
+    </LinearLayout>
 
     </LinearLayout>
 
