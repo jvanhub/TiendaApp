@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background ="@drawable/imgnail"
+    android:background="@drawable/dg_color"
     android:orientation="vertical"
     tools:context=".PedirCita">
 
@@ -16,7 +16,7 @@
         <LinearLayout
             android:id="@+id/linearLayout8"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="21dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="21dp"
@@ -150,36 +150,33 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button_confirmar"
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:backgroundTint="#80114A"
                     android:text="@string/confirmarCita"
                     android:textAllCaps="false"
-                    app:cornerRadius="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:cornerRadius="10dp" />
 
                 <Space
-                    android:layout_width="203dp"
-                    android:layout_height="37dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/buttonVolver1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#80114A"
                     android:text="@string/Atras"
                     android:textAllCaps="false"
-                    app:cornerRadius="10dp"
-                    />
+                    app:cornerRadius="10dp" />
             </LinearLayout>
 
         </LinearLayout>

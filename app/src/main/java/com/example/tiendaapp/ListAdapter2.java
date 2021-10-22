@@ -80,8 +80,6 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
             fecha.setText(item.getFecha());
             hora.setText(item.getHora());
             btElim.setContentDescription(item.getIdCita());
-            almacen = btElim.getContentDescription().toString();
-
             btElim.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
