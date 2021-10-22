@@ -41,6 +41,7 @@ public class ModificarCita extends AppCompatActivity {
     private String id;
     private String idRefTablaButton;
     int radioId;
+    private Button volver;
     RadioButton selectedbutton;
     Bundle bundle;
     ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
@@ -63,6 +64,7 @@ public class ModificarCita extends AppCompatActivity {
         fecha = (TextView) findViewById(R.id.editTextTextFecham);
 
         confirmar = (Button) findViewById(R.id.button_confirmar_m);
+        volver = (Button) findViewById(R.id.buttonVolver_m);
         hora9 = (RadioButton) findViewById(R.id.radiobutton9_00m);
         hora10 = (RadioButton) findViewById(R.id.radiobutton10_00m);
         hora11 = (RadioButton) findViewById(R.id.radiobutton11_00m);
@@ -125,6 +127,12 @@ public class ModificarCita extends AppCompatActivity {
                 } else {
                     recogerDatosBBDD();
                 }
+            }
+        });
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ModificarCita.this, Citas.class));
             }
         });
     }
