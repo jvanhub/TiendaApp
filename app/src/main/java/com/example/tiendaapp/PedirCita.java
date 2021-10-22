@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -92,7 +94,7 @@ public class PedirCita extends AppCompatActivity {
                 int anyo = calendario.get(Calendar.YEAR);
 
                 //Cuadro del calendario.
-                DatePickerDialog datePikerDialog = new DatePickerDialog(PedirCita.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePikerDialog = new DatePickerDialog(PedirCita.this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         fechaCompletaTv = dayOfMonth + "/" + (month + 1) + "/" + year;
@@ -101,6 +103,7 @@ public class PedirCita extends AppCompatActivity {
                     }
                 }
                         , anyo, mes, dia);
+                datePikerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAB5B5")));
 
                 //Fecha mínima, para evitar citas de dias anteriores al actual.
                 datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
