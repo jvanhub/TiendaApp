@@ -8,17 +8,13 @@
     tools:context=".Bienvenida">
 
     <LinearLayout
-        android:layout_width="333dp"
-        android:layout_height="289dp"
+        android:layout_width="328dp"
+        android:layout_height="241dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="47dp" />
 
         <Button
             android:id="@+id/button_pedir"

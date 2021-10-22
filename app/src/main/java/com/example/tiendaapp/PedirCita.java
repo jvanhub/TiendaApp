@@ -34,6 +34,7 @@ public class PedirCita extends AppCompatActivity {
     private RadioButton hora9, hora10, hora11, hora12, hora15, hora16, hora17, hora18, hora19;
     private RadioGroup rg;
     private Button confirmar;
+    private Button volver;
     private TextView fecha;
     private String fechaCompletaTv = "";
     private String horaCita = "";
@@ -56,6 +57,7 @@ public class PedirCita extends AppCompatActivity {
         fecha = (TextView) findViewById(R.id.editTextTextFecha);
 
         confirmar = (Button) findViewById(R.id.button_confirmar);
+        volver = (Button) findViewById(R.id.buttonVolver1);
         hora9 = (RadioButton) findViewById(R.id.radiobutton9_00);
         hora10 = (RadioButton) findViewById(R.id.radiobutton10_00);
         hora11 = (RadioButton) findViewById(R.id.radiobutton11_00);
@@ -130,6 +132,14 @@ public class PedirCita extends AppCompatActivity {
                     startActivity(new Intent(PedirCita.this, Bienvenida.class));
                     Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        //Método para que cuando pulsamos sobre el button realice una acción.
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PedirCita.this, Bienvenida.class));
             }
         });
     }
