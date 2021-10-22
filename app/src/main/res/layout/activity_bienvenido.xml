@@ -25,8 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#80114A"
+            android:text="@string/pedir_cita"
             app:cornerRadius="10dp"
-            android:text="@string/pedir_cita" />
+            tools:ignore="TextContrastCheck" />
 
         <Space
             android:layout_width="match_parent"
@@ -37,8 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#80114A"
-            app:cornerRadius="10dp"
-            android:text="@string/ver_citas" />
+            android:text="@string/ver_citas"
+            app:cornerRadius="10dp" />
 
         <Space
             android:layout_width="match_parent"
@@ -49,11 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#80114A"
-            app:cornerRadius="10dp"
-            android:text="@string/cerrar_sesion" />
+            android:text="@string/cerrar_sesion"
+            app:cornerRadius="10dp" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="47dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
