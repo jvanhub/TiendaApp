@@ -150,7 +150,8 @@ public class Citas extends AppCompatActivity {
                                 }
                                 /** valor del ultimo null*/
                             } catch (NullPointerException n) {
-                               // startActivity(new Intent(Citas.this, Citas.class));
+                                insertElementsActual();
+                                // startActivity(new Intent(Citas.this, Citas.class));
                             }
                         }
 
