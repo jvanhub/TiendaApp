@@ -65,30 +65,30 @@ public class Formulario extends AppCompatActivity {
                     contrasenya2.isEmpty()) {
                 Toast.makeText(Formulario.this, "Completa todos los campos", Toast.LENGTH_LONG).show();
 
-            } else if(contrasenya.length() < 6){
-                Toast.makeText(Formulario.this,"Debes introducir una contraseña mínimo de 6 caractéres.", Toast.LENGTH_LONG).show();
-            } else if(contrasenya.equals(contrasenya2)){
+            } else if (contrasenya.length() < 6) {
+                Toast.makeText(Formulario.this, "Debes introducir una contraseña mínimo de 6 caractéres.", Toast.LENGTH_LONG).show();
+            } else if (contrasenya.equals(contrasenya2)) {
                 registrar();
-            }else{
-                Toast.makeText(Formulario.this,"Contraseña 1 y 2 son diferentes.", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(Formulario.this, "Contraseña 1 y 2 son diferentes.", Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    public void registrar(){
+    public void registrar() {
         /* Lo paso a lambda:
         mAuth.createUserWithEmailAndPassword(email,contrasenya).addOnCompleteListener(new OnCompleteListener<AuthResult>()
         */
-        mAuth.createUserWithEmailAndPassword(email,contrasenya).addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
+        mAuth.createUserWithEmailAndPassword(email, contrasenya).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("nombres",nombre);
-                map.put("apellidos",apellido1);
-                map.put("apellidos2",apellido2);
-                map.put("n_telefonos",n_tefl);
-                map.put("emails",email);
-                map.put("contraseñas",contrasenya);
+                map.put("nombres", nombre);
+                map.put("apellidos", apellido1);
+                map.put("apellidos2", apellido2);
+                map.put("n_telefonos", n_tefl);
+                map.put("emails", email);
+                map.put("contraseñas", contrasenya);
 
                 /* Remplazo para evitar que pueda producir un NullPointerException.
                 String id = task.getResult().getUser().getUid();*/
@@ -96,7 +96,7 @@ public class Formulario extends AppCompatActivity {
 
                 mDatabase.child("Usuarios").child(id).setValue(map);
                 startActivity(new Intent(Formulario.this, MainActivity.class));
-            }else{
+            } else {
                 Toast.makeText(Formulario.this, "No se pudo registrar el usuario.", Toast.LENGTH_LONG).show();
             }
         });

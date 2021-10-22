@@ -30,22 +30,20 @@ import java.util.Map;
 
 public class ModificarCita extends AppCompatActivity {
 
-    private RadioButton hora9, hora10, hora11, hora12 ,hora15 ,hora16, hora17, hora18, hora19;
+    private RadioButton hora9, hora10, hora11, hora12, hora15, hora16, hora17, hora18, hora19;
     private RadioGroup rg;
     private Button confirmar;
     private TextView fecha;
-    private String fechaCompletaTv="";
-    private String horaCita="";
-    private String fechaBBDD="";
-    private String horaBBDD="";
-    private String uId="";
+    private String fechaCompletaTv = "";
+    private String horaCita = "";
+    private String fechaBBDD = "";
+    private String horaBBDD = "";
     private String id;
     private String idRefTablaButton;
-    RadioButton selectedbutton;
     int radioId;
-
+    RadioButton selectedbutton;
     Bundle bundle;
-    ArrayList <RadioButton> arrayRadioButtons = new ArrayList<>();
+    ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
 
@@ -58,8 +56,8 @@ public class ModificarCita extends AppCompatActivity {
         bundle = getIntent().getExtras();
         idRefTablaButton = bundle.getString("boton");
 
-        mAuth=FirebaseAuth.getInstance();
-        mDatabase= FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         rg = (RadioGroup) findViewById(R.id.radioGroup_M);
         fecha = (TextView) findViewById(R.id.editTextTextFecham);
@@ -92,22 +90,21 @@ public class ModificarCita extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               Calendar calendario = Calendar.getInstance();
-               int dia =calendario.get(Calendar.DAY_OF_MONTH);
-               int mes = calendario.get(Calendar.MONTH);
-               int anyo = calendario.get(Calendar.YEAR);
+                Calendar calendario = Calendar.getInstance();
+                int dia = calendario.get(Calendar.DAY_OF_MONTH);
+                int mes = calendario.get(Calendar.MONTH);
+                int anyo = calendario.get(Calendar.YEAR);
 
-               //Cuadro del calendario.
-                DatePickerDialog datePikerDialog = new DatePickerDialog( ModificarCita.this, new DatePickerDialog.OnDateSetListener() {
+                //Cuadro del calendario.
+                DatePickerDialog datePikerDialog = new DatePickerDialog(ModificarCita.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        fechaCompletaTv =dayOfMonth + "/" + (month + 1) + "/" + year;
+                        fechaCompletaTv = dayOfMonth + "/" + (month + 1) + "/" + year;
                         fecha.setText(fechaCompletaTv);
                         extraerValores();
                     }
                 }
-                ,anyo,mes,dia);
-
+                        , anyo, mes, dia);
                 //Fecha mínima, para evitar citas de dias anteriores al actual.
                 datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePikerDialog.show();
@@ -120,12 +117,12 @@ public class ModificarCita extends AppCompatActivity {
             public void onClick(View v) {
                 radioId = rg.getCheckedRadioButtonId();
                 selectedbutton = findViewById(radioId);
-                
-                if (fechaCompletaTv.equals("")){
-                    Toast.makeText(ModificarCita.this,"SELECCIONE FECHA",Toast.LENGTH_LONG).show();
-                }else if (rg.getCheckedRadioButtonId()==-1){
-                    Toast.makeText(ModificarCita.this,"SELECCIONE HORA",Toast.LENGTH_LONG).show();
-                }else{
+
+                if (fechaCompletaTv.equals("")) {
+                    Toast.makeText(ModificarCita.this, "SELECCIONE FECHA", Toast.LENGTH_LONG).show();
+                } else if (rg.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(ModificarCita.this, "SELECCIONE HORA", Toast.LENGTH_LONG).show();
+                } else {
                     recogerDatosBBDD();
                 }
             }
@@ -133,53 +130,55 @@ public class ModificarCita extends AppCompatActivity {
     }
 
     //Método que realiza la consulta en la base de datos para compararlos datos.
-    public void extraerValores(){
+    public void extraerValores() {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for ( final DataSnapshot snapshot: dataSnapshot.getChildren()){
+                for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            fechaBBDD=snapshot.child("fecha").getValue().toString();
-                            horaBBDD=snapshot.child("hora").getValue().toString();
+                            fechaBBDD = snapshot.child("fecha").getValue().toString();
+                            horaBBDD = snapshot.child("hora").getValue().toString();
                             comparador();
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(ModificarCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
+                            Toast.makeText(ModificarCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
                 retornarEstado();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ModificarCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
+                Toast.makeText(ModificarCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     //Método que recorre el array y compara los datos en la base de datos para desactivar radioButtons.
-    public void comparador(){
+    public void comparador() {
         String textoRB;
         RadioButton selectedbutton;
 
-        for (int i=0;i<arrayRadioButtons.size();i++){
+        for (int i = 0; i < arrayRadioButtons.size(); i++) {
             selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
             textoRB = selectedbutton.getText().toString();
 
-            if (fechaBBDD.equals(fechaCompletaTv) && horaBBDD.equals(textoRB) ){
+            if (fechaBBDD.equals(fechaCompletaTv) && horaBBDD.equals(textoRB)) {
                 selectedbutton.setEnabled(false);
             }
         }
     }
 
     //Método que activa de nuevo los radioButtons cada vez que cambias de fecha.
-    public void retornarEstado(){
+    public void retornarEstado() {
         String textoRB;
         RadioButton selectedbutton;
-        for (int i=0;i<arrayRadioButtons.size();i++){
+        for (int i = 0; i < arrayRadioButtons.size(); i++) {
             selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
             selectedbutton.setEnabled(true);
         }
@@ -187,13 +186,14 @@ public class ModificarCita extends AppCompatActivity {
     }
 
     //Método que recoge el dato de la base de datos.
-    public void recogerDatosBBDD(){
+    public void recogerDatosBBDD() {
         mDatabase.child("Reservas").child(idRefTablaButton).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 fechaBBDD = snapshot.child("fecha").getValue().toString();
                 horaBBDD = snapshot.child("hora").getValue().toString();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(ModificarCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
@@ -203,7 +203,7 @@ public class ModificarCita extends AppCompatActivity {
     }
 
     //Método que modifica los campos en la base de datos.
-    public void modificador(){
+    public void modificador() {
         Calendar calendario = Calendar.getInstance();
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
         int mes = (calendario.get(Calendar.MONTH) + 1);

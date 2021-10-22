@@ -32,9 +32,7 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
         this.mData = itemList;
     }
     public ListAdapter2(){
-
     }
-
 
     //A continuación damos la referencia de como se va a ver cada "tarjeta"
     @NonNull
@@ -65,6 +63,8 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
         TextView mostrar, fecha, hora;
         Button btMod, btElim;
         DatabaseReference dbr;
+        String almacen;
+
 
         ViewHolder(View itemView){
             super(itemView);
@@ -80,6 +80,8 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
             fecha.setText(item.getFecha());
             hora.setText(item.getHora());
             btElim.setContentDescription(item.getIdCita());
+            almacen = btElim.getContentDescription().toString();
+
             btElim.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -92,7 +94,7 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(),ModificarCita.class);
-                    //Toast.makeText(v.getContext(), btMod.getContentDescription(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(), btMod.getContentDescription(), Toast.LENGTH_SHORT).show();
                     intent.putExtra("boton",btMod.getContentDescription());
                     v.getContext().startActivity(intent);
                 }

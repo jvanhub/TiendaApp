@@ -31,16 +31,16 @@ import java.util.Map;
 
 public class PedirCita extends AppCompatActivity {
 
-    private RadioButton hora9, hora10, hora11, hora12 ,hora15 ,hora16, hora17, hora18, hora19;
+    private RadioButton hora9, hora10, hora11, hora12, hora15, hora16, hora17, hora18, hora19;
     private RadioGroup rg;
     private Button confirmar;
     private TextView fecha;
-    private String fechaCompletaTv="";
-    private String horaCita="";
-    private String fechaBBDD="";
-    private String horaBBDD="";
+    private String fechaCompletaTv = "";
+    private String horaCita = "";
+    private String fechaBBDD = "";
+    private String horaBBDD = "";
 
-    ArrayList <RadioButton> arrayRadioButtons = new ArrayList<>();
+    ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
 
@@ -49,8 +49,8 @@ public class PedirCita extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedir_cita);
 
-        mAuth=FirebaseAuth.getInstance();
-        mDatabase= FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         fecha = (TextView) findViewById(R.id.editTextTextFecha);
@@ -84,21 +84,21 @@ public class PedirCita extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               Calendar calendario = Calendar.getInstance();
-               int dia =calendario.get(Calendar.DAY_OF_MONTH);
-               int mes = calendario.get(Calendar.MONTH);
-               int anyo = calendario.get(Calendar.YEAR);
+                Calendar calendario = Calendar.getInstance();
+                int dia = calendario.get(Calendar.DAY_OF_MONTH);
+                int mes = calendario.get(Calendar.MONTH);
+                int anyo = calendario.get(Calendar.YEAR);
 
-               //Cuadro del calendario.
-                DatePickerDialog datePikerDialog = new DatePickerDialog( PedirCita.this, new DatePickerDialog.OnDateSetListener() {
+                //Cuadro del calendario.
+                DatePickerDialog datePikerDialog = new DatePickerDialog(PedirCita.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        fechaCompletaTv =dayOfMonth + "/" + (month + 1) + "/" + year;
+                        fechaCompletaTv = dayOfMonth + "/" + (month + 1) + "/" + year;
                         fecha.setText(fechaCompletaTv);
                         extraerValores();
                     }
                 }
-                ,anyo,mes,dia);
+                        , anyo, mes, dia);
 
                 //Fecha mínima, para evitar citas de dias anteriores al actual.
                 datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
@@ -113,80 +113,80 @@ public class PedirCita extends AppCompatActivity {
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
 
-                if (fechaCompletaTv.equals("")){
-                    Toast.makeText(PedirCita.this,"SELECCIONE FECHA",Toast.LENGTH_LONG).show();
-                }else if (rg.getCheckedRadioButtonId()==-1){
-                    Toast.makeText(PedirCita.this,"SELECCIONE HORA",Toast.LENGTH_LONG).show();
-                }else{
-                    horaCita=selectedbutton.getText().toString();
+                if (fechaCompletaTv.equals("")) {
+                    Toast.makeText(PedirCita.this, "SELECCIONE FECHA", Toast.LENGTH_LONG).show();
+                } else if (rg.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(PedirCita.this, "SELECCIONE HORA", Toast.LENGTH_LONG).show();
+                } else {
+                    horaCita = selectedbutton.getText().toString();
                     String id = mAuth.getCurrentUser().getUid();
 
                     Map<String, Object> map = new HashMap<>();
-                    map.put("fecha",fechaCompletaTv);
-                    map.put("hora",horaCita);
-                    map.put("uId",id);
+                    map.put("fecha", fechaCompletaTv);
+                    map.put("hora", horaCita);
+                    map.put("uId", id);
                     //mDatabase.child("Reservas").child(id).setValue(map);
                     mDatabase.child("Reservas").push().setValue(map);
                     startActivity(new Intent(PedirCita.this, Bienvenida.class));
-                    Toast.makeText(PedirCita.this,"CITA CONFIRMADA",Toast.LENGTH_LONG).show();
+                    Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
     //Método que realiza la consulta en la base de datos para compararlos datos.
-    public void extraerValores(){
+    public void extraerValores() {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for ( final DataSnapshot snapshot: dataSnapshot.getChildren()){
+                for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             try {
-                                fechaBBDD=snapshot.child("fecha").getValue().toString();
-                                horaBBDD=snapshot.child("hora").getValue().toString();
+                                fechaBBDD = snapshot.child("fecha").getValue().toString();
+                                horaBBDD = snapshot.child("hora").getValue().toString();
                                 comparador();
-                            }catch (NullPointerException n){
-
+                            } catch (NullPointerException n) {
                             }
-
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
+                            Toast.makeText(PedirCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
                 retornarEstado();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(PedirCita.this,"Error BBDD",Toast.LENGTH_LONG).show();
+                Toast.makeText(PedirCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     //Método que recorre el array y compara los datos en la base de datos para desactivar radioButtons.
-    public void comparador(){
+    public void comparador() {
         String textoRB;
         RadioButton selectedbutton;
 
-        for (int i=0;i<arrayRadioButtons.size();i++){
+        for (int i = 0; i < arrayRadioButtons.size(); i++) {
             selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
             textoRB = selectedbutton.getText().toString();
 
-            if (fechaBBDD.equals(fechaCompletaTv) && horaBBDD.equals(textoRB) ){
+            if (fechaBBDD.equals(fechaCompletaTv) && horaBBDD.equals(textoRB)) {
                 selectedbutton.setEnabled(false);
             }
         }
     }
 
     //Método que activa de nuevo los radioButtons cada vez que cambias de fecha.
-    public void retornarEstado(){
+    public void retornarEstado() {
         String textoRB;
         RadioButton selectedbutton;
-        for (int i=0;i<arrayRadioButtons.size();i++){
+        for (int i = 0; i < arrayRadioButtons.size(); i++) {
             selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
             selectedbutton.setEnabled(true);
         }

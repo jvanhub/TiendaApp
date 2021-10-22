@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText et_pass;
 
     //Variables de recogida de datos.
-    private String email="";
-    private String pass="";
+    private String email = "";
+    private String pass = "";
 
     //Instancia de la clase FirebaseAuth.
     private FirebaseAuth mAuth;
@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        et_email= (EditText) findViewById(R.id.editTextEmail1);
+        et_email = (EditText) findViewById(R.id.editTextEmail1);
         et_pass = (EditText) findViewById(R.id.editTextTextPass);
         Button entrar = (Button) findViewById(R.id.buttonEntrar);
-        Button registro =(Button) findViewById(R.id.buttonRegistro);
+        Button registro = (Button) findViewById(R.id.buttonRegistro);
 
         //Método OnClick del button Entrar.
         entrar.setOnClickListener(new View.OnClickListener() {
@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View vista) {
                 email = et_email.getText().toString();
                 pass = et_pass.getText().toString();
-                if(email.isEmpty() || pass.isEmpty()){
+                if (email.isEmpty() || pass.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Completa los campos", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     login();
                 }
             }
@@ -57,23 +57,23 @@ public class MainActivity extends AppCompatActivity {
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Formulario.class));
+                startActivity(new Intent(MainActivity.this, Formulario.class));
             }
         });
     }
 
     /*Método loggin, en el que se valida el email y la contraseña, si está todo correcto pasa al activity de Bienvenida,
-    * sino salta el Toast.
-    */
-    public void login(){
+     * sino salta el Toast.
+     */
+    public void login() {
         mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     startActivity(new Intent(MainActivity.this, Bienvenida.class));
 
-                }else{
-                    Toast.makeText(MainActivity.this,"No se pudo iniciar sesion, compruebe los datos", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No se pudo iniciar sesion, compruebe los datos", Toast.LENGTH_LONG).show();
                 }
             }
         });
