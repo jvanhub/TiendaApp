@@ -131,8 +131,8 @@ public class Citas extends AppCompatActivity {
                 int dia = calendario.get(Calendar.DAY_OF_MONTH);
                 int mes = (calendario.get(Calendar.MONTH) + 1);
                 int anyo = calendario.get(Calendar.YEAR);
-                elements.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -150,10 +150,9 @@ public class Citas extends AppCompatActivity {
                                         insertElementsActual();
                                     }
                                 }
+                            }catch (NullPointerException n){
                                 /** valor del ultimo null*/
-                            } catch (NullPointerException n) {
-                                Toast.makeText(Citas.this, "No hay citas", Toast.LENGTH_SHORT).show();
-                                insertElementsActual();
+                                 insertElementsActual();
                             }
                         }
 
@@ -163,6 +162,7 @@ public class Citas extends AppCompatActivity {
                         }
                     });
                 }
+                elements.clear();
             }
 
             @Override

@@ -83,8 +83,8 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
             btElim.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        dbr.child("Reservas").child(btElim.getContentDescription().toString()).removeValue();
-                        Toast.makeText(v.getContext(), "La cita se ha eliminado correctamente.", Toast.LENGTH_SHORT).show();
+                    dbr.child("Reservas").child(btElim.getContentDescription().toString()).removeValue();
+                    Toast.makeText(v.getContext(), "La cita se ha eliminado correctamente.", Toast.LENGTH_SHORT).show();
                 }
             });
 
