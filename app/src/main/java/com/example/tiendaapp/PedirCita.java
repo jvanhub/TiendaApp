@@ -42,6 +42,7 @@ public class PedirCita extends AppCompatActivity {
     private String horaCita = "";
     private String fechaBBDD = "";
     private String horaBBDD = "";
+    private int contador;
 
     ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
@@ -102,7 +103,7 @@ public class PedirCita extends AppCompatActivity {
                         extraerValores();
                     }
                 }
-                        , anyo, mes, dia);
+                , anyo, mes, dia);
                 datePikerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAB5B5")));
 
                 //Fecha mínima, para evitar citas de dias anteriores al actual.
@@ -113,27 +114,29 @@ public class PedirCita extends AppCompatActivity {
 
         //Método para que cuando pulsamos sobre el button realice una acción.
         confirmar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
 
                 if (fechaCompletaTv.equals("")) {
-                    Toast.makeText(PedirCita.this, "SELECCIONE FECHA", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PedirCita.this, "SELECCIONE FECHA", Toast.LENGTH_SHORT).show();
                 } else if (rg.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(PedirCita.this, "SELECCIONE HORA", Toast.LENGTH_LONG).show();
-                } else {
+                    Toast.makeText(PedirCita.this, "SELECCIONE HORA", Toast.LENGTH_SHORT).show();
+                }else if(contador>=2){
+                    Toast.makeText(PedirCita.this, "Has alcanzado el límite máximo de citas", Toast.LENGTH_SHORT).show();
+                    //startActivity(new Intent(PedirCita.this, Bienvenida.class));
+                }else{
+                    contador++;
                     horaCita = selectedbutton.getText().toString();
                     String id = mAuth.getCurrentUser().getUid();
-
                     Map<String, Object> map = new HashMap<>();
                     map.put("fecha", fechaCompletaTv);
                     map.put("hora", horaCita);
                     map.put("uId", id);
-                    //mDatabase.child("Reservas").child(id).setValue(map);
                     mDatabase.child("Reservas").push().setValue(map);
-                    startActivity(new Intent(PedirCita.this, Bienvenida.class));
-                    Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_SHORT).show();
                 }
             }
         });

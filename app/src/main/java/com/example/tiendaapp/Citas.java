@@ -97,7 +97,7 @@ public class Citas extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -106,7 +106,7 @@ public class Citas extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_LONG).show();
+                Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -126,6 +126,7 @@ public class Citas extends AppCompatActivity {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                elements.clear();
                 Calendar calendario = Calendar.getInstance();
                 int dia = calendario.get(Calendar.DAY_OF_MONTH);
                 int mes = (calendario.get(Calendar.MONTH) + 1);
@@ -145,13 +146,16 @@ public class Citas extends AppCompatActivity {
                                     } else if (Integer.parseInt(extractFecha[1]) - mes < 0) {
                                     } else if (Integer.parseInt(extractFecha[0]) - dia < 0) {
                                     } else {
-                                        insertElementsActual();
+                                        if (uId.equals("")){
+                                            Toast.makeText(Citas.this, "No tienes más citas pendientes", Toast.LENGTH_SHORT).show();
+                                        }else {
+                                            insertElementsActual();
+                                        }
                                     }
                                 }
                                 /** valor del ultimo null*/
                             } catch (NullPointerException n) {
                                 insertElementsActual();
-                                // startActivity(new Intent(Citas.this, Citas.class));
                             }
                         }
 
@@ -160,8 +164,8 @@ public class Citas extends AppCompatActivity {
                             Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_LONG).show();
                         }
                     });
+                    elements.clear();
                 }
-                elements.clear();
 
             }
 
