@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     //Variabes de los activitys
     private EditText et_email;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 email = et_email.getText().toString();
                 pass = et_pass.getText().toString();
                 if (email.isEmpty() || pass.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Completa los campos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Completa los campos", Toast.LENGTH_LONG).show();
                 } else {
                     login();
                 }
@@ -57,23 +57,19 @@ public class MainActivity extends AppCompatActivity {
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Formulario.class));
+                startActivity(new Intent(Login.this, Formulario.class));
             }
         });
     }
-
-    /*Método loggin, en el que se valida el email y la contraseña, si está todo correcto pasa al activity de Bienvenida,
-     * sino salta el Toast.
-     */
     public void login() {
         mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    startActivity(new Intent(MainActivity.this, Bienvenida.class));
+                    startActivity(new Intent(Login.this, Bienvenida.class));
 
                 } else {
-                    Toast.makeText(MainActivity.this, "No se pudo iniciar sesion, compruebe los datos", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "No se pudo iniciar sesion, compruebe los datos", Toast.LENGTH_LONG).show();
                 }
             }
         });

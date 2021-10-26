@@ -47,7 +47,7 @@ public class Bienvenida extends AppCompatActivity {
             }});*/
         cerrar_sesion.setOnClickListener(v -> {
             mAuth.signOut();
-            startActivity(new Intent(Bienvenida.this, MainActivity.class));
+            startActivity(new Intent(Bienvenida.this, Login.class));
             finish();
         });
     }
