@@ -15,14 +15,18 @@ public class SplashScreenMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        setTheme(R.style.ssm);
-        startActivity(new Intent(SplashScreenMain.this, Bienvenida.class));
+        setContentView(R.layout.activity_splash_screen);
+
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashScreenMain.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        };
+        Timer tiempo = new Timer();
+        tiempo.schedule(tt,3000);
     }
 
 }
