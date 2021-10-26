@@ -30,6 +30,7 @@
                 android:layout_height="35dp" />
 
             <EditText
+                android:padding="12dp"
                 android:id="@+id/editTextNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,6 +47,7 @@
                 android:layout_height="19dp" />
 
             <EditText
+                android:padding="12dp"
                 android:id="@+id/editTextApe1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,6 +64,7 @@
                 android:layout_height="19dp" />
 
             <EditText
+                android:padding="12dp"
                 android:id="@+id/editTextApe2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,6 +81,7 @@
                 android:layout_height="19dp" />
 
             <EditText
+                android:padding="12dp"
                 android:id="@+id/editTextTelf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,6 +98,7 @@
                 android:layout_height="19dp" />
 
             <EditText
+                android:padding="12dp"
                 android:id="@+id/editTextEmail2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,6 +115,7 @@
                 android:layout_height="19dp" />
 
             <EditText
+                android:padding="12dp"
                 android:id="@+id/editTextPass1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,6 +132,7 @@
                 android:layout_height="19dp" />
 
             <EditText
+                android:padding="12dp"
                 android:id="@+id/editTextPass2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
