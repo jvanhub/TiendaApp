@@ -40,7 +40,9 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
-                app:cornerRadius="100dp" />
+                app:cornerRadius="10dp"
+
+                />
 
             <Space
                 android:layout_width="match_parent"

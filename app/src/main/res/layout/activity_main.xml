@@ -45,6 +45,8 @@
             android:hint="@string/num_telf"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="10dp"
             android:minHeight="48dp"
             android:textAlignment="viewStart"
             android:textStyle="italic" />
@@ -62,6 +64,8 @@
             android:hint="@string/pass"
             android:importantForAutofill="no"
             android:inputType="textPassword"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="10dp"
             android:minHeight="48dp"
             android:textAlignment="viewStart"
             android:textStyle="italic" />
