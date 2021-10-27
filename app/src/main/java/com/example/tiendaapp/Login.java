@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
@@ -27,7 +28,7 @@ public class Login extends AppCompatActivity {
 
     //Instancia de la clase FirebaseAuth.
     private FirebaseAuth mAuth;
-
+    private FirebaseUser mUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,13 +66,23 @@ public class Login extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                mUser = mAuth.getCurrentUser();
                 if (task.isSuccessful()) {
-                    startActivity(new Intent(Login.this, Bienvenida.class));
-
+                    if(mUser.isEmailVerified()){
+                        startActivity(new Intent(Login.this, Bienvenida.class));
+                    }else {
+                        Toast.makeText(Login.this, "Verifique su email, en el email de verificación que se envió al registrarse.", Toast.LENGTH_LONG).show();
+                    }
                 } else {
-                        Toast.makeText(Login.this, "No se pudo iniciar sesion, compruebe los datos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "No se pudo iniciar sesion, compruebe los datos", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
+
+    /*
+    * && mUser.isEmailVerified()
+    *Toast.makeText(Login.this, "Verifique su email, en el email de verificación que se envió al registrarse.", Toast.LENGTH_LONG).show();
+
+     * */
 }

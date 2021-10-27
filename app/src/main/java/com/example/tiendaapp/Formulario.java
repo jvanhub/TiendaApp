@@ -76,23 +76,16 @@ public class Formulario extends AppCompatActivity {
                     n_tefl.isEmpty() || email.isEmpty() || contrasenya.isEmpty() ||
                     contrasenya2.isEmpty()) {
                 Toast.makeText(Formulario.this, "Completa todos los campos", Toast.LENGTH_LONG).show();
-
             } else if (n_tefl.length()<9 || n_tefl.length()>9) {
             Toast.makeText(Formulario.this, "Número de telefono incorrecto", Toast.LENGTH_SHORT).show();
-
             } else if (mather.find() == false) {
                 Toast.makeText(Formulario.this, "El email ingresado no es valido.", Toast.LENGTH_SHORT).show();
-
             } else if (contrasenya.length() < 6) {
                 Toast.makeText(Formulario.this, "Debes introducir una contraseña mínimo de 6 caractéres.", Toast.LENGTH_LONG).show();
-
             } else if (contrasenya.equals(contrasenya2)) {
                 registrar();
-
-
             } else {
                 Toast.makeText(Formulario.this, "Contraseña 1 y 2 son diferentes.", Toast.LENGTH_LONG).show();
-
             }
         });
     }
@@ -122,8 +115,8 @@ public class Formulario extends AppCompatActivity {
                 user = mAuth.getCurrentUser();
                 user.sendEmailVerification();
 
-                startActivity(new Intent(Formulario.this, SplashScreenMain.class));
-
+                startActivity(new Intent(Formulario.this, Login.class));
+                finish();
             } else {
                 Toast.makeText(Formulario.this, "No se pudo registrar el usuario.", Toast.LENGTH_LONG).show();
             }

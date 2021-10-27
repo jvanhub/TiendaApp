@@ -28,20 +28,21 @@ public class SplashScreenMain extends AppCompatActivity {
             @Override
             public void run() {
                 if (mUser != null){
-                    startActivity(new Intent(SplashScreenMain.this, Bienvenida.class));
-                    finish();
-
+                    if (mUser.isEmailVerified()){
+                        startActivity(new Intent(SplashScreenMain.this, Bienvenida.class));
+                        finish();
+                    }else {
+                        startActivity(new Intent(SplashScreenMain.this, Login.class));
+                        finish();
+                    }
                 }else{
                     startActivity(new Intent(SplashScreenMain.this, Login.class));
                     finish();
                 }
             }
         };
+
         Timer tiempo = new Timer();
         tiempo.schedule(tt,5000);
-
-
-
     }
-
 }
