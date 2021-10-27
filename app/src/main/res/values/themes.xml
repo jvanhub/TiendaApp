@@ -17,9 +17,5 @@
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/rosaFondo</item>
     </style>
-    <style name="ssm" parent="Theme.TiendaApp">
-
-        <item name="android:windowBackground">@drawable/ssm</item>
-    </style>
 
 </resources>

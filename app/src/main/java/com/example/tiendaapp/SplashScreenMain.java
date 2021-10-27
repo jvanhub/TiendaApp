@@ -7,26 +7,41 @@ import android.media.Image;
 import android.os.Bundle;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashScreenMain extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenMain.this, Login.class);
-                startActivity(intent);
-                finish();
+                if (mUser != null){
+                    startActivity(new Intent(SplashScreenMain.this, Bienvenida.class));
+                    finish();
+
+                }else{
+                    startActivity(new Intent(SplashScreenMain.this, Login.class));
+                    finish();
+                }
             }
         };
         Timer tiempo = new Timer();
-        tiempo.schedule(tt,3000);
+        tiempo.schedule(tt,5000);
+
+
+
     }
 
 }
