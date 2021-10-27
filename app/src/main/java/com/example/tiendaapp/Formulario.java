@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -37,6 +38,7 @@ public class Formulario extends AppCompatActivity {
     //Creación objeto Firebase:
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,7 @@ public class Formulario extends AppCompatActivity {
             contrasenya = et_contrasenya1.getText().toString();
             contrasenya2 = et_contrasenya2.getText().toString();
 
+            //Validación Email.
             String r_email = email;
             Matcher mather = pattern.matcher(r_email);
 
@@ -85,6 +88,7 @@ public class Formulario extends AppCompatActivity {
 
             } else if (contrasenya.equals(contrasenya2)) {
                 registrar();
+
 
             } else {
                 Toast.makeText(Formulario.this, "Contraseña 1 y 2 son diferentes.", Toast.LENGTH_LONG).show();
@@ -114,14 +118,12 @@ public class Formulario extends AppCompatActivity {
 
                 mDatabase.child("Usuarios").child(id).setValue(map);
                 startActivity(new Intent(Formulario.this, SplashScreenMain.class));
+                user = mAuth.getCurrentUser();
+                user.sendEmailVerification();
+
             } else {
                 Toast.makeText(Formulario.this, "No se pudo registrar el usuario.", Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    //Método para validad emails.
-    public void validacionEmail(){
-
     }
 }
