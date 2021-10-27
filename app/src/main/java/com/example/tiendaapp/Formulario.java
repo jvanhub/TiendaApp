@@ -117,9 +117,12 @@ public class Formulario extends AppCompatActivity {
                 String id = Objects.requireNonNull(task.getResult().getUser()).getUid();
 
                 mDatabase.child("Usuarios").child(id).setValue(map);
-                startActivity(new Intent(Formulario.this, SplashScreenMain.class));
+
+                //Correo de verificación.
                 user = mAuth.getCurrentUser();
                 user.sendEmailVerification();
+
+                startActivity(new Intent(Formulario.this, SplashScreenMain.class));
 
             } else {
                 Toast.makeText(Formulario.this, "No se pudo registrar el usuario.", Toast.LENGTH_LONG).show();
