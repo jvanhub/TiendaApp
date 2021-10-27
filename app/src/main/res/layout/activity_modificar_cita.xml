@@ -39,8 +39,8 @@
                 android:fontFamily="serif"
                 android:text="@string/fechaTv"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp"
+                android:textColor="#A7FF98"
+                android:textSize="30sp"
                 app:cornerRadius="100dp" />
 
             <Space

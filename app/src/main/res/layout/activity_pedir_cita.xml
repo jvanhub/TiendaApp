@@ -32,17 +32,14 @@
             <TextView
                 android:id="@+id/editTextTextFecha"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#80114A"
                 android:fontFamily="serif"
                 android:text="@string/fechaTv"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp"
-                app:cornerRadius="10dp"
-
-                />
+                android:textColor="#A7FF98"
+                android:textSize="30sp" />
 
             <Space
                 android:layout_width="match_parent"
