@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity {
         entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vista) {
-
+                email = et_email.getText().toString();
                 pass = et_pass.getText().toString();
                 if (email.isEmpty() || pass.isEmpty()) {
                     Toast.makeText(Login.this, "Completa los campos", Toast.LENGTH_LONG).show();
@@ -110,5 +110,4 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
 }
