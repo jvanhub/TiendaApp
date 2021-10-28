@@ -44,7 +44,9 @@ public class Formulario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
+
         mAuth = FirebaseAuth.getInstance();
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         et_nombre = (EditText) findViewById(R.id.editTextNombre);
@@ -113,8 +115,8 @@ public class Formulario extends AppCompatActivity {
 
                 //Correo de verificación.
                 user = mAuth.getCurrentUser();
+                mAuth.setLanguageCode("es");
                 user.sendEmailVerification();
-
                 startActivity(new Intent(Formulario.this, Login.class));
                 finish();
             } else {

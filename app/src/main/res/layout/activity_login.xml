@@ -2,15 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/dg_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/dg_color"
     tools:context=".SplashScreenMain">
 
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
@@ -39,14 +39,14 @@
             android:id="@+id/editTextEmail1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="10dp"
             android:ems="10"
             android:fontFamily="serif"
             android:foregroundTint="#AFA7A7"
             android:hint="@string/num_telf"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
-            android:drawableStart="@drawable/ic_email"
-            android:drawablePadding="10dp"
             android:minHeight="48dp"
             android:textAlignment="viewStart"
             android:textStyle="italic" />
@@ -59,16 +59,30 @@
             android:id="@+id/editTextTextPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="10dp"
             android:ems="10"
             android:fontFamily="serif"
             android:hint="@string/pass"
             android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:drawableStart="@drawable/ic_lock"
-            android:drawablePadding="10dp"
             android:minHeight="48dp"
             android:textAlignment="viewStart"
             android:textStyle="italic" />
+
+        <Space
+            android:layout_width="353dp"
+            android:layout_height="13dp" />
+
+        <TextView
+            android:id="@+id/textViewResPass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/resPass"
+            android:textAlignment="textEnd"
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
         <Space
             android:layout_width="match_parent"
@@ -111,6 +125,7 @@
                 android:textAllCaps="false"
                 android:textSize="18sp"
                 app:cornerRadius="10dp" />
+
         </LinearLayout>
 
     </LinearLayout>

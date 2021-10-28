@@ -41,5 +41,6 @@
     <string name="Atras">Volver</string>
 
     <string name="img1">Imagen principal</string>
+    <string name="resPass">¿Has olvidado la contraseña?</string>
 
 </resources>

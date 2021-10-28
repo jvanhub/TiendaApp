@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +22,7 @@ public class Login extends AppCompatActivity {
     //Variabes de los activitys
     private EditText et_email;
     private EditText et_pass;
+    private TextView resPass;
 
     //Variables de recogida de datos.
     private String email = "";
@@ -32,7 +34,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -40,6 +42,18 @@ public class Login extends AppCompatActivity {
         et_pass = (EditText) findViewById(R.id.editTextTextPass);
         Button entrar = (Button) findViewById(R.id.buttonEntrar);
         Button registro = (Button) findViewById(R.id.buttonRegistro);
+        resPass = (TextView) findViewById(R.id.textViewResPass);
+
+        resPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!email.isEmpty()){
+                    resPass();
+                }else{
+                    Toast.makeText(Login.this, "Por favor, ingrese el Email.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         //Método OnClick del button Entrar.
         entrar.setOnClickListener(new View.OnClickListener() {
@@ -74,15 +88,24 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Verifique su email, en el email de verificación que se envió al registrarse.", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(Login.this, "No se pudo iniciar sesion, compruebe los datos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "No se pudo iniciar sesion, compruebe los datos.", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    /*
-    * && mUser.isEmailVerified()
-    *Toast.makeText(Login.this, "Verifique su email, en el email de verificación que se envió al registrarse.", Toast.LENGTH_LONG).show();
+    public void resPass(){
+        mAuth.setLanguageCode("es");
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(Login.this, "Se ha enviado un correo de restablecimiento de contraseña.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(Login.this, "No se ha podido enviar correo de restablecimiento.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
-     * */
 }
