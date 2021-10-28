@@ -93,7 +93,7 @@
                     android:layout_width="129dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/unyasgel" />
+                    app:srcCompat="@drawable/unyas_gel" />
             </LinearLayout>
 
             <LinearLayout
