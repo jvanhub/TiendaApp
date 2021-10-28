@@ -24,7 +24,7 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/Cv_1"
+                android:id="@+id/cv_1"
                 android:layout_width="376dp"
                 android:layout_height="93dp">
 
@@ -99,7 +99,7 @@
             android:gravity="center_horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/Cv_2"
+                android:id="@+id/cv_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -173,7 +173,7 @@
             android:gravity="center_horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/Cv_3"
+                android:id="@+id/cv_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -245,7 +245,7 @@
             android:gravity="center_horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/Cv_4"
+                android:id="@+id/cv_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -317,7 +317,7 @@
             android:gravity="center_horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/Cv_5"
+                android:id="@+id/cv_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -327,14 +327,14 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="113dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="118dp"
+                        android:layout_height="102dp"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/imageView10"
-                            android:layout_width="115dp"
-                            android:layout_height="104dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="112dp"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/unyas_permanente" />
 
