@@ -37,7 +37,6 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-
         et_email = (EditText) findViewById(R.id.editTextEmail1);
         et_pass = (EditText) findViewById(R.id.editTextTextPass);
         Button entrar = (Button) findViewById(R.id.buttonEntrar);
@@ -45,8 +44,10 @@ public class Login extends AppCompatActivity {
         resPass = (TextView) findViewById(R.id.textViewResPass);
 
         resPass.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                email = et_email.getText().toString();
                 if (!email.isEmpty()){
                     resPass();
                 }else{
@@ -59,7 +60,7 @@ public class Login extends AppCompatActivity {
         entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vista) {
-                email = et_email.getText().toString();
+
                 pass = et_pass.getText().toString();
                 if (email.isEmpty() || pass.isEmpty()) {
                     Toast.makeText(Login.this, "Completa los campos", Toast.LENGTH_LONG).show();
@@ -76,6 +77,8 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
+    //Método para validar usuario.
     public void login() {
         mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -94,8 +97,8 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    //Método para enviar correo para poder restablecer contraseña.
     public void resPass(){
-        mAuth.setLanguageCode("es");
         mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

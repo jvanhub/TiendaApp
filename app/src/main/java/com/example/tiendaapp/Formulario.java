@@ -105,7 +105,6 @@ public class Formulario extends AppCompatActivity {
                 map.put("apellidos2", apellido2);
                 map.put("n_telefonos", n_tefl);
                 map.put("emails", email);
-                map.put("contraseñas", contrasenya);
 
                 /* Remplazo para evitar que pueda producir un NullPointerException.
                 String id = task.getResult().getUser().getUid();*/
@@ -115,7 +114,6 @@ public class Formulario extends AppCompatActivity {
 
                 //Correo de verificación.
                 user = mAuth.getCurrentUser();
-                mAuth.setLanguageCode("es");
                 user.sendEmailVerification();
                 startActivity(new Intent(Formulario.this, Login.class));
                 finish();
