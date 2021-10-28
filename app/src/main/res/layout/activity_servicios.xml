@@ -32,7 +32,7 @@
                     android:layout_width="130dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/uñasAcrilicas" />
+                    app:srcCompat="@drawable/unyas_acrilicas" />
             </LinearLayout>
 
             <LinearLayout
@@ -93,7 +93,7 @@
                     android:layout_width="129dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/unyasGel" />
+                    app:srcCompat="@drawable/unyasgel" />
             </LinearLayout>
 
             <LinearLayout
@@ -153,7 +153,7 @@
                     android:layout_width="129dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/unyasTresD" />
+                    app:srcCompat="@drawable/unyas_3d" />
             </LinearLayout>
 
             <LinearLayout
@@ -212,7 +212,7 @@
                     android:layout_width="129dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/unyasPorcelana" />
+                    app:srcCompat="@drawable/unyas_acrilicas" />
             </LinearLayout>
 
             <LinearLayout
@@ -272,7 +272,7 @@
                     android:layout_width="111dp"
                     android:layout_height="112dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/unyasPermanente" />
+                    app:srcCompat="@drawable/unyas_permanente" />
             </LinearLayout>
 
             <LinearLayout
