@@ -27,7 +27,7 @@ public class Bienvenida extends AppCompatActivity {
         public void onClick(View v) {
         startActivity(new Intent(Bienvenida.this,PedirCita.class));
         } a lambda.*/
-        pedir_cita.setOnClickListener(v -> startActivity(new Intent(Bienvenida.this, PedirCita.class)));
+        pedir_cita.setOnClickListener(v -> startActivity(new Intent(Bienvenida.this, Servicios.class)));
 
         /*  Para dejarlo mejor lo convertimos a lambda:
             ver_cita.setOnClickListener(new View.OnClickListener() {
