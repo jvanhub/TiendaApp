@@ -43,4 +43,24 @@
     <string name="img1">Imagen principal</string>
     <string name="resPass">¿Has olvidado la contraseña?</string>
 
+    <string name="precio">Precio aprox: 25€</string>
+    <string name="tiempo">Tiempo aprox: 1h</string>
+    <string name="tipo">Acrílicas</string>
+
+    <string name="precio1">Precio aprox: 25€</string>
+    <string name="tiempo1">Tiempo aprox: 1h</string>
+    <string name="tipo1">Gel</string>
+
+    <string name="precio2">Precio aprox: 25€</string>
+    <string name="tiempo2">Tiempo aprox: 1h</string>
+    <string name="tipo2">Porcelana</string>
+
+    <string name="precio3">Precio aprox: 25€</string>
+    <string name="tiempo3">Tiempo aprox: 1h</string>
+    <string name="tipo3">Esmalte Permanente</string>
+
+    <string name="precio4">Precio aprox: 25€</string>
+    <string name="tiempo4">Tiempo aprox: 1h</string>
+    <string name="tipo4">3D</string>
+
 </resources>

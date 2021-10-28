@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Servicios">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bordes_redondos"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewTipo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tipo"
+                        android:textAlignment="viewStart"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:id="@+id/textViewTiempo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tiempo"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/textViewPrecio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/precio"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bordes_redondos"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewTipo1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tipo1"
+                        android:textAlignment="viewStart"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:id="@+id/textViewTiempo1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tiempo1"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/textViewPrecio1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/precio1"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bordes_redondos"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewTipo2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tipo2"
+                        android:textAlignment="viewStart"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:id="@+id/textViewTiempo2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tiempo2"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/textViewPrecio2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/precio2"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bordes_redondos"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewTipo4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tipo4"
+                        android:textAlignment="viewStart"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:id="@+id/textViewTiempo4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tiempo4"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/textViewPrecio4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/precio4"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bordes_redondos">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewTipo3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tipo3"
+                        android:textAlignment="viewStart"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:id="@+id/textViewPrecio3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/precio3"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/textViewTiempo3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="@string/tiempo3"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
