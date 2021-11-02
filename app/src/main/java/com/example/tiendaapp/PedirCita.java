@@ -135,6 +135,7 @@ public class PedirCita extends AppCompatActivity {
                     map.put("uId", id);
                     mDatabase.child("Reservas").push().setValue(map);
                     Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(PedirCita.this, Bienvenida.class));
                 }
             }
         });
