@@ -112,7 +112,7 @@ public class PedirCita extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                servicio = getIntent().getStringExtra("servicio");;
+                servicio = getIntent().getStringExtra("servicio");
 
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);

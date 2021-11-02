@@ -24,6 +24,16 @@
             android:textStyle="bold|italic" />
 
         <TextView
+            android:id="@+id/textViewServicio2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mostrarServicio"
+            android:fontFamily="serif"
+            android:textColor="#000000"
+            android:textStyle="italic"
+            android:textSize="16sp"/>
+
+        <TextView
             android:id="@+id/textViewFechaCard2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

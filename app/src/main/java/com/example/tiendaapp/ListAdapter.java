@@ -51,10 +51,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView mostrar, fecha, hora;
+        TextView mostrar, fecha, hora, servicio;
 
         ViewHolder(View itemView) {
             super(itemView);
+            servicio = itemView.findViewById(R.id.textViewServicio);
             mostrar = itemView.findViewById(R.id.textViewCitasCard);
             fecha = itemView.findViewById(R.id.textViewFechaCard);
             hora = itemView.findViewById(R.id.textViewHoraCard);
@@ -63,6 +64,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         void bindData(final ListElemnt item) {
             fecha.setText(item.getFecha());
             hora.setText(item.getHora());
+            servicio.setText(item.getServicio());
+
         }
     }
 }

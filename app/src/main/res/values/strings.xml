@@ -38,6 +38,7 @@
     <string name="mostrarFechaCard">dd/mm/yyyy</string>
     <string name="mostrarHoraCard">hh/mm</string>
     <string name="citaCard">Cita:</string>
+    <string name="mostrarServicio">Servicio</string>
     <string name="Atras">Volver</string>
 
     <string name="img1">Imagen principal</string>

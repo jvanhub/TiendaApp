@@ -60,10 +60,10 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView mostrar, fecha, hora;
+        TextView mostrar, fecha, hora, servicio;
         Button btMod, btElim;
         DatabaseReference dbr;
-        String almacen;
+
 
         ViewHolder(View itemView){
             super(itemView);
@@ -71,6 +71,7 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
             mostrar = itemView.findViewById(R.id.textViewCitasCard2);
             fecha = itemView.findViewById(R.id.textViewFechaCard2);
             hora = itemView.findViewById(R.id.textViewHoraCard2);
+            servicio = itemView.findViewById(R.id.textViewServicio2);
             btMod = itemView.findViewById(R.id.buttonModifi);
             btElim = itemView.findViewById(R.id.buttonDelet);
         }
@@ -78,6 +79,7 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
         void bindData(final ListElemnt item){
             fecha.setText(item.getFecha());
             hora.setText(item.getHora());
+            servicio.setText(item.getServicio());
             btElim.setContentDescription(item.getIdCita());
 
             btElim.setOnClickListener(new View.OnClickListener() {
