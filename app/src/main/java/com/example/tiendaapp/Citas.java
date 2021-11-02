@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Citas extends AppCompatActivity {
+    private String servicioBBDD = "";
     private String fechaBBDD = "";
     private String horaBBDD = "";
     private String uId = "";
@@ -85,6 +86,7 @@ public class Citas extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             try {
+                                servicioBBDD = snapshot.child("servicio").getValue().toString();
                                 fechaBBDD = snapshot.child("fecha").getValue().toString();
                                 horaBBDD = snapshot.child("hora").getValue().toString();
                                 uId = snapshot.child("uId").getValue().toString();
@@ -114,7 +116,7 @@ public class Citas extends AppCompatActivity {
 
     //Método encargado de crear e introducir los datos en cada elemento.
     public void insertElements() {
-        elements.add(new ListElemnt(fechaBBDD, horaBBDD, null));
+        elements.add(new ListElemnt(servicioBBDD, fechaBBDD, horaBBDD, null));
         ListAdapter listAdapter = new ListAdapter(elements, this);
         RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -140,6 +142,7 @@ public class Citas extends AppCompatActivity {
                                 fechaBBDD = snapshot.child("fecha").getValue().toString();
                                 horaBBDD = snapshot.child("hora").getValue().toString();
                                 uId = snapshot.child("uId").getValue().toString();
+                                servicioBBDD = snapshot.child("servicio").getValue().toString();
                                 String extractFecha[] = fechaBBDD.split("/");
                                 idCita = snapshot.getKey();
                                 if (uId.equals(id)) {
@@ -174,7 +177,7 @@ public class Citas extends AppCompatActivity {
 
     //Método encargado de crear e introducir los datos en cada elemento.
     public void insertElementsActual() {
-        elements.add(new ListElemnt(fechaBBDD, horaBBDD, idCita));
+        elements.add(new ListElemnt(servicioBBDD,fechaBBDD, horaBBDD, idCita));
         listAdapter = new ListAdapter2(elements, this);
         RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);

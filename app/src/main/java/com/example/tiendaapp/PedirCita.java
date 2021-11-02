@@ -42,6 +42,7 @@ public class PedirCita extends AppCompatActivity {
     private String horaCita = "";
     private String fechaBBDD = "";
     private String horaBBDD = "";
+    private String servicio="";
     private int contador;
 
     ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
@@ -83,11 +84,6 @@ public class PedirCita extends AppCompatActivity {
         arrayRadioButtons.add(hora19);
 
         //Método para que cuando pulsamos sobre el TextView realice una acción.
-        fecha.setOnClickListener(new View.OnClickListener() {
-
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
 
                 Calendar calendario = Calendar.getInstance();
                 int dia = calendario.get(Calendar.DAY_OF_MONTH);
@@ -109,14 +105,15 @@ public class PedirCita extends AppCompatActivity {
                 //Fecha mínima, para evitar citas de dias anteriores al actual.
                 datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePikerDialog.show();
-            }
-        });
+
 
         //Método para que cuando pulsamos sobre el button realice una acción.
         confirmar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                servicio = getIntent().getStringExtra("servicio");
+
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
 
@@ -132,11 +129,13 @@ public class PedirCita extends AppCompatActivity {
                     horaCita = selectedbutton.getText().toString();
                     String id = mAuth.getCurrentUser().getUid();
                     Map<String, Object> map = new HashMap<>();
+                    map.put("servicio", servicio);
                     map.put("fecha", fechaCompletaTv);
                     map.put("hora", horaCita);
                     map.put("uId", id);
                     mDatabase.child("Reservas").push().setValue(map);
                     Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(PedirCita.this, Bienvenida.class));
                 }
             }
         });

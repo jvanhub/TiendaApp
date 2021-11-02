@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bordes_redondos2"
@@ -93,7 +94,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-
+            android:layout_marginBottom="10dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bordes_redondos2"
             android:gravity="center_horizontal">
@@ -167,7 +168,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-
+            android:layout_marginBottom="10dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bordes_redondos2"
             android:gravity="center_horizontal">
@@ -202,7 +203,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textViewTipo4"
+                            android:id="@+id/textViewTipo2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -213,7 +214,7 @@
                             android:textStyle="bold|italic" />
 
                         <TextView
-                            android:id="@+id/textViewTiempo4"
+                            android:id="@+id/textViewTiempo2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -223,7 +224,7 @@
                             android:textStyle="italic" />
 
                         <TextView
-                            android:id="@+id/textViewPrecio4"
+                            android:id="@+id/textViewPrecio2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -240,6 +241,7 @@
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
             android:layout_height="match_parent"
             android:background="@drawable/bordes_redondos2"
             android:gravity="center_horizontal">
@@ -274,7 +276,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textViewTipo2"
+                            android:id="@+id/textViewTipo3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -285,7 +287,7 @@
                             android:textStyle="bold|italic" />
 
                         <TextView
-                            android:id="@+id/textViewTiempo2"
+                            android:id="@+id/textViewTiempo3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -295,7 +297,7 @@
                             android:textStyle="italic" />
 
                         <TextView
-                            android:id="@+id/textViewPrecio2"
+                            android:id="@+id/textViewPrecio3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -313,6 +315,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/bordes_redondos2"
             android:gravity="center_horizontal">
 
@@ -352,7 +355,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textViewTipo7"
+                            android:id="@+id/textViewTipo4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -363,7 +366,7 @@
                             android:textStyle="bold|italic" />
 
                         <TextView
-                            android:id="@+id/textViewTiempo7"
+                            android:id="@+id/textViewTiempo4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"
@@ -373,7 +376,7 @@
                             android:textStyle="italic" />
 
                         <TextView
-                            android:id="@+id/textViewPrecio7"
+                            android:id="@+id/textViewPrecio4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="serif"

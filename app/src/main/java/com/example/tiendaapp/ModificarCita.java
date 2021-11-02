@@ -41,6 +41,7 @@ public class ModificarCita extends AppCompatActivity {
     private String fechaBBDD = "";
     private String horaBBDD = "";
     private String id;
+    private String servicioBBDD="";
     private String idRefTablaButton;
     int radioId;
     private Button volver;
@@ -88,34 +89,26 @@ public class ModificarCita extends AppCompatActivity {
         arrayRadioButtons.add(hora18);
         arrayRadioButtons.add(hora19);
 
-        //Método para que cuando pulsamos sobre el TextView realice una acción.
-        fecha.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+        Calendar calendario = Calendar.getInstance();
+        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+        int mes = calendario.get(Calendar.MONTH);
+        int anyo = calendario.get(Calendar.YEAR);
+
+        //Cuadro del calendario.
+        DatePickerDialog datePikerDialog = new DatePickerDialog(ModificarCita.this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onClick(View v) {
-
-                Calendar calendario = Calendar.getInstance();
-                int dia = calendario.get(Calendar.DAY_OF_MONTH);
-                int mes = calendario.get(Calendar.MONTH);
-                int anyo = calendario.get(Calendar.YEAR);
-
-                //Cuadro del calendario.
-                DatePickerDialog datePikerDialog = new DatePickerDialog(ModificarCita.this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        fechaCompletaTv = dayOfMonth + "/" + (month + 1) + "/" + year;
-                        fecha.setText(fechaCompletaTv);
-                        extraerValores();
-                    }
-                }
-                        , anyo, mes, dia);
-                datePikerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAB5B5")));
-
-                //Fecha mínima, para evitar citas de dias anteriores al actual.
-                datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
-                datePikerDialog.show();
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                fechaCompletaTv = dayOfMonth + "/" + (month + 1) + "/" + year;
+                fecha.setText(fechaCompletaTv);
+                extraerValores();
             }
-        });
+        }
+        , anyo, mes, dia);
+        datePikerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAB5B5")));
+
+        //Fecha mínima, para evitar citas de dias anteriores al actual.
+        datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+        datePikerDialog.show();
 
         //Método para que cuando pulsamos sobre el button realice una acción.
         confirmar.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +122,7 @@ public class ModificarCita extends AppCompatActivity {
                 } else if (rg.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(ModificarCita.this, "SELECCIONE HORA", Toast.LENGTH_LONG).show();
                 } else {
-                    recogerDatosBBDD();
+                    modificador();
                 }
             }
         });
@@ -199,12 +192,15 @@ public class ModificarCita extends AppCompatActivity {
     }
 
     //Método que recoge el dato de la base de datos.
-    public void recogerDatosBBDD() {
+   /* public void recogerDatosBBDD() {
         mDatabase.child("Reservas").child(idRefTablaButton).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 fechaBBDD = snapshot.child("fecha").getValue().toString();
                 horaBBDD = snapshot.child("hora").getValue().toString();
+                servicioBBDD = snapshot.child("servicio").getValue().toString();
+                modificador();
+                Toast.makeText(ModificarCita.this, "primerbbdd " + servicioBBDD, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -212,29 +208,43 @@ public class ModificarCita extends AppCompatActivity {
                 Toast.makeText(ModificarCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
             }
         });
-        modificador();
-    }
+    }*/
 
     //Método que modifica los campos en la base de datos.
     public void modificador() {
-        Calendar calendario = Calendar.getInstance();
-        int dia = calendario.get(Calendar.DAY_OF_MONTH);
-        int mes = (calendario.get(Calendar.MONTH) + 1);
-        int anyo = calendario.get(Calendar.YEAR);
-        id = mAuth.getUid();
-        String extractFecha[] = fechaBBDD.split("/");
-        if (Integer.parseInt(extractFecha[2]) - anyo < 0) {
-        } else if (Integer.parseInt(extractFecha[1]) - mes < 0) {
-        } else if (Integer.parseInt(extractFecha[0]) - dia < 0) {
-        } else {
-            horaCita = selectedbutton.getText().toString();
-            Map<String, Object> map = new HashMap<>();
-            map.put("fecha", fechaCompletaTv);
-            map.put("hora", horaCita);
-            map.put("uId", id);
-            mDatabase.child("Reservas").child(idRefTablaButton).setValue(map);
-            startActivity(new Intent(ModificarCita.this, Citas.class));
-        }
+            mDatabase.child("Reservas").child(idRefTablaButton).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    servicioBBDD = snapshot.child("servicio").getValue().toString();
+                    Calendar calendario = Calendar.getInstance();
+                    int dia = calendario.get(Calendar.DAY_OF_MONTH);
+                    int mes = (calendario.get(Calendar.MONTH) + 1);
+                    int anyo = calendario.get(Calendar.YEAR);
+                    id = mAuth.getUid();
+                    String extractFecha[] = fechaBBDD.split("/");
+                    if (Integer.parseInt(extractFecha[2]) - anyo < 0) {
+                    } else if (Integer.parseInt(extractFecha[1]) - mes < 0) {
+                    } else if (Integer.parseInt(extractFecha[0]) - dia < 0) {
+                    } else {
+                        horaCita = selectedbutton.getText().toString();
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("servicio", servicioBBDD);
+                        map.put("fecha", fechaCompletaTv);
+                        map.put("hora", horaCita);
+                        map.put("uId", id);
+                        Toast.makeText(ModificarCita.this, "valor serv "+servicioBBDD, Toast.LENGTH_SHORT).show();
+                        mDatabase.child("Reservas").child(idRefTablaButton).setValue(map);
+                        startActivity(new Intent(ModificarCita.this, Citas.class));
+                    }
+                    Toast.makeText(ModificarCita.this, "primerbbdd " + servicioBBDD, Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(ModificarCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
+                }
+            });
+
     }
 }
 
