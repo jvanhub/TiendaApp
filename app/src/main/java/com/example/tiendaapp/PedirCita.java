@@ -42,6 +42,7 @@ public class PedirCita extends AppCompatActivity {
     private String horaCita = "";
     private String fechaBBDD = "";
     private String horaBBDD = "";
+    private String servicio="";
     private int contador;
 
     ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
@@ -117,6 +118,8 @@ public class PedirCita extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                servicio = getIntent().getStringExtra("servicio");;
+
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
 
@@ -132,6 +135,7 @@ public class PedirCita extends AppCompatActivity {
                     horaCita = selectedbutton.getText().toString();
                     String id = mAuth.getCurrentUser().getUid();
                     Map<String, Object> map = new HashMap<>();
+                    map.put("servicio", servicio);
                     map.put("fecha", fechaCompletaTv);
                     map.put("hora", horaCita);
                     map.put("uId", id);
