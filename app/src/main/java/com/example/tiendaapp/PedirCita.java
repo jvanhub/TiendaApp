@@ -84,11 +84,6 @@ public class PedirCita extends AppCompatActivity {
         arrayRadioButtons.add(hora19);
 
         //Método para que cuando pulsamos sobre el TextView realice una acción.
-        fecha.setOnClickListener(new View.OnClickListener() {
-
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
 
                 Calendar calendario = Calendar.getInstance();
                 int dia = calendario.get(Calendar.DAY_OF_MONTH);
@@ -110,8 +105,7 @@ public class PedirCita extends AppCompatActivity {
                 //Fecha mínima, para evitar citas de dias anteriores al actual.
                 datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePikerDialog.show();
-            }
-        });
+
 
         //Método para que cuando pulsamos sobre el button realice una acción.
         confirmar.setOnClickListener(new View.OnClickListener() {
