@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-
+            android:gravity="center_horizontal"
             android:id="@+id/linearLayout8m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,18 +30,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/editTextTextFecham"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/button_fechaMod"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#80114A"
+                android:backgroundTint="#80114A"
                 android:fontFamily="serif"
-                android:text="@string/fechaTv"
-                android:textAlignment="center"
+                android:text="@string/fechaBt"
+                android:textAllCaps="false"
                 android:textColor="#A7FF98"
-                android:textSize="30sp"
-                app:cornerRadius="100dp" />
+                android:textSize="20sp"
+                app:cornerRadius="20dp" />
 
             <Space
                 android:layout_width="match_parent"

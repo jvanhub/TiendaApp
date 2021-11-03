@@ -37,13 +37,14 @@ public class PedirCita extends AppCompatActivity {
     private RadioGroup rg;
     private Button confirmar;
     private Button volver;
-    private TextView fecha;
+    private Button fecha;
     private String fechaCompletaTv = "";
     private String horaCita = "";
     private String fechaBBDD = "";
     private String horaBBDD = "";
     private String servicio="";
     private int contador;
+    private String textHint="";
 
     ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
@@ -58,7 +59,7 @@ public class PedirCita extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         rg = (RadioGroup) findViewById(R.id.radioGroup);
-        fecha = (TextView) findViewById(R.id.editTextTextFecha);
+        fecha = (Button) findViewById(R.id.button_fecha);
 
         confirmar = (Button) findViewById(R.id.button_confirmar);
         volver = (Button) findViewById(R.id.buttonVolver1);
@@ -83,28 +84,14 @@ public class PedirCita extends AppCompatActivity {
         arrayRadioButtons.add(hora18);
         arrayRadioButtons.add(hora19);
 
-        //Método para que cuando pulsamos sobre el TextView realice una acción.
+        calendarDate();
 
-                Calendar calendario = Calendar.getInstance();
-                int dia = calendario.get(Calendar.DAY_OF_MONTH);
-                int mes = calendario.get(Calendar.MONTH);
-                int anyo = calendario.get(Calendar.YEAR);
-
-                //Cuadro del calendario.
-                DatePickerDialog datePikerDialog = new DatePickerDialog(PedirCita.this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        fechaCompletaTv = dayOfMonth + "/" + (month + 1) + "/" + year;
-                        fecha.setText(fechaCompletaTv);
-                        extraerValores();
-                    }
-                }
-                , anyo, mes, dia);
-                datePikerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAB5B5")));
-
-                //Fecha mínima, para evitar citas de dias anteriores al actual.
-                datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
-                datePikerDialog.show();
+        fecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendarDate();
+            }
+        });
 
 
         //Método para que cuando pulsamos sobre el button realice una acción.
@@ -112,8 +99,8 @@ public class PedirCita extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                servicio = getIntent().getStringExtra("servicio");
 
+                servicio = getIntent().getStringExtra("servicio");
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
 
@@ -147,6 +134,31 @@ public class PedirCita extends AppCompatActivity {
                 startActivity(new Intent(PedirCita.this, Bienvenida.class));
             }
         });
+    }
+
+    //Método para que cuando pulsamos muestre calendario.
+    public void calendarDate(){
+        Calendar calendario = Calendar.getInstance();
+        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+        int mes = calendario.get(Calendar.MONTH);
+        int anyo = calendario.get(Calendar.YEAR);
+
+        //Cuadro del calendario.
+        DatePickerDialog datePikerDialog = new DatePickerDialog(PedirCita.this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                fechaCompletaTv = dayOfMonth + "/" + (month + 1) + "/" + year;
+                textHint=fecha.getText().toString() + " ";
+                fecha.setText(textHint+fechaCompletaTv);
+                extraerValores();
+            }
+        }
+                , anyo, mes, dia);
+        datePikerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAB5B5")));
+
+        //Fecha mínima, para evitar citas de dias anteriores al actual.
+        datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+        datePikerDialog.show();
     }
 
     //Método que realiza la consulta en la base de datos para compararlos datos.
