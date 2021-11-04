@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,9 +24,9 @@ public class Perfil extends AppCompatActivity {
     private Button btConfir, btVolver;
     private EditText etNombre, etAp1, etAp2, etTelf, etEail, etEmailConf;
     private TextView etInfo;
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
-    private String nombreBBDD, ap1BBDD,ap2BBDD, nTelfBBDD, emailBBDD;
+    FirebaseAuth mAuth;
+    DatabaseReference mDatabase;
+    private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,13 @@ public class Perfil extends AppCompatActivity {
         btVolver = (Button) findViewById(R.id.buttonModVolver);
 
         etNombre = (EditText) findViewById(R.id.editTextModNombre);
-        etAp1 = (EditText) findViewById(R.id.editTextApe1);
+        etAp1 = (EditText) findViewById(R.id.editTextModApe1);
         etAp2 = (EditText) findViewById(R.id.editTextModApe2);
         etTelf = (EditText) findViewById(R.id.editTextModPhone);
         etEail = (EditText) findViewById(R.id.editTextTextMailMod);
         etEmailConf = (EditText) findViewById(R.id.editTextTextMailModCon);
+
+        extraerDatosBBDD();
 
         btConfir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,38 +64,29 @@ public class Perfil extends AppCompatActivity {
         });
     }
 
-    public void extraerDatosBBDD(){
-        mDatabase.child("Usuarios").addValueEventListener(new ValueEventListener() {
+    public void extraerDatosBBDD() {
+
+        mDatabase.child("Usuarios").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    mDatabase.child("Usuarios").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            nombreBBDD = snapshot.child("nombres").getValue().toString();
-                            ap1BBDD = snapshot.child("apellidos").getValue().toString();
-                            ap2BBDD = snapshot.child("apellidos2").getValue().toString();
-                            nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
-                            emailBBDD = snapshot.child("emails").getValue().toString();
-
-                        }
-                    });
-                }
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                nombreBBDD = snapshot.child("nombres").getValue().toString();
+                ap1BBDD = snapshot.child("apellidos").getValue().toString();
+                ap2BBDD = snapshot.child("apellidos2").getValue().toString();
+                nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
+                emailBBDD = snapshot.child("emails").getValue().toString();
+                Toast.makeText(Perfil.this, snapshot.toString(), Toast.LENGTH_LONG).show();
                 enviarDatosEt();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(Perfil.this, "Error BBDD", Toast.LENGTH_LONG).show();
             }
         });
     }
-    public void enviarDatosEt(){
+
+    public void enviarDatosEt() {
+        Toast.makeText(Perfil.this, etNombre.getText(), Toast.LENGTH_LONG).show();
         etNombre.setText(nombreBBDD);
         etAp1.setText(ap1BBDD);
         etAp2.setText(ap2BBDD);
