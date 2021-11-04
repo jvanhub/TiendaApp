@@ -51,7 +51,6 @@ public class Perfil extends AppCompatActivity {
         btConfir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                extraerDatosBBDD();
 
             }
         });
@@ -86,7 +85,6 @@ public class Perfil extends AppCompatActivity {
     }
 
     public void enviarDatosEt() {
-        Toast.makeText(Perfil.this, etNombre.getText(), Toast.LENGTH_LONG).show();
         etNombre.setText(nombreBBDD);
         etAp1.setText(ap1BBDD);
         etAp2.setText(ap2BBDD);
