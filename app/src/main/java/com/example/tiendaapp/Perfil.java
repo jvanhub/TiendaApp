@@ -18,7 +18,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Perfil extends AppCompatActivity {
     private Button btConfir, btVolver;
@@ -27,9 +30,14 @@ public class Perfil extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
+    private String nombre, ap1, ap2, nTelf, email,emailConf;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
@@ -51,7 +59,26 @@ public class Perfil extends AppCompatActivity {
         btConfir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nombre = etNombre.getText().toString();
+                ap1 = etAp1.getText().toString();
+                ap2 = etAp2.getText().toString();
+                nTelf = etTelf.getText().toString();
+                email = etEail.getText().toString();
+                emailConf = etEmailConf.getText().toString();
+                Matcher mather = pattern.matcher(email);
 
+                if(nombre.isEmpty()||ap1.isEmpty()||ap2.isEmpty()||nTelf.isEmpty()||email.isEmpty()||emailConf.isEmpty()){
+                    Toast.makeText(Perfil.this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
+                }else if(nTelf.length() <9 || nTelf.length() >9){
+                    Toast.makeText(Perfil.this, "Número de telefono incorrecto", Toast.LENGTH_SHORT).show();
+                }else if(mather.find()==false){
+                    Toast.makeText(Perfil.this, "Email no valido", Toast.LENGTH_SHORT).show();
+                }else if (!email.equals(emailConf)){
+                    Toast.makeText(Perfil.this, "Los emails no coinciden", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(Perfil.this, "Ok", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
@@ -73,8 +100,7 @@ public class Perfil extends AppCompatActivity {
                 ap2BBDD = snapshot.child("apellidos2").getValue().toString();
                 nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
                 emailBBDD = snapshot.child("emails").getValue().toString();
-                Toast.makeText(Perfil.this, snapshot.toString(), Toast.LENGTH_LONG).show();
-                enviarDatosEt();
+                datosEt();
             }
 
             @Override
@@ -84,12 +110,15 @@ public class Perfil extends AppCompatActivity {
         });
     }
 
-    public void enviarDatosEt() {
+    public void datosEt() {
         etNombre.setText(nombreBBDD);
         etAp1.setText(ap1BBDD);
         etAp2.setText(ap2BBDD);
         etTelf.setText(nTelfBBDD);
         etEail.setText(emailBBDD);
+
+    }
+    public void modificarDatosBBDD(){
 
     }
 
