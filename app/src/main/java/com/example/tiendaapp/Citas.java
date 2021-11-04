@@ -54,12 +54,6 @@ public class Citas extends AppCompatActivity {
         Button volver = (Button) findViewById(R.id.buttonVolver2);
         elements = new ArrayList<>();
 
-
-        /*
-        servicio=getIntent().getStringExtra("botonElm");
-        mDatabase.child("Reservas").child(servicio).removeValue();*/
-
-       // Toast.makeText(Citas.this, servicio, Toast.LENGTH_SHORT).show();
         verCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
