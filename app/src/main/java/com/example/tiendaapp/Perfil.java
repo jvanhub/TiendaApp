@@ -48,9 +48,8 @@ public class Perfil extends AppCompatActivity {
         btConfir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (){
+                extraerDatosBBDD();
 
-                }
             }
         });
 
@@ -84,13 +83,22 @@ public class Perfil extends AppCompatActivity {
                         }
                     });
                 }
+                enviarDatosEt();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        })
+        });
+    }
+    public void enviarDatosEt(){
+        etNombre.setText(nombreBBDD);
+        etAp1.setText(ap1BBDD);
+        etAp2.setText(ap2BBDD);
+        etTelf.setText(nTelfBBDD);
+        etEail.setText(emailBBDD);
+
     }
 
 }

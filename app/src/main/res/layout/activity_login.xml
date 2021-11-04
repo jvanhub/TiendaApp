@@ -44,7 +44,7 @@
             android:ems="10"
             android:fontFamily="serif"
             android:foregroundTint="#AFA7A7"
-            android:hint="@string/num_telf"
+            android:hint="@string/email"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
