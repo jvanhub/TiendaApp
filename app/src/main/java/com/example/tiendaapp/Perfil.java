@@ -1,5 +1,6 @@
 package com.example.tiendaapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,8 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
@@ -21,6 +25,7 @@ public class Perfil extends AppCompatActivity {
     private TextView etInfo;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    private String nombreBBDD, ap1BBDD,ap2BBDD, nTelfBBDD, emailBBDD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,5 +62,35 @@ public class Perfil extends AppCompatActivity {
         });
     }
 
+    public void extraerDatosBBDD(){
+        mDatabase.child("Usuarios").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    mDatabase.child("Usuarios").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            nombreBBDD = snapshot.child("nombres").getValue().toString();
+                            ap1BBDD = snapshot.child("apellidos").getValue().toString();
+                            ap2BBDD = snapshot.child("apellidos2").getValue().toString();
+                            nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
+                            emailBBDD = snapshot.child("emails").getValue().toString();
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        })
+    }
 
 }
