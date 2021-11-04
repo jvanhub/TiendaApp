@@ -24,7 +24,6 @@ public class Formulario extends AppCompatActivity {
     Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
-
     private EditText et_nombre, et_ape1, et_ape2, et_n_telf, et_email, et_contrasenya1, et_contrasenya2;
 
     private String nombre = "";
@@ -36,9 +35,9 @@ public class Formulario extends AppCompatActivity {
     private String contrasenya2 = "";
 
     //Creación objeto Firebase:
-    FirebaseAuth mAuth;
-    DatabaseReference mDatabase;
-    FirebaseUser user;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
