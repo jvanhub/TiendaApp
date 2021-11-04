@@ -28,5 +28,4 @@ public class Perfil extends AppCompatActivity {
         etEmailConf = (EditText) findViewById(R.id.editTextTextMailModCon);
     }
 
-
 }
