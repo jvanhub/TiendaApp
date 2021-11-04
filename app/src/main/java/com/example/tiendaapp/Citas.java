@@ -38,6 +38,8 @@ public class Citas extends AppCompatActivity {
     FirebaseUser mAuth;
     DatabaseReference mDatabase;
     List<ListElemnt> elements;
+    private String servicio="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +52,18 @@ public class Citas extends AppCompatActivity {
         Button verCita = (Button) findViewById(R.id.buttonVerCitas);
         Button verCitaActual = (Button) findViewById(R.id.buttonVerCitasActules);
         Button volver = (Button) findViewById(R.id.buttonVolver2);
-
         elements = new ArrayList<>();
 
+
+        /*
+        servicio=getIntent().getStringExtra("botonElm");
+        mDatabase.child("Reservas").child(servicio).removeValue();*/
+
+       // Toast.makeText(Citas.this, servicio, Toast.LENGTH_SHORT).show();
         verCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recogerCitas();
+               // recogerCitas();
             }
         });
 
@@ -64,7 +71,6 @@ public class Citas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 recogerCitasActualizadas();
-
             }
         });
 
@@ -77,10 +83,12 @@ public class Citas extends AppCompatActivity {
     }
 
     //Se encarga de recger, comparar e insertar los datos junto con los elementos.
-    public void recogerCitas() {
+    /*public void recogerCitas() {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                elements.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -104,7 +112,6 @@ public class Citas extends AppCompatActivity {
                         }
                     });
                 }
-                elements.clear();
             }
 
             @Override
@@ -113,7 +120,7 @@ public class Citas extends AppCompatActivity {
             }
         });
     }
-
+*/
     //Método encargado de crear e introducir los datos en cada elemento.
     public void insertElements() {
         elements.add(new ListElemnt(servicioBBDD, fechaBBDD, horaBBDD, null));
@@ -133,6 +140,8 @@ public class Citas extends AppCompatActivity {
                 int dia = calendario.get(Calendar.DAY_OF_MONTH);
                 int mes = (calendario.get(Calendar.MONTH) + 1);
                 int anyo = calendario.get(Calendar.YEAR);
+                elements.clear();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                     mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
@@ -165,7 +174,6 @@ public class Citas extends AppCompatActivity {
                         }
                     });
                 }
-                elements.clear();
             }
 
             @Override

@@ -77,7 +77,6 @@ public class Perfil extends AppCompatActivity {
                     Toast.makeText(Perfil.this, "Los emails no coinciden", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(Perfil.this, "Ok", Toast.LENGTH_SHORT).show();
-
                 }
             }
         });

@@ -18,7 +18,7 @@
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="fecha">Fecha</string>
     <string name="hora">Seleccione la hora:</string>
-    <string name="confirmarCita">Confirmar</string>
+    <string name="confirmar">Confirmar</string>
     <string name="fechaBt">*PULSE AQUÍ PARA SELECCIONAR FECHA*</string>
 
     <string name="info">Por favor no seas un trolazo</string>
@@ -42,7 +42,7 @@
     <string name="mostrarHoraCard">hh/mm</string>
     <string name="citaCard">Cita:</string>
     <string name="mostrarServicio">Servicio</string>
-    <string name="Atras">Volver</string>
+    <string name="volver">Volver</string>
 
     <string name="img1">Imagen principal</string>
     <string name="resPass">¿Has olvidado la contraseña?</string>

@@ -36,27 +36,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/nombre"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:text="@string/nombre" />
+
+                android:textStyle="italic" />
 
             <EditText
                 android:id="@+id/editTextModApe1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/ape2"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:text="@string/ape1" />
+                android:textStyle="italic" />
 
             <EditText
                 android:id="@+id/editTextModApe2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/ape2"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:text="@string/ape2" />
+                android:textStyle="italic" />
 
             <EditText
                 android:id="@+id/editTextModPhone"
@@ -65,7 +72,9 @@
                 android:ems="10"
                 android:hint="@string/num_telf2"
                 android:inputType="phone"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic"
+                android:fontFamily="serif"/>
 
             <EditText
                 android:id="@+id/editTextTextMailMod"
@@ -74,7 +83,9 @@
                 android:ems="10"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic"
+                android:fontFamily="serif"/>
 
             <EditText
                 android:id="@+id/editTextTextMailModCon"
@@ -83,7 +94,9 @@
                 android:ems="10"
                 android:hint="@string/emailConfi"
                 android:inputType="textEmailAddress"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textStyle="italic"
+                android:fontFamily="serif"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -98,7 +111,7 @@
                     android:id="@+id/buttonModConfir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:text="@string/confirmar" />
 
                 <Space
                     android:layout_width="49dp"
@@ -109,7 +122,7 @@
                     android:id="@+id/buttonModVolver"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:text="@string/volver" />
             </LinearLayout>
 
         </LinearLayout>

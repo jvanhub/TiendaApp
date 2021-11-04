@@ -206,25 +206,6 @@ public class ModificarCita extends AppCompatActivity {
         rg.clearCheck();
     }
 
-    //Método que recoge el dato de la base de datos.
-   /* public void recogerDatosBBDD() {
-        mDatabase.child("Reservas").child(idRefTablaButton).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                fechaBBDD = snapshot.child("fecha").getValue().toString();
-                horaBBDD = snapshot.child("hora").getValue().toString();
-                servicioBBDD = snapshot.child("servicio").getValue().toString();
-                modificador();
-                Toast.makeText(ModificarCita.this, "primerbbdd " + servicioBBDD, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ModificarCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
-            }
-        });
-    }*/
-
     //Método que modifica los campos en la base de datos.
     public void modificador() {
             mDatabase.child("Reservas").child(idRefTablaButton).addListenerForSingleValueEvent(new ValueEventListener() {

@@ -1,5 +1,7 @@
 package com.example.tiendaapp;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
