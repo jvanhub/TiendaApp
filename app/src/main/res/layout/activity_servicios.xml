@@ -7,389 +7,397 @@
     android:layout_height="match_parent"
     tools:context=".Servicios">
 
-    <TableLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
-            android:layout_marginBottom="10dp"
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bordes_redondos2"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:gravity="center">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_1"
-                android:layout_width="376dp"
-                android:layout_height="93dp">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                android:background="@drawable/bordes_redondos2"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_1"
+                    android:layout_width="376dp"
+                    android:layout_height="93dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="130dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/unyas_acrilicas" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="249dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/bordes_redondos2_1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewTipo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tipo"
-                            android:textAlignment="viewStart"
-                            android:textColor="#000000"
-                            android:textSize="24sp"
-                            android:textStyle="bold|italic" />
-
-                        <TextView
-                            android:id="@+id/textViewTiempo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tiempo"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
-
-                        <TextView
-                            android:id="@+id/textViewPrecio"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/precio"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bordes_redondos2"
-            android:gravity="center_horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="138dp"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView7"
-                            android:layout_width="87dp"
-                            android:layout_height="105dp"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/unyas_gel" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bordes_redondos2_1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewTipo1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tipo1"
-                            android:textAlignment="viewStart"
-                            android:textColor="#000000"
-                            android:textSize="24sp"
-                            android:textStyle="bold|italic" />
-
-                        <TextView
-                            android:id="@+id/textViewTiempo1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tiempo1"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
-
-                        <TextView
-                            android:id="@+id/textViewPrecio1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/precio1"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bordes_redondos2"
-            android:gravity="center_horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView9"
-                            android:layout_width="131dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/unyas_3d" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="250sp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bordes_redondos2_1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewTipo2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tipo4"
-                            android:textAlignment="viewStart"
-                            android:textColor="#000000"
-                            android:textSize="24sp"
-                            android:textStyle="bold|italic" />
-
-                        <TextView
-                            android:id="@+id/textViewTiempo2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tiempo4"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
-
-                        <TextView
-                            android:id="@+id/textViewPrecio2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/precio4"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/bordes_redondos2"
-            android:gravity="center_horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView8"
-                            android:layout_width="129dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/unyas_acrilicas" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="251dp"
-                        android:layout_height="90dp"
-                        android:background="@drawable/bordes_redondos2_1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewTipo3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tipo2"
-                            android:textAlignment="viewStart"
-                            android:textColor="#000000"
-                            android:textSize="24sp"
-                            android:textStyle="bold|italic" />
-
-                        <TextView
-                            android:id="@+id/textViewTiempo3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tiempo2"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
-
-                        <TextView
-                            android:id="@+id/textViewPrecio3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/precio2"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bordes_redondos2"
-            android:gravity="center_horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="118dp"
-                        android:layout_height="102dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView10"
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="112dp"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/unyas_permanente" />
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="136dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/unyas_acrilicas" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="253dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bordes_redondos2_1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textViewTipo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tipo"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000000"
+                                android:textSize="24sp"
+                                android:textStyle="bold|italic" />
+
+                            <TextView
+                                android:id="@+id/textViewTiempo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tiempo"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+
+                            <TextView
+                                android:id="@+id/textViewPrecio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/precio"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                    <Space
-                        android:layout_width="12dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                </androidx.cardview.widget.CardView>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bordes_redondos2"
+                android:gravity="center_horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <LinearLayout
-                        android:layout_width="251dp"
-                        android:layout_height="126dp"
-                        android:background="@drawable/bordes_redondos2_1"
-                        android:orientation="vertical">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textViewTipo4"
+                        <LinearLayout
+                            android:layout_width="138dp"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/unyas_gel" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tipo3"
-                            android:textAlignment="viewStart"
-                            android:textColor="#000000"
-                            android:textSize="24sp"
-                            android:textStyle="bold|italic" />
+                            android:background="@drawable/bordes_redondos2_1"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/textViewTiempo4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/tiempo3"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
+                            <TextView
+                                android:id="@+id/textViewTipo1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tipo1"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000000"
+                                android:textSize="24sp"
+                                android:textStyle="bold|italic" />
 
-                        <TextView
-                            android:id="@+id/textViewPrecio4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:text="@string/precio3"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="italic" />
+                            <TextView
+                                android:id="@+id/textViewTiempo1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tiempo1"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+
+                            <TextView
+                                android:id="@+id/textViewPrecio1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/precio1"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </TableRow>
 
-        </TableRow>
-    </TableLayout>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bordes_redondos2"
+                android:gravity="center_horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView9"
+                                android:layout_width="139dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/unyas_3d" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bordes_redondos2_1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textViewTipo2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tipo4"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000000"
+                                android:textSize="24sp"
+                                android:textStyle="bold|italic" />
+
+                            <TextView
+                                android:id="@+id/textViewTiempo2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tiempo4"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+
+                            <TextView
+                                android:id="@+id/textViewPrecio2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/precio4"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bordes_redondos2"
+                android:gravity="center_horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView8"
+                                android:layout_width="138dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/unyas_acrilicas" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="251dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bordes_redondos2_1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textViewTipo3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tipo2"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000000"
+                                android:textSize="24sp"
+                                android:textStyle="bold|italic" />
+
+                            <TextView
+                                android:id="@+id/textViewTiempo3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tiempo2"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+
+                            <TextView
+                                android:id="@+id/textViewPrecio3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/precio2"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bordes_redondos2"
+                android:gravity="center_horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_5"
+                    android:layout_width="365dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="137dp"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView10"
+                                android:layout_width="116dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/unyas_permanente" />
+
+                            <Space
+                                android:layout_width="23dp"
+                                android:layout_height="136dp"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="249dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bordes_redondos2_1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textViewTipo4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tipo3"
+                                android:textAlignment="viewStart"
+                                android:textColor="#000000"
+                                android:textSize="24sp"
+                                android:textStyle="bold|italic" />
+
+                            <TextView
+                                android:id="@+id/textViewTiempo4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/tiempo3"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+
+                            <TextView
+                                android:id="@+id/textViewPrecio4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif"
+                                android:text="@string/precio3"
+                                android:textColor="#000000"
+                                android:textSize="16sp"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

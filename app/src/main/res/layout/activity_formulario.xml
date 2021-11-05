@@ -166,7 +166,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#80114A"
                     android:gravity="center"
-                    android:text="@string/confirmarReg"
+                    android:text="@string/confirmar"
                     android:textAllCaps="false"
                     android:textSize="18sp"
                     app:cornerRadius="10dp" />

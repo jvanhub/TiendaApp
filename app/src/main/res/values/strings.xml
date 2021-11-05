@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">NoaNails</string>
-    <string name="num_telf">Introduce email</string>
     <string name="pass">Introduce contrasña</string>
     <string name="entrar">Entra</string>
     <string name="registrar">Registrate</string>
@@ -9,16 +8,20 @@
     <string name="ape2">Introduzca segundo apellido</string>
     <string name="num_telf2">Introduzca nº de teléfono</string>
     <string name="email">Introduzca email</string>
+    <string name="emailConfi">Confirmar email</string>
     <string name="passReg">Introduzca contraseña</string>
-    <string name="passReg2">Introduzca confirmar contraseña</string>
+    <string name="passReg2">Confirmar contraseña</string>
     <string name="confirmarReg">Confirmar</string>
     <string name="pedir_cita">Pedir cita</string>
     <string name="ver_citas">Ver cita</string>
+    <string name="perfil">Mi Perfil</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="fecha">Fecha</string>
     <string name="hora">Seleccione la hora:</string>
-    <string name="confirmarCita">Confirmar</string>
-    <string name="fechaTv">*PULSE AQUÍ PARA SELECCIONAR FECHA*</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="fechaBt">*PULSE AQUÍ PARA SELECCIONAR FECHA*</string>
+
+    <string name="info">Por favor no seas un trolazo</string>
 
     <string name="HORA1">09:00</string>
     <string name="HORA2">10:10</string>
@@ -39,7 +42,7 @@
     <string name="mostrarHoraCard">hh/mm</string>
     <string name="citaCard">Cita:</string>
     <string name="mostrarServicio">Servicio</string>
-    <string name="Atras">Volver</string>
+    <string name="volver">Volver</string>
 
     <string name="img1">Imagen principal</string>
     <string name="resPass">¿Has olvidado la contraseña?</string>

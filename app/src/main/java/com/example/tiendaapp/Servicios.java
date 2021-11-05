@@ -37,7 +37,6 @@ public class Servicios extends AppCompatActivity {
         cv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Servicios.this, tv1.getText(), Toast.LENGTH_SHORT).show();
                 intent.putExtra("servicio", tv1.getText());
                 startActivity(intent);
             }
@@ -46,7 +45,6 @@ public class Servicios extends AppCompatActivity {
         cv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Servicios.this, tv2.getText(), Toast.LENGTH_SHORT).show();
                 intent.putExtra("servicio", tv2.getText());
                 startActivity(intent);
             }
@@ -55,7 +53,6 @@ public class Servicios extends AppCompatActivity {
         cv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Servicios.this, tv3.getText(), Toast.LENGTH_SHORT).show();
                 intent.putExtra("servicio", tv3.getText());
                 startActivity(intent);
             }
@@ -64,7 +61,6 @@ public class Servicios extends AppCompatActivity {
         cv4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Servicios.this, tv4.getText(), Toast.LENGTH_SHORT).show();
                 intent.putExtra("servicio", tv4.getText());
                 startActivity(intent);
             }
@@ -73,7 +69,6 @@ public class Servicios extends AppCompatActivity {
         cv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Servicios.this, tv5.getText(), Toast.LENGTH_SHORT).show();
                 intent.putExtra("servicio", tv5.getText());
                 startActivity(intent);
             }

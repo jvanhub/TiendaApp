@@ -21,10 +21,6 @@ import java.util.regex.Pattern;
 
 public class Formulario extends AppCompatActivity {
 
-    Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-
-
     private EditText et_nombre, et_ape1, et_ape2, et_n_telf, et_email, et_contrasenya1, et_contrasenya2;
 
     private String nombre = "";
@@ -36,12 +32,15 @@ public class Formulario extends AppCompatActivity {
     private String contrasenya2 = "";
 
     //Creación objeto Firebase:
-    FirebaseAuth mAuth;
-    DatabaseReference mDatabase;
-    FirebaseUser user;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
 
@@ -77,7 +76,7 @@ public class Formulario extends AppCompatActivity {
             if (nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() ||
                     n_tefl.isEmpty() || email.isEmpty() || contrasenya.isEmpty() ||
                     contrasenya2.isEmpty()) {
-                Toast.makeText(Formulario.this, "Completa todos los campos", Toast.LENGTH_LONG).show();
+                Toast.makeText(Formulario.this, "Complete todos los campos", Toast.LENGTH_LONG).show();
             } else if (n_tefl.length()<9 || n_tefl.length()>9) {
             Toast.makeText(Formulario.this, "Número de telefono incorrecto", Toast.LENGTH_SHORT).show();
             } else if (mather.find() == false) {
