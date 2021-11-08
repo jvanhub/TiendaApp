@@ -58,6 +58,7 @@ public class Citas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                // recogerCitas();
+
             }
         });
 
@@ -148,17 +149,19 @@ public class Citas extends AppCompatActivity {
                                 servicioBBDD = snapshot.child("servicio").getValue().toString();
                                 String extractFecha[] = fechaBBDD.split("/");
                                 idCita = snapshot.getKey();
+                                /*
                                 if (uId.equals(id)) {
-                                    if (Integer.parseInt(extractFecha[2]) - anyo < 0) {
-                                    } else if (Integer.parseInt(extractFecha[1]) - mes < 0) {
-                                    } else if (Integer.parseInt(extractFecha[0]) - dia < 0) {
+                                    if (Integer.parseInt(extractFecha[2]) - anyo < 0 && Integer.parseInt(extractFecha[1]) - mes < 0 && Integer.parseInt(extractFecha[0]) - dia < 0 ) {
+                                        Toast.makeText(Citas.this, "Citas recientes", Toast.LENGTH_SHORT).show();
+                                        insertElements();
                                     } else {
                                         insertElementsActual();
                                     }
-                                }
+                                }*/
+                                insertElementsActual();
                             }catch (NullPointerException n){
-                                /** valor del ultimo null*/
-                                 insertElementsActual();
+                                Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
+                                insertElementsActual();
                             }
                         }
 
