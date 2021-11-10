@@ -123,7 +123,7 @@ public class Citas extends AppCompatActivity {
                 int dia = calendario.get(Calendar.DAY_OF_MONTH);
                 int mes = (calendario.get(Calendar.MONTH) + 1);
                 int anyo = calendario.get(Calendar.YEAR);
-
+                elements.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         fechaBBDD = snapshot.child("fecha").getValue().toString();
                         horaBBDD = snapshot.child("hora").getValue().toString();
@@ -134,7 +134,6 @@ public class Citas extends AppCompatActivity {
 
                         if (uId.equals(id)) {
                             if((Integer.parseInt(extractFecha[2]) - anyo) >= 0 && (Integer.parseInt(extractFecha[1]) - mes) >= 0 && (Integer.parseInt(extractFecha[0]) - dia) >= 0){
-                                elements.add(new ListElemnt(servicioBBDD,fechaBBDD, horaBBDD, idCita));
                                 insertElementsActual();
                             }else {
                             }
@@ -155,6 +154,7 @@ public class Citas extends AppCompatActivity {
 
     //Método encargado de crear e introducir los datos en cada elemento.
     public void insertElementsActual() {
+        elements.add(new ListElemnt(servicioBBDD,fechaBBDD, horaBBDD, idCita));
         listAdapter = new ListAdapter2(elements, this);
         RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
