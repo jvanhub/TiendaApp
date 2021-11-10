@@ -125,23 +125,22 @@ public class Citas extends AppCompatActivity {
                 int anyo = calendario.get(Calendar.YEAR);
                 elements.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        fechaBBDD = snapshot.child("fecha").getValue().toString();
-                        horaBBDD = snapshot.child("hora").getValue().toString();
-                        uId = snapshot.child("uId").getValue().toString();
-                        servicioBBDD = snapshot.child("servicio").getValue().toString();
-                        String extractFecha[] = fechaBBDD.split("/");
-                        idCita = snapshot.getKey();
-
-                        if (uId.equals(id)) {
-                            if((Integer.parseInt(extractFecha[2]) - anyo) >= 0 && (Integer.parseInt(extractFecha[1]) - mes) >= 0 && (Integer.parseInt(extractFecha[0]) - dia) >= 0){
-                                insertElementsActual();
-                            }else {
-                            }
+                    fechaBBDD = snapshot.child("fecha").getValue().toString();
+                    horaBBDD = snapshot.child("hora").getValue().toString();
+                    uId = snapshot.child("uId").getValue().toString();
+                    servicioBBDD = snapshot.child("servicio").getValue().toString();
+                    String extractFecha[] = fechaBBDD.split("/");
+                    idCita = snapshot.getKey();
+                    if (uId.equals(id)) {
+                        if((Integer.parseInt(extractFecha[2]) - anyo) >= 0 && (Integer.parseInt(extractFecha[1]) - mes) >= 0 && (Integer.parseInt(extractFecha[0]) - dia) >= 0){
+                            insertElementsActual();
+                        }else {
                         }
-
-                      /*  Toast.makeText(Citas.this, "No hay citas pendientes NUL", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(Citas.this, "No hay citas pendientes NUL", Toast.LENGTH_SHORT).show();
                         elements.clear();
-                        insertElementsActual();*/
+                        insertElementsActual();
+                    }
                 }
             }
 
