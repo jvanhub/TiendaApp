@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Servicios">
+    tools:context=".Servicios"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,10 +22,6 @@
             android:gravity="center"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp">
-
-            <Space
-                android:layout_width="399dp"
-                android:layout_height="27dp" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -205,6 +202,7 @@
                                 android:layout_width="136dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+
                                 app:srcCompat="@drawable/unyas_3d" />
                         </LinearLayout>
 
