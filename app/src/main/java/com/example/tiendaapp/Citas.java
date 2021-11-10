@@ -125,7 +125,6 @@ public class Citas extends AppCompatActivity {
                 int anyo = calendario.get(Calendar.YEAR);
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    try {
                         fechaBBDD = snapshot.child("fecha").getValue().toString();
                         horaBBDD = snapshot.child("hora").getValue().toString();
                         uId = snapshot.child("uId").getValue().toString();
@@ -140,11 +139,10 @@ public class Citas extends AppCompatActivity {
                             }else {
                             }
                         }
-                    }catch (NullPointerException n){
-                        Toast.makeText(Citas.this, "No hay citas pendientes NUL", Toast.LENGTH_SHORT).show();
+
+                      /*  Toast.makeText(Citas.this, "No hay citas pendientes NUL", Toast.LENGTH_SHORT).show();
                         elements.clear();
-                        insertElementsActual();
-                    }
+                        insertElementsActual();*/
                 }
             }
 
