@@ -40,7 +40,6 @@ public class Citas extends AppCompatActivity {
     List<ListElemnt> elements;
     private String servicio="";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
