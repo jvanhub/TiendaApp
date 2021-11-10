@@ -20,6 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,7 +34,6 @@ public class Perfil extends AppCompatActivity {
     DatabaseReference mDatabase;
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
     private String nombre, ap1, ap2, nTelf, email,emailConf;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,7 @@ public class Perfil extends AppCompatActivity {
                 }else if (!email.equals(emailConf)){
                     Toast.makeText(Perfil.this, "Los emails no coinciden", Toast.LENGTH_SHORT).show();
                 }else{
+                    modificarDatosBBDD();
                     Toast.makeText(Perfil.this, "Ok", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -99,7 +102,11 @@ public class Perfil extends AppCompatActivity {
                 ap2BBDD = snapshot.child("apellidos2").getValue().toString();
                 nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
                 emailBBDD = snapshot.child("emails").getValue().toString();
-                datosEt();
+                etNombre.setText(nombreBBDD);
+                etAp1.setText(ap1BBDD);
+                etAp2.setText(ap2BBDD);
+                etTelf.setText(nTelfBBDD);
+                etEail.setText(emailBBDD);
             }
 
             @Override
@@ -109,16 +116,13 @@ public class Perfil extends AppCompatActivity {
         });
     }
 
-    public void datosEt() {
-        etNombre.setText(nombreBBDD);
-        etAp1.setText(ap1BBDD);
-        etAp2.setText(ap2BBDD);
-        etTelf.setText(nTelfBBDD);
-        etEail.setText(emailBBDD);
-
-    }
     public void modificarDatosBBDD(){
-
+        Map <String, Object> map = new HashMap<>();
+                map.put("nombres", etNombre.getText().toString());
+                map.put("apellidos", etAp1.getText()).toString();
+                map.put("apellidos2", etAp2.getText().toString());
+                map.put("n_telefonos", etTelf.getText().toString());
+                mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
+                startActivity(new Intent(Perfil.this, Citas.class));
     }
-
 }
