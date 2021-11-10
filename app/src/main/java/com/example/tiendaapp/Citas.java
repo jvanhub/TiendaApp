@@ -57,8 +57,7 @@ public class Citas extends AppCompatActivity {
         verCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // recogerCitas();
-
+               recogerCitas();
             }
         });
 
@@ -78,34 +77,23 @@ public class Citas extends AppCompatActivity {
     }
 
     //Se encarga de recger, comparar e insertar los datos junto con los elementos.
-    /*public void recogerCitas() {
+    public void recogerCitas() {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 elements.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            try {
-                                servicioBBDD = snapshot.child("servicio").getValue().toString();
-                                fechaBBDD = snapshot.child("fecha").getValue().toString();
-                                horaBBDD = snapshot.child("hora").getValue().toString();
-                                uId = snapshot.child("uId").getValue().toString();
+                    try {
+                        servicioBBDD = snapshot.child("servicio").getValue().toString();
+                        fechaBBDD = snapshot.child("fecha").getValue().toString();
+                        horaBBDD = snapshot.child("hora").getValue().toString();
+                        uId = snapshot.child("uId").getValue().toString();
 
-                                if (uId.equals(id)) {
-                                    insertElements();
-                                }
-                            } catch (NullPointerException n) {
-                            }
+                        if (uId.equals(id)) {
+                            insertElements();
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    } catch (NullPointerException n) {
+                    }
                 }
             }
 
@@ -115,7 +103,7 @@ public class Citas extends AppCompatActivity {
             }
         });
     }
-*/
+
     //Método encargado de crear e introducir los datos en cada elemento.
     public void insertElements() {
         elements.add(new ListElemnt(servicioBBDD, fechaBBDD, horaBBDD, null));
@@ -135,41 +123,28 @@ public class Citas extends AppCompatActivity {
                 int dia = calendario.get(Calendar.DAY_OF_MONTH);
                 int mes = (calendario.get(Calendar.MONTH) + 1);
                 int anyo = calendario.get(Calendar.YEAR);
-                elements.clear();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    try {
+                        fechaBBDD = snapshot.child("fecha").getValue().toString();
+                        horaBBDD = snapshot.child("hora").getValue().toString();
+                        uId = snapshot.child("uId").getValue().toString();
+                        servicioBBDD = snapshot.child("servicio").getValue().toString();
+                        String extractFecha[] = fechaBBDD.split("/");
+                        idCita = snapshot.getKey();
 
-                    mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            try {
-                                fechaBBDD = snapshot.child("fecha").getValue().toString();
-                                horaBBDD = snapshot.child("hora").getValue().toString();
-                                uId = snapshot.child("uId").getValue().toString();
-                                servicioBBDD = snapshot.child("servicio").getValue().toString();
-                                String extractFecha[] = fechaBBDD.split("/");
-                                idCita = snapshot.getKey();
-                                /*
-                                if (uId.equals(id)) {
-                                    if (Integer.parseInt(extractFecha[2]) - anyo < 0 && Integer.parseInt(extractFecha[1]) - mes < 0 && Integer.parseInt(extractFecha[0]) - dia < 0 ) {
-                                        Toast.makeText(Citas.this, "Citas recientes", Toast.LENGTH_SHORT).show();
-                                        insertElements();
-                                    } else {
-                                        insertElementsActual();
-                                    }
-                                }*/
+                        if (uId.equals(id)) {
+                            if((Integer.parseInt(extractFecha[2]) - anyo) >= 0 && (Integer.parseInt(extractFecha[1]) - mes) >= 0 && (Integer.parseInt(extractFecha[0]) - dia) >= 0){
+                                elements.add(new ListElemnt(servicioBBDD,fechaBBDD, horaBBDD, idCita));
                                 insertElementsActual();
-                            }catch (NullPointerException n){
-                                Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
-                                insertElementsActual();
+                            }else {
                             }
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    }catch (NullPointerException n){
+                        Toast.makeText(Citas.this, "No hay citas pendientes NUL", Toast.LENGTH_SHORT).show();
+                        elements.clear();
+                        insertElementsActual();
+                    }
                 }
             }
 
@@ -182,11 +157,11 @@ public class Citas extends AppCompatActivity {
 
     //Método encargado de crear e introducir los datos en cada elemento.
     public void insertElementsActual() {
-        elements.add(new ListElemnt(servicioBBDD,fechaBBDD, horaBBDD, idCita));
         listAdapter = new ListAdapter2(elements, this);
         RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
     }
+
 }
