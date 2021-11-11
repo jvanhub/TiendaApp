@@ -19,6 +19,8 @@
 
             <TextView
                 android:id="@+id/textView"
+                android:fontFamily="serif"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/editPerf"
@@ -33,6 +35,7 @@
 
             <EditText
                 android:id="@+id/editTextModNombre"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

@@ -79,8 +79,8 @@
 
     <string name="btEditar">Editar</string>
 
-    <string name="infoPer">Información de perfil</string>
-    <string name="editPerf">Editor de perfil</string>
+    <string name="infoPer">INFORMACIÓN DE PERFIL</string>
+    <string name="editPerf">EDITOR DE PERFIL</string>
 
 
 </resources>

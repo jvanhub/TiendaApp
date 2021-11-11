@@ -19,6 +19,7 @@
 
             <TextView
                 android:id="@+id/textView"
+                android:fontFamily="serif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/infoPer"
@@ -33,6 +34,7 @@
 
             <TextView
                 android:id="@+id/textViewNom"
+                android:fontFamily="serif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nombrePerfil"
@@ -52,6 +54,7 @@
 
             <TextView
                 android:id="@+id/textViewApex"
+                android:fontFamily="serif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/apellidosPerfil"
@@ -92,6 +95,8 @@
                 android:id="@+id/textViewEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="serif"
+
                 android:text="@string/emailPerfil"
                 android:textColor="#000000"
                 android:textSize="20sp" />
