@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +41,7 @@ public class EditFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_edit, container, false);
+        extraerDatosBBDD();
 
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                                         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
@@ -54,6 +57,7 @@ public class EditFragment extends Fragment {
         etTelf = view.findViewById(R.id.editTextModPhone);
         etEail = view.findViewById(R.id.editTextTextMailMod);
         etEmailConf = view.findViewById(R.id.editTextTextMailModCon);
+
         nombre = etNombre.getText().toString();
         ap1 = etAp1.getText().toString();
         ap2 = etAp2.getText().toString();
@@ -72,9 +76,21 @@ public class EditFragment extends Fragment {
             Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
         }else{
             modificarDatosBBDD();
-            Toast.makeText(view.getContext(), "Ok", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_SHORT).show();
         }
+        btConfir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                modificarDatosBBDD();
+            }
+        });
 
+        btVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(view.getContext(), Perfil.class));
+            }
+        });
         return view;
     }
     public void extraerDatosBBDD() {
@@ -109,6 +125,6 @@ public class EditFragment extends Fragment {
         map.put("n_telefonos", nTelf);
         map.put("emails", email);
         mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
-
     }
+
 }
