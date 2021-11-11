@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerfilFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <TextView
+                android:id="@+id/textViewNom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nombrePerfil"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textViewNom2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nombrePerfil2" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <TextView
+                android:id="@+id/textViewApex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/apellidosPerfil"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textViewApex2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/apellidosPerfil2" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <TextView
+                android:id="@+id/textViewTelf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/telefonoPerfil"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textViewTelf2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/telefonoPerfil2" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/emailPerfil"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textViewEmail2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/emailPerfil2"
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
