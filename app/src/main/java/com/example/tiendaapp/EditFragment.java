@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
@@ -28,7 +29,6 @@ import java.util.regex.Pattern;
 public class EditFragment extends Fragment {
     private Button btConfir, btVolver;
     private EditText etNombre, etAp1, etAp2, etTelf, etEail, etEmailConf;
-    private TextView etInfo;
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
@@ -41,8 +41,19 @@ public class EditFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_edit, container, false);
 
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+                                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        btConfir = view.findViewById(R.id.buttonModConfir);
+        btVolver = view.findViewById(R.id.buttonModVolver);
+
+        etNombre = view.findViewById(R.id.editTextModNombre);
+        etAp1 = view.findViewById(R.id.editTextModApe1);
+        etAp2 = view.findViewById(R.id.editTextModApe2);
+        etTelf = view.findViewById(R.id.editTextModPhone);
+        etEail = view.findViewById(R.id.editTextTextMailMod);
+        etEmailConf = view.findViewById(R.id.editTextTextMailModCon);
         nombre = etNombre.getText().toString();
         ap1 = etAp1.getText().toString();
         ap2 = etAp2.getText().toString();

@@ -13,111 +13,123 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="411dp"
-            android:layout_height="52dp"
-            android:gravity="clip_horizontal|center_horizontal|center_vertical"
-            android:text="@string/info" />
+            <Space
+                android:layout_width="399dp"
+                android:layout_height="27dp" />
 
-        <Space
-            android:layout_width="399dp"
-            android:layout_height="27dp" />
+            <EditText
+                android:id="@+id/editTextModNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/nombre"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
 
-        <EditText
-            android:id="@+id/editTextModNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="serif"
-            android:hint="@string/nombre"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
+                android:textStyle="italic" />
 
-            android:textStyle="italic" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="19dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="19dp" />
 
-        <EditText
-            android:id="@+id/editTextModApe1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="serif"
-            android:hint="@string/ape2"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textStyle="italic" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="19dp" />
+            <EditText
+                android:id="@+id/editTextModApe1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/ape2"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
-        <EditText
-            android:id="@+id/editTextModApe2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="serif"
-            android:hint="@string/ape2"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textStyle="italic" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="19dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="19dp" />
 
-        <EditText
-            android:id="@+id/editTextModPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/num_telf2"
-            android:inputType="phone"
-            android:minHeight="48dp"
-            android:textStyle="italic"
-            android:fontFamily="serif"/>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="19dp" />
+            <EditText
+                android:id="@+id/editTextModApe2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/ape2"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
-        <EditText
-            android:id="@+id/editTextTextMailMod"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:minHeight="48dp"
-            android:textStyle="italic"
-            android:fontFamily="serif"/>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="19dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="19dp" />
 
-        <EditText
-            android:id="@+id/editTextTextMailModCon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/emailConfi"
-            android:inputType="textEmailAddress"
-            android:minHeight="48dp"
-            android:textStyle="italic"
-            android:fontFamily="serif"/>
+            <EditText
+                android:id="@+id/editTextModPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/num_telf2"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                android:textStyle="italic" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="17dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="19dp" />
+
+            <EditText
+                android:id="@+id/editTextTextMailMod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textStyle="italic" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="19dp" />
+
+            <EditText
+                android:id="@+id/editTextTextMailModCon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/emailConfi"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textStyle="italic" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="17dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
+
+                <Button
+                    android:id="@+id/buttonModConfir"
+                    android:layout_width="39dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#80114A"
+                    android:fontFamily="serif"
+                    android:text="@string/confirmar" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/buttonModVolver"
