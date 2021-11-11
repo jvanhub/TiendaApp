@@ -128,18 +128,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:gravity="center|center_horizontal"
                 android:orientation="horizontal">
-
 
                 <Button
                     android:id="@+id/buttonModConfir"
-                    android:layout_width="39dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#80114A"
-                    android:fontFamily="serif"
-                    android:text="@string/confirmar" />
+                    android:text="@string/confirmar"
+                    android:textAllCaps="false" />
 
                 <Space
                     android:layout_width="wrap_content"
@@ -148,13 +147,12 @@
 
                 <Button
                     android:id="@+id/buttonModVolver"
-                    android:layout_width="138dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:backgroundTint="#80114A"
-                    android:fontFamily="serif"
                     android:text="@string/volver"
-                    android:textAllCaps="false"
-                    android:textSize="18sp" />
+                    android:textAllCaps="false" />
 
             </LinearLayout>
         </LinearLayout>
