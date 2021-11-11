@@ -38,7 +38,6 @@ public class Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        btPerfil = (Button) findViewById(R.id.buttonPerfil);
         btEditar = (Button) findViewById(R.id.buttonEdit);
 
         btPerfil.setOnClickListener(new View.OnClickListener() {
