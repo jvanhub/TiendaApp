@@ -78,9 +78,10 @@
     <string name="emailPerfil2"></string>
 
     <string name="btEditar">Editar</string>
+    <string name="btPerf">Resumen</string>
 
-    <string name="infoPer">INFORMACIÓN DE PERFIL</string>
-    <string name="editPerf">EDITOR DE PERFIL</string>
+    <string name="infoPer">RESUMEN PERFIL</string>
+    <string name="editPerf">EDITOR PERFIL</string>
 
 
 </resources>
