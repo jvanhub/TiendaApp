@@ -41,10 +41,10 @@ public class EditFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_edit, container, false);
-        extraerDatosBBDD();
 
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                                         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -58,29 +58,32 @@ public class EditFragment extends Fragment {
         etEail = view.findViewById(R.id.editTextTextMailMod);
         etEmailConf = view.findViewById(R.id.editTextTextMailModCon);
 
-        nombre = etNombre.getText().toString();
-        ap1 = etAp1.getText().toString();
-        ap2 = etAp2.getText().toString();
-        nTelf = etTelf.getText().toString();
-        email = etEail.getText().toString();
-        emailConf = etEmailConf.getText().toString();
-        Matcher mather = pattern.matcher(email);
+        extraerDatosBBDD();
 
-        if(nombre.isEmpty()||ap1.isEmpty()||ap2.isEmpty()||nTelf.isEmpty()||email.isEmpty()||emailConf.isEmpty()){
-            Toast.makeText(view.getContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
-        }else if(nTelf.length() <9 || nTelf.length() >9){
-            Toast.makeText(view.getContext(), "Número de telefono incorrecto", Toast.LENGTH_SHORT).show();
-        }else if(mather.find()==false){
-            Toast.makeText(view.getContext(), "Email no valido", Toast.LENGTH_SHORT).show();
-        }else if (!email.equals(emailConf)){
-            Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
-        }else{
-            modificarDatosBBDD();
-            Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_SHORT).show();
-        }
         btConfir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                nombre = etNombre.getText().toString();
+                ap1 = etAp1.getText().toString();
+                ap2 = etAp2.getText().toString();
+                nTelf = etTelf.getText().toString();
+                email = etEail.getText().toString();
+                emailConf = etEmailConf.getText().toString();
+                Matcher mather = pattern.matcher(email);
+
+                if(nombre.isEmpty()||ap1.isEmpty()||ap2.isEmpty()||nTelf.isEmpty()||email.isEmpty()||emailConf.isEmpty()){
+                    Toast.makeText(view.getContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
+                }else if(nTelf.length() <9 || nTelf.length() >9){
+                    Toast.makeText(view.getContext(), "Número de telefono incorrecto", Toast.LENGTH_SHORT).show();
+                }else if(mather.find()==false){
+                    Toast.makeText(view.getContext(), "Email no valido", Toast.LENGTH_SHORT).show();
+                }else if (!email.equals(emailConf)){
+                    Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
+                }else{
+                    modificarDatosBBDD();
+                    Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_SHORT).show();
+                }
                 modificarDatosBBDD();
             }
         });
@@ -125,6 +128,6 @@ public class EditFragment extends Fragment {
         map.put("n_telefonos", nTelf);
         map.put("emails", email);
         mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
+        startActivity(new Intent(view.getContext(), Perfil.class));
     }
-
 }

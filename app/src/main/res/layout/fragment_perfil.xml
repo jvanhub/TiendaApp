@@ -13,7 +13,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/infoPer"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <Space
                 android:layout_width="match_parent"
@@ -24,13 +36,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nombrePerfil"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewNom2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/nombrePerfil2" />
+                android:text="@string/nombrePerfil2"
+                android:textSize="18sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -41,13 +55,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/apellidosPerfil"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewApex2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/apellidosPerfil2" />
+                android:text="@string/apellidosPerfil2"
+                android:textSize="18sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -58,13 +74,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/telefonoPerfil"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewTelf2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/telefonoPerfil2" />
+                android:text="@string/telefonoPerfil2"
+                android:textSize="18sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -75,14 +93,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/emailPerfil"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewEmail2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/emailPerfil2"
-                />
+                android:textSize="18sp" />
 
             <Space
                 android:layout_width="match_parent"
