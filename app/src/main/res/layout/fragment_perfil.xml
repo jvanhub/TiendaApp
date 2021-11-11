@@ -43,6 +43,7 @@
 
             <TextView
                 android:id="@+id/textViewNom2"
+                android:fontFamily="serif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nombrePerfil2"
@@ -65,6 +66,7 @@
                 android:id="@+id/textViewApex2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="serif"
                 android:text="@string/apellidosPerfil2"
                 android:textSize="18sp" />
 
@@ -82,6 +84,7 @@
 
             <TextView
                 android:id="@+id/textViewTelf2"
+                android:fontFamily="serif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/telefonoPerfil2"
@@ -103,6 +106,7 @@
 
             <TextView
                 android:id="@+id/textViewEmail2"
+                android:fontFamily="serif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/emailPerfil2"
