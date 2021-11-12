@@ -40,7 +40,6 @@ public class Citas extends AppCompatActivity {
     List<ListElemnt> elements;
     private String servicio="";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +56,7 @@ public class Citas extends AppCompatActivity {
         verCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // recogerCitas();
+               recogerCitas();
             }
         });
 
@@ -77,34 +76,23 @@ public class Citas extends AppCompatActivity {
     }
 
     //Se encarga de recger, comparar e insertar los datos junto con los elementos.
-    /*public void recogerCitas() {
+    public void recogerCitas() {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 elements.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            try {
-                                servicioBBDD = snapshot.child("servicio").getValue().toString();
-                                fechaBBDD = snapshot.child("fecha").getValue().toString();
-                                horaBBDD = snapshot.child("hora").getValue().toString();
-                                uId = snapshot.child("uId").getValue().toString();
+                    try {
+                        servicioBBDD = snapshot.child("servicio").getValue().toString();
+                        fechaBBDD = snapshot.child("fecha").getValue().toString();
+                        horaBBDD = snapshot.child("hora").getValue().toString();
+                        uId = snapshot.child("uId").getValue().toString();
 
-                                if (uId.equals(id)) {
-                                    insertElements();
-                                }
-                            } catch (NullPointerException n) {
-                            }
+                        if (uId.equals(id)) {
+                            insertElements();
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    } catch (NullPointerException n) {
+                    }
                 }
             }
 
@@ -114,7 +102,7 @@ public class Citas extends AppCompatActivity {
             }
         });
     }
-*/
+
     //Método encargado de crear e introducir los datos en cada elemento.
     public void insertElements() {
         elements.add(new ListElemnt(servicioBBDD, fechaBBDD, horaBBDD, null));
@@ -135,38 +123,23 @@ public class Citas extends AppCompatActivity {
                 int mes = (calendario.get(Calendar.MONTH) + 1);
                 int anyo = calendario.get(Calendar.YEAR);
                 elements.clear();
-
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-                    mDatabase.child("Reservas").child(snapshot.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            try {
-                                fechaBBDD = snapshot.child("fecha").getValue().toString();
-                                horaBBDD = snapshot.child("hora").getValue().toString();
-                                uId = snapshot.child("uId").getValue().toString();
-                                servicioBBDD = snapshot.child("servicio").getValue().toString();
-                                String extractFecha[] = fechaBBDD.split("/");
-                                idCita = snapshot.getKey();
-                                if (uId.equals(id)) {
-                                    if (Integer.parseInt(extractFecha[2]) - anyo < 0) {
-                                    } else if (Integer.parseInt(extractFecha[1]) - mes < 0) {
-                                    } else if (Integer.parseInt(extractFecha[0]) - dia < 0) {
-                                    } else {
-                                        insertElementsActual();
-                                    }
-                                }
-                            }catch (NullPointerException n){
-                                /** valor del ultimo null*/
-                                 insertElementsActual();
-                            }
+                    fechaBBDD = snapshot.child("fecha").getValue().toString();
+                    horaBBDD = snapshot.child("hora").getValue().toString();
+                    uId = snapshot.child("uId").getValue().toString();
+                    servicioBBDD = snapshot.child("servicio").getValue().toString();
+                    String extractFecha[] = fechaBBDD.split("/");
+                    idCita = snapshot.getKey();
+                    if (uId.equals(id)) {
+                        if((Integer.parseInt(extractFecha[2]) - anyo) >= 0 && (Integer.parseInt(extractFecha[1]) - mes) >= 0 && (Integer.parseInt(extractFecha[0]) - dia) >= 0){
+                            insertElementsActual();
+                        }else {
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    }else{
+                        Toast.makeText(Citas.this, "No hay citas pendientes NUL", Toast.LENGTH_SHORT).show();
+                        elements.clear();
+                        insertElementsActual();
+                    }
                 }
             }
 
@@ -186,4 +159,5 @@ public class Citas extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
     }
+
 }

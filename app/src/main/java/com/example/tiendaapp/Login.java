@@ -42,7 +42,6 @@ public class Login extends AppCompatActivity {
         Button entrar = (Button) findViewById(R.id.buttonEntrar);
         Button registro = (Button) findViewById(R.id.buttonRegistro);
         resPass = (TextView) findViewById(R.id.textViewResPass);
-
         resPass.setOnClickListener(new View.OnClickListener() {
 
             @Override

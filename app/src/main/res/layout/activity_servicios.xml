@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Servicios">
+    tools:context=".Servicios"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +19,8 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -49,12 +51,13 @@
                                 android:id="@+id/imageView4"
                                 android:layout_width="136dp"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center"
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_acrilicas" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="253dp"
+                            android:layout_width="220dp"
                             android:layout_height="match_parent"
                             android:background="@drawable/bordes_redondos2_1"
                             android:orientation="vertical">
@@ -122,15 +125,16 @@
 
                             <ImageView
                                 android:id="@+id/imageView7"
-                                android:layout_width="match_parent"
+                                android:layout_width="136dp"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_gel" />
 
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="220dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bordes_redondos2_1"
                             android:orientation="vertical">
@@ -196,14 +200,16 @@
 
                             <ImageView
                                 android:id="@+id/imageView9"
-                                android:layout_width="139dp"
+                                android:layout_width="136dp"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center"
+
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_3d" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="250dp"
+                            android:layout_width="220dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bordes_redondos2_1"
                             android:orientation="vertical">
@@ -269,15 +275,16 @@
 
                             <ImageView
                                 android:id="@+id/imageView8"
-                                android:layout_width="138dp"
+                                android:layout_width="136dp"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center"
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_acrilicas" />
 
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="251dp"
+                            android:layout_width="220dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bordes_redondos2_1"
                             android:orientation="vertical">
@@ -343,20 +350,21 @@
 
                             <ImageView
                                 android:id="@+id/imageView10"
-                                android:layout_width="116dp"
-                                android:layout_height="match_parent"
+                                android:layout_width="120dp"
+                                android:layout_height="82dp"
+                                android:layout_gravity="center|center_horizontal"
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_permanente" />
 
                             <Space
-                                android:layout_width="23dp"
-                                android:layout_height="136dp"
+                                android:layout_width="12dp"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1" />
 
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="249dp"
+                            android:layout_width="220dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bordes_redondos2_1"
                             android:orientation="vertical">

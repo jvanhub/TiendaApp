@@ -61,10 +61,29 @@
 
     <string name="precio3">Precio aprox: 25€</string>
     <string name="tiempo3">Tiempo aprox: 1h</string>
-    <string name="tipo3">Esmalte Permanente</string>
+    <string name="tipo3">Permanente</string>
 
     <string name="precio4">Precio aprox: 25€</string>
     <string name="tiempo4">Tiempo aprox: 1h</string>
     <string name="tipo4">3D</string>
+
+    <!-- Fregment -->
+    <string name="nombrePerfil">Nombre:</string>
+    <string name="nombrePerfil2"></string>
+    <string name="apellidosPerfil">Apellidos:</string>
+    <string name="apellidosPerfil2"></string>
+    <string name="telefonoPerfil">Teléfono: </string>
+    <string name="telefonoPerfil2"></string>
+    <string name="emailPerfil">Email:</string>
+
+    <string name="introNuEmail">Introduzca nuevo email</string>
+    <string name="confirmNuEmail">Confirmar nuevo email</string>
+
+    <string name="btEditar">Editar</string>
+    <string name="btPerf">Resumen</string>
+
+    <string name="infoPer" ><u>RESUMEN PERFIL</u></string>
+    <string name="editPerf"><u>EDITOR PERFIL</u></string>
+
 
 </resources>
