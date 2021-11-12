@@ -91,8 +91,7 @@ public class EditFragment extends Fragment {
         btVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(view.getContext(), Perfil.class));
-            }
+                startActivity(new Intent(view.getContext(), Bienvenida.class));            }
         });
         return view;
     }
@@ -128,6 +127,7 @@ public class EditFragment extends Fragment {
         map.put("n_telefonos", nTelf);
         map.put("emails", email);
         mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
-        startActivity(new Intent(view.getContext(), Bienvenida.class));
+        startActivity(new Intent(view.getContext(), Perfil.class));
+
     }
 }
