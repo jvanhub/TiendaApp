@@ -75,7 +75,9 @@
     <string name="telefonoPerfil">Teléfono: </string>
     <string name="telefonoPerfil2"></string>
     <string name="emailPerfil">Email:</string>
-    <string name="emailPerfil2"></string>
+
+    <string name="introNuEmail">Introduzca nuevo email</string>
+    <string name="confirmNuEmail">Confirmar nuevo email</string>
 
     <string name="btEditar">Editar</string>
     <string name="btPerf">Resumen</string>
