@@ -80,8 +80,8 @@
     <string name="btEditar">Editar</string>
     <string name="btPerf">Resumen</string>
 
-    <string name="infoPer">RESUMEN PERFIL</string>
-    <string name="editPerf">EDITOR PERFIL</string>
+    <string name="infoPer" ><u>RESUMEN PERFIL</u></string>
+    <string name="editPerf"><u>EDITOR PERFIL</u></string>
 
 
 </resources>

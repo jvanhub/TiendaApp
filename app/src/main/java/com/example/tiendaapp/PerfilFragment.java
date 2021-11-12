@@ -1,5 +1,6 @@
 package com.example.tiendaapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PerfilFragment extends Fragment {
 
+    private Button btVolver;
     private TextView tvNombre, tvAp, tvTelf, tvEail;
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
     private String nombre, ap1, ap2, nTelf, email,emailConf;
@@ -37,6 +40,7 @@ public class PerfilFragment extends Fragment {
         btConfir = view.findViewById(R.id.buttonModConfir);
         btVolver = view.findViewById(R.id.buttonModVolver);*/
 
+        btVolver = view.findViewById(R.id.buttonVolverPer);
         tvNombre = view.findViewById(R.id.textViewNom2);
         tvAp = view.findViewById(R.id.textViewApex2);
         tvTelf = view.findViewById(R.id.textViewTelf2);
@@ -59,6 +63,13 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        btVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(view.getContext(), Bienvenida.class));
             }
         });
         return view;

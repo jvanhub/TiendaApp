@@ -11,13 +11,17 @@
         android:theme="@style/Theme.TiendaApp">
         <activity
             android:name=".Perfil"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".Servicios"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Login"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ModificarCita"
             android:exported="false"
