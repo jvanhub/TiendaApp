@@ -121,7 +121,7 @@
                 android:layout_height="19dp" />
 
             <EditText
-                android:id="@+id/editTextTextMailModCon"
+                android:id="@+id/editTextTextMailNuevo"
                 android:background="@drawable/txtvw"
 
                 android:layout_width="match_parent"
@@ -136,7 +136,38 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="17dp" />
+            <EditText
+                android:id="@+id/editTextTextMailNuevoCon"
+                android:background="@drawable/txtvw"
 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/emailConfi"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textStyle="italic" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="17dp" />
+            <EditText
+                android:id="@+id/editTextTextMailContraseña"
+                android:background="@drawable/txtvw"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/pass"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textStyle="italic" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="17dp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

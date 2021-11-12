@@ -1,21 +1,25 @@
 package com.example.tiendaapp;
 
+import static com.google.firebase.remoteconfig.FirebaseRemoteConfig.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -82,7 +86,6 @@ public class EditFragment extends Fragment {
                     Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
                 }else{
                     modificarDatosBBDD();
-                    Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -119,14 +122,41 @@ public class EditFragment extends Fragment {
     }
 
     public void modificarDatosBBDD(){
-        Map<String, Object> map = new HashMap<>();
-        map.put("nombres", nombre);
-        map.put("apellidos", ap1);
-        map.put("apellidos2", ap2);
-        map.put("n_telefonos", nTelf);
-        map.put("emails", email);
-        mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
-        startActivity(new Intent(view.getContext(), Perfil.class));
+        if()) {
+            AuthCredential credential = EmailAuthProvider
+                    .getCredential(email, "ivan123");
+
+            // Prompt the user to re-provide their sign-in credentials
+            mAuth.getCurrentUser().reauthenticate(credential)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Log.d(TAG, "User re-authenticated.");
+                        }
+                    });
+
+            mAuth.getCurrentUser().updateEmail("ivaneme.diaz@gmail.com")
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(view.getContext(), "cambio", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+        }else{
+            Map<String, Object> map = new HashMap<>();
+            map.put("nombres", nombre);
+            map.put("apellidos", ap1);
+            map.put("apellidos2", ap2);
+            map.put("n_telefonos", nTelf);
+            map.put("emails", email);
+            mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
+            startActivity(new Intent(view.getContext(), Perfil.class));
+            Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_LONG).show();
+
+        }
 
     }
 }
