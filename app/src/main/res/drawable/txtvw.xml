@@ -8,4 +8,5 @@
         android:right="10sp"
         android:top="10sp"/>
     <corners android:radius="10sp"/>
+    <solid android:color="@color/primary"/>
 </shape>
