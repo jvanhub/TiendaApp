@@ -102,7 +102,20 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="19dp" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="@string/editPerfEmail"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
+            <Space
+                android:layout_width="399dp"
+                android:layout_height="27dp" />
             <EditText
                 android:id="@+id/editTextTextMailMod"
                 android:background="@drawable/txtvw"
@@ -111,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="@string/introNuEmail"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 android:textStyle="italic" />
@@ -128,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="@string/confirmNuEmail"
+                android:hint="@string/introNuEmail"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 android:textStyle="italic" />

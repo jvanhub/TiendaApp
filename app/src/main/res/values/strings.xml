@@ -83,7 +83,8 @@
     <string name="btPerf">Resumen</string>
 
     <string name="infoPer" ><u>RESUMEN PERFIL</u></string>
-    <string name="editPerf"><u>EDITOR PERFIL</u></string>
+    <string name="editPerf"><u>DATOS PERSONALES</u></string>
+    <string name="editPerfEmail"><u>EMAIL</u></string>
 
 
 </resources>

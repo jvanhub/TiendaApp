@@ -8,16 +8,13 @@
         <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_bienvenido.xml" value="0.25416666666666665" />
         <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_formulario.xml" value="0.13020833333333334" />
         <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/fragment_edit.xml" value="0.264" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/bordes_redondos.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/bordes_redondos2.xml" value="0.2890625" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/bordes_redondos2_1.xml" value="0.2890625" />
-        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/btns.xml" value="0.2890625" />
-        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/dg_color.xml" value="0.2890625" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/ic_email.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/ic_lock.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/ic_secondname.xml" value="0.2890625" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/ssm.xml" value="0.2890625" />
-        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/txtvw.xml" value="0.2890625" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_bienvenido.xml" value="0.33" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_citas.xml" value="0.33" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_formulario.xml" value="0.33" />
@@ -25,11 +22,9 @@
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_modificar_cita.xml" value="0.33" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_pedir_cita.xml" value="0.33" />
-        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_perfil.xml" value="0.205607476635514" />
-        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_servicios.xml" value="0.33" />
+        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_perfil.xml" value="0.25" />
+        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_servicios.xml" value="0.5" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/activity_splash_screen.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/fragment_edit.xml" value="0.25" />
-        <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/fragment_perfil.xml" value="0.33" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/list_element.xml" value="0.33" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/layout/list_element_actual.xml" value="0.1890625" />
         <entry key="..\:/Users/usuario/Desktop/Proyecto/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2890625" />
