@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".Login">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="242dp"
+        android:layout_height="256dp"
         android:contentDescription="@string/img1"
         app:srcCompat="@drawable/logo"
         tools:layout_editor_absoluteX="50dp"

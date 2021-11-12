@@ -20,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp">
+>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -52,6 +51,7 @@
                                 android:id="@+id/imageView4"
                                 android:layout_width="136dp"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center"
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_acrilicas" />
                         </LinearLayout>
@@ -127,6 +127,7 @@
                                 android:id="@+id/imageView7"
                                 android:layout_width="136dp"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_gel" />
 
@@ -201,8 +202,9 @@
                                 android:id="@+id/imageView9"
                                 android:layout_width="136dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
+                                android:layout_gravity="center"
 
+                                android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_3d" />
                         </LinearLayout>
 
@@ -275,6 +277,7 @@
                                 android:id="@+id/imageView8"
                                 android:layout_width="136dp"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center"
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_acrilicas" />
 
@@ -347,14 +350,15 @@
 
                             <ImageView
                                 android:id="@+id/imageView10"
-                                android:layout_width="136dp"
-                                android:layout_height="match_parent"
+                                android:layout_width="120dp"
+                                android:layout_height="82dp"
+                                android:layout_gravity="center|center_horizontal"
                                 android:layout_weight="1"
                                 app:srcCompat="@drawable/unyas_permanente" />
 
                             <Space
-                                android:layout_width="23dp"
-                                android:layout_height="136dp"
+                                android:layout_width="12dp"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1" />
 
                         </LinearLayout>
