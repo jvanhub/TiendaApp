@@ -31,6 +31,7 @@
 
             <EditText
                 android:padding="12dp"
+                android:background="@drawable/txtvw"
                 android:id="@+id/editTextNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
 
             <EditText
                 android:padding="12dp"
+                android:background="@drawable/txtvw"
                 android:id="@+id/editTextApe1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,6 +65,7 @@
 
             <EditText
                 android:padding="12dp"
+                android:background="@drawable/txtvw"
                 android:id="@+id/editTextApe2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,6 +83,7 @@
             <EditText
                 android:padding="12dp"
                 android:id="@+id/editTextTelf"
+                android:background="@drawable/txtvw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -95,6 +99,7 @@
 
             <EditText
                 android:padding="12dp"
+                android:background="@drawable/txtvw"
                 android:id="@+id/editTextEmail2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,6 +116,7 @@
 
             <EditText
                 android:padding="12dp"
+                android:background="@drawable/txtvw"
                 android:id="@+id/editTextPass1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,6 +133,7 @@
 
             <EditText
                 android:padding="12dp"
+                android:background="@drawable/txtvw"
                 android:id="@+id/editTextPass2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,6 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+
                     android:backgroundTint="#80114A"
                     android:gravity="center"
                     android:text="@string/confirmar"
