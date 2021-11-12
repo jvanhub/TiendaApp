@@ -84,7 +84,6 @@ public class EditFragment extends Fragment {
                     modificarDatosBBDD();
                     Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_SHORT).show();
                 }
-                modificarDatosBBDD();
             }
         });
 
