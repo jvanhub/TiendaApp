@@ -33,12 +33,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EditFragment extends Fragment {
-    private Button btConfir, btVolver;
-    private EditText etNombre, etAp1, etAp2, etTelf, etEail, etEmailConf;
+    private Button btConfir, btVolver, btConfir1;
+    private EditText etNombre, etAp1, etAp2, etTelf, etEail, etEmailNuev, etEmailnuevConf,etEmailPass;
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
-    private String nombre, ap1, ap2, nTelf, email,emailConf;
+    private String nombre, ap1, ap2, nTelf, email,emailConf, emailNuevo, emailPass;
     View view;
 
     @Override
@@ -53,6 +53,7 @@ public class EditFragment extends Fragment {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         btConfir = view.findViewById(R.id.buttonModConfir);
+        btConfir1 = view.findViewById(R.id.buttonModConfir1);
         btVolver = view.findViewById(R.id.buttonModVolver);
 
         etNombre = view.findViewById(R.id.editTextModNombre);
@@ -60,11 +61,12 @@ public class EditFragment extends Fragment {
         etAp2 = view.findViewById(R.id.editTextModApe2);
         etTelf = view.findViewById(R.id.editTextModPhone);
         etEail = view.findViewById(R.id.editTextTextMailMod);
-        etEmailConf = view.findViewById(R.id.editTextTextMailModCon);
-
+        etEmailNuev = view.findViewById(R.id.editTextTextMailNuevo);
+        etEmailnuevConf = view.findViewById(R.id.editTextTextMailNuevoCon);
+        etEmailPass = view.findViewById(R.id.editTextTextMailContraseña);
         extraerDatosBBDD();
 
-        btConfir.setOnClickListener(new View.OnClickListener() {
+        btConfir1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -72,20 +74,34 @@ public class EditFragment extends Fragment {
                 ap1 = etAp1.getText().toString();
                 ap2 = etAp2.getText().toString();
                 nTelf = etTelf.getText().toString();
-                email = etEail.getText().toString();
-                emailConf = etEmailConf.getText().toString();
-                Matcher mather = pattern.matcher(email);
 
-                if(nombre.isEmpty()||ap1.isEmpty()||ap2.isEmpty()||nTelf.isEmpty()||email.isEmpty()||emailConf.isEmpty()){
+                if(nombre.isEmpty()||ap1.isEmpty()||ap2.isEmpty()||nTelf.isEmpty()){
                     Toast.makeText(view.getContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
                 }else if(nTelf.length() <9 || nTelf.length() >9){
                     Toast.makeText(view.getContext(), "Número de telefono incorrecto", Toast.LENGTH_SHORT).show();
-                }else if(mather.find()==false){
-                    Toast.makeText(view.getContext(), "Email no valido", Toast.LENGTH_SHORT).show();
-                }else if (!email.equals(emailConf)){
-                    Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
                 }else{
                     modificarDatosBBDD();
+                }
+            }
+        });
+
+        btConfir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                email = etEail.getText().toString();
+                emailNuevo = etEmailNuev.getText().toString();
+                emailConf = etEmailnuevConf.getText().toString();
+                emailPass = etEmailPass.getText().toString();
+                Matcher mather = pattern.matcher(emailNuevo);
+
+                if (email.isEmpty()||emailNuevo.isEmpty()||emailConf.isEmpty()||emailPass.isEmpty()){
+                    Toast.makeText(view.getContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
+                } else if(mather.find()==false){
+                    Toast.makeText(view.getContext(), "Email no valido", Toast.LENGTH_SHORT).show();
+                } else if (!emailNuevo.equals(emailConf)){
+                    Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
+                } else{
+                    modificarEmailBBDD();
                 }
             }
         });
@@ -121,10 +137,10 @@ public class EditFragment extends Fragment {
         });
     }
 
-    public void modificarDatosBBDD(){
+    public void modificarEmailBBDD(){
         if()) {
             AuthCredential credential = EmailAuthProvider
-                    .getCredential(email, "ivan123");
+                    .getCredential(email, emailPass);
 
             // Prompt the user to re-provide their sign-in credentials
             mAuth.getCurrentUser().reauthenticate(credential)
@@ -157,6 +173,18 @@ public class EditFragment extends Fragment {
             Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_LONG).show();
 
         }
+    }
+    public void modificarBBDD(){
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("nombres", nombre);
+            map.put("apellidos", ap1);
+            map.put("apellidos2", ap2);
+            map.put("n_telefonos", nTelf);
+            map.put("emails", email);
+            mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
+            startActivity(new Intent(view.getContext(), Perfil.class));
+            Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_LONG).show();
 
     }
 }

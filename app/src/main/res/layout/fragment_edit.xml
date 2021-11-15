@@ -17,6 +17,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
 
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
@@ -36,10 +37,10 @@
 
             <EditText
                 android:id="@+id/editTextModNombre"
-                android:background="@drawable/txtvw"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:background="@drawable/txtvw"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="@string/nombre"
@@ -54,10 +55,10 @@
 
             <EditText
                 android:id="@+id/editTextModApe1"
-                android:background="@drawable/txtvw"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:background="@drawable/txtvw"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="@string/ape2"
@@ -71,10 +72,10 @@
 
             <EditText
                 android:id="@+id/editTextModApe2"
-                android:background="@drawable/txtvw"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:background="@drawable/txtvw"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="@string/ape2"
@@ -88,10 +89,10 @@
 
             <EditText
                 android:id="@+id/editTextModPhone"
-                android:background="@drawable/txtvw"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:background="@drawable/txtvw"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="@string/num_telf2"
@@ -99,9 +100,15 @@
                 android:minHeight="48dp"
                 android:textStyle="italic" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="19dp" />
+            <Button
+                android:id="@+id/buttonModConfir1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#80114A"
+                android:text="@string/confirmar"
+                android:textAllCaps="false" />
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
@@ -116,12 +123,13 @@
             <Space
                 android:layout_width="399dp"
                 android:layout_height="27dp" />
+
             <EditText
                 android:id="@+id/editTextTextMailMod"
-                android:background="@drawable/txtvw"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:background="@drawable/txtvw"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="@string/email"
@@ -135,10 +143,10 @@
 
             <EditText
                 android:id="@+id/editTextTextMailNuevo"
-                android:background="@drawable/txtvw"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:background="@drawable/txtvw"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="@string/introNuEmail"
@@ -149,12 +157,13 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="17dp" />
+
             <EditText
                 android:id="@+id/editTextTextMailNuevoCon"
-                android:background="@drawable/txtvw"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:background="@drawable/txtvw"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="@string/emailConfi"
@@ -165,12 +174,13 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="17dp" />
+
             <EditText
                 android:id="@+id/editTextTextMailContraseña"
-                android:background="@drawable/txtvw"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:background="@drawable/txtvw"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="@string/pass"
@@ -181,6 +191,7 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="17dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
