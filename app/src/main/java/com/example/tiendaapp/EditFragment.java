@@ -101,7 +101,7 @@ public class EditFragment extends Fragment {
                 } else if (!emailNuevo.equals(emailConf)){
                     Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
                 } else{
-                    modificarEmailBBDD();
+                    //modificarEmailBBDD();
                 }
             }
         });
@@ -137,7 +137,7 @@ public class EditFragment extends Fragment {
         });
     }
 
-    public void modificarEmailBBDD(){
+    /*public void modificarEmailBBDD(){
         if()) {
             AuthCredential credential = EmailAuthProvider
                     .getCredential(email, emailPass);
@@ -173,7 +173,7 @@ public class EditFragment extends Fragment {
             Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_LONG).show();
 
         }
-    }
+    }*/
     public void modificarDatosBBDD(){
 
             Map<String, Object> map = new HashMap<>();
