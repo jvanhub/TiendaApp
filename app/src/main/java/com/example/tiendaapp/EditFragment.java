@@ -174,7 +174,7 @@ public class EditFragment extends Fragment {
 
         }
     }
-    public void modificarBBDD(){
+    public void modificarDatosBBDD(){
 
             Map<String, Object> map = new HashMap<>();
             map.put("nombres", nombre);
