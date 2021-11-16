@@ -88,6 +88,8 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
                 public void onClick(View v) {
                     dbr.child("Reservas").child(btElim.getContentDescription().toString()).removeValue();
                     Toast.makeText(v.getContext(), "La cita se ha eliminado correctamente.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(v.getContext(),Citas.class);
+                    v.getContext().startActivity(intent);
                 }
             });
 

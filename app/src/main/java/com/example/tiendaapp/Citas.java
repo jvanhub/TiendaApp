@@ -81,6 +81,7 @@ public class Citas extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 elements.clear();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     try {
                         servicioBBDD = snapshot.child("servicio").getValue().toString();
@@ -92,6 +93,9 @@ public class Citas extends AppCompatActivity {
                             insertElements();
                         }
                     } catch (NullPointerException n) {
+                            Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
+                            elements.clear();
+                            insertElements();
                     }
                 }
             }
@@ -123,23 +127,30 @@ public class Citas extends AppCompatActivity {
                 int mes = (calendario.get(Calendar.MONTH) + 1);
                 int anyo = calendario.get(Calendar.YEAR);
                 elements.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    fechaBBDD = snapshot.child("fecha").getValue().toString();
-                    horaBBDD = snapshot.child("hora").getValue().toString();
-                    uId = snapshot.child("uId").getValue().toString();
-                    servicioBBDD = snapshot.child("servicio").getValue().toString();
-                    String extractFecha[] = fechaBBDD.split("/");
-                    idCita = snapshot.getKey();
-                    if (uId.equals(id)) {
-                        if((Integer.parseInt(extractFecha[2]) - anyo) >= 0 && (Integer.parseInt(extractFecha[1]) - mes) >= 0 && (Integer.parseInt(extractFecha[0]) - dia) >= 0){
+
+                try {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                        fechaBBDD = snapshot.child("fecha").getValue().toString();
+                        horaBBDD = snapshot.child("hora").getValue().toString();
+                        uId = snapshot.child("uId").getValue().toString();
+                        servicioBBDD = snapshot.child("servicio").getValue().toString();
+                        String extractFecha[] = fechaBBDD.split("/");
+                        idCita = snapshot.getKey();
+                        if (uId.equals(id)) {
+                            if(((Integer.parseInt(extractFecha[2]) - anyo) >= 0) && ((Integer.parseInt(extractFecha[1]) - mes) >= 0) && ((Integer.parseInt(extractFecha[0]) - dia) >= 0)){
+                                insertElementsActual();
+                            }
+                        }else{
+                            Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
+                            elements.clear();
                             insertElementsActual();
-                        }else {
                         }
-                    }else{
-                        Toast.makeText(Citas.this, "No hay citas pendientes NUL", Toast.LENGTH_SHORT).show();
-                        elements.clear();
-                        insertElementsActual();
                     }
+                }catch (NullPointerException n){
+                    Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
+                    elements.clear();
+                    insertElementsActual();
                 }
             }
 
