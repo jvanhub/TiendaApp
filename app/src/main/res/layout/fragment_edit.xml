@@ -47,7 +47,8 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
 
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:importantForAutofill="no" />
 
             <Space
                 android:layout_width="match_parent"
@@ -61,10 +62,11 @@
                 android:background="@drawable/txtvw"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="@string/ape2"
+                android:hint="@string/ape1"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:importantForAutofill="no" />
 
             <Space
                 android:layout_width="match_parent"
@@ -81,7 +83,8 @@
                 android:hint="@string/ape2"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:importantForAutofill="no" />
 
             <Space
                 android:layout_width="match_parent"
@@ -98,7 +101,8 @@
                 android:hint="@string/num_telf2"
                 android:inputType="phone"
                 android:minHeight="48dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:importantForAutofill="no" />
 
             <Button
                 android:id="@+id/buttonModConfir1"
@@ -135,7 +139,8 @@
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:importantForAutofill="no" />
 
             <Space
                 android:layout_width="match_parent"
@@ -152,7 +157,8 @@
                 android:hint="@string/introNuEmail"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:importantForAutofill="no" />
 
             <Space
                 android:layout_width="match_parent"
@@ -169,7 +175,8 @@
                 android:hint="@string/emailConfi"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:importantForAutofill="no" />
 
             <Space
                 android:layout_width="match_parent"
@@ -186,7 +193,8 @@
                 android:hint="@string/pass"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:importantForAutofill="no" />
 
             <Space
                 android:layout_width="match_parent"
