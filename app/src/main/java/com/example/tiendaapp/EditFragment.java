@@ -56,6 +56,7 @@ public class EditFragment extends Fragment {
         etAp1 = view.findViewById(R.id.editTextModApe1);
         etAp2 = view.findViewById(R.id.editTextModApe2);
         etTelf = view.findViewById(R.id.editTextModPhone);
+
         extraerDatosBBDD();
 
         btConfir.setOnClickListener(new View.OnClickListener() {

@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -33,30 +35,30 @@ import java.util.regex.Pattern;
 public class EditFragment2 extends Fragment {
 
     private Button btVolver, btConfir1;
-    private EditText etEail, etEmailNuev, etEmailnuevConf,etEmailPass;
+    private EditText etEail, etEmailNuev, etEmailnuevConf, etEmailPass;
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
-    private String email,emailConf, emailNuevo, emailPass;
-    View view1;
+    private String email, emailConf, emailNuevo, emailPass;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view1 = inflater.inflate(R.layout.fragment_edit2, container, false);
+        view = inflater.inflate(R.layout.fragment_edit2, container, false);
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        btConfir1 = view1.findViewById(R.id.buttonModConfir1);
-        btVolver = view1.findViewById(R.id.buttonModVolver);
+        btConfir1 = view.findViewById(R.id.buttonModConfir1);
+        btVolver = view.findViewById(R.id.buttonModVolver);
 
-        etEail = view1.findViewById(R.id.editTextTextMailMod);
-        etEmailNuev = view1.findViewById(R.id.editTextTextMailNuevo);
-        etEmailnuevConf = view1.findViewById(R.id.editTextTextMailNuevoCon);
-        etEmailPass = view1.findViewById(R.id.editTextTextMailContraseña);
+        etEail = view.findViewById(R.id.editTextTextMailMod);
+        etEmailNuev = view.findViewById(R.id.editTextTextMailNuevo);
+        etEmailnuevConf = view.findViewById(R.id.editTextTextMailNuevoCon);
+        etEmailPass = view.findViewById(R.id.editTextTextMailContraseña);
         extraerDatosBBDD();
 
         btConfir1.setOnClickListener(new View.OnClickListener() {
@@ -68,13 +70,13 @@ public class EditFragment2 extends Fragment {
                 emailPass = etEmailPass.getText().toString();
                 Matcher mather = pattern.matcher(emailNuevo);
 
-                if (email.isEmpty()||emailNuevo.isEmpty()||emailConf.isEmpty()||emailPass.isEmpty()){
-                    Toast.makeText(view1.getContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
-                } else if(mather.find()==false){
-                    Toast.makeText(view1.getContext(), "Email no valido", Toast.LENGTH_SHORT).show();
-                } else if (!emailNuevo.equals(emailConf)){
-                    Toast.makeText(view1.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
-                } else{
+                if (email.isEmpty() || emailNuevo.isEmpty() || emailConf.isEmpty() || emailPass.isEmpty()) {
+                    Toast.makeText(view.getContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
+                } else if (mather.find() == false) {
+                    Toast.makeText(view.getContext(), "Email no valido", Toast.LENGTH_SHORT).show();
+                } else if (!emailNuevo.equals(emailConf)) {
+                    Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
+                } else {
                     modificarEmailBBDD();
                 }
             }
@@ -83,10 +85,12 @@ public class EditFragment2 extends Fragment {
         btVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(view1.getContext(), Bienvenida.class));            }
+                startActivity(new Intent(view.getContext(), Bienvenida.class));
+            }
         });
-        return view1;
+        return view;
     }
+
     public void extraerDatosBBDD() {
 
         mDatabase.child("Usuarios").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
@@ -107,41 +111,45 @@ public class EditFragment2 extends Fragment {
         });
     }
 
-    public void modificarEmailBBDD(){
-        /*if(emailBBDD) {
+    public void modificarEmailBBDD() {
+        if (emailBBDD.equals(email)) {
             AuthCredential credential = EmailAuthProvider
                     .getCredential(email, emailPass);
 
             // Prompt the user to re-provide their sign-in credentials
-            mAuth.getCurrentUser().reauthenticate(credential)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+            mAuth.getCurrentUser().reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
 
-                        }
-                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(view.getContext(), "Contraseña incorrecta.", Toast.LENGTH_LONG).show();
+                }
+            });
 
-            mAuth.getCurrentUser().updateEmail("ivaneme.diaz@gmail.com")
+            mAuth.getCurrentUser().updateEmail(String.valueOf(etEmailNuev))
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
 
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(view.getContext(), "cambio", Toast.LENGTH_LONG).show();
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("nombres", nombreBBDD);
+                                map.put("apellidos", ap1BBDD);
+                                map.put("apellidos2", ap2BBDD);
+                                map.put("n_telefonos", nTelfBBDD);
+                                map.put("emails", email);
+                                mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
+                                startActivity(new Intent(view.getContext(), Perfil.class));
+                                Toast.makeText(view.getContext(), "Se ha cambiado el email, por favor revise su correo electrónico para confirmar el nuevo email.", Toast.LENGTH_LONG).show();
+
                             }
                         }
                     });
-        }else{
-            Map<String, Object> map = new HashMap<>();
-            map.put("nombres", nombreBBDD);
-            map.put("apellidos", ap1BBDD);
-            map.put("apellidos2", ap2BBDD);
-            map.put("n_telefonos", nTelfBBDD);
-            map.put("emails", email);
-            mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
-            startActivity(new Intent(view.getContext(), Perfil.class));
-            Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_LONG).show();
-
-        }*/
+        } else {
+            Toast.makeText(view.getContext(), "Es e mismo email", Toast.LENGTH_LONG).show();
+        }
     }
 }
