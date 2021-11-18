@@ -36,10 +36,13 @@ public class EditFragment2 extends Fragment {
 
     private Button btVolver, btConfir1;
     private EditText etEail, etEmailNuev, etEmailnuevConf, etEmailPass;
+
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
+
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
     private String email, emailConf, emailNuevo, emailPass;
+
     View view;
 
     @Override
