@@ -108,7 +108,7 @@ public class EditFragment2 extends Fragment {
     }
 
     public void modificarEmailBBDD(){
-        if(emailBBDD) {
+        /*if(emailBBDD) {
             AuthCredential credential = EmailAuthProvider
                     .getCredential(email, emailPass);
 
@@ -142,6 +142,6 @@ public class EditFragment2 extends Fragment {
             startActivity(new Intent(view.getContext(), Perfil.class));
             Toast.makeText(view.getContext(), "Se ha completado el cambio", Toast.LENGTH_LONG).show();
 
-        }
+        }*/
     }
 }

@@ -25,14 +25,19 @@
 
 
             <LinearLayout
+                android:background="@drawable/btns"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:background="@drawable/btns">
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/buttonPerfil"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/buttonPerfil2"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#80114A"
@@ -40,34 +45,37 @@
                     android:textAllCaps="false"
                     app:cornerRadius="10dp" />
 
-                <Space
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/buttonEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#80114A"
-                    android:text="@string/btEditar"
-                    android:textAllCaps="false"
-                    app:cornerRadius="10dp" />
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-                <Button
-                    android:id="@+id/buttonEdit2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#80114A"
-                    android:text="@string/btEditar1"
-                    android:textAllCaps="false"
-                    app:cornerRadius="10dp" />
+                    <Button
+                        android:id="@+id/buttonEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#80114A"
+                        android:text="@string/btEditar"
+                        android:textAllCaps="false"
+                        app:cornerRadius="10dp" />
 
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/buttonEdit2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#80114A"
+                        android:text="@string/btEditar1"
+                        android:textAllCaps="false"
+                        app:cornerRadius="10dp" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
