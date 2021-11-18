@@ -79,7 +79,8 @@
     <string name="introNuEmail">Introduzca nuevo email</string>
     <string name="confirmNuEmail">Confirmar nuevo email</string>
 
-    <string name="btEditar">Editar</string>
+    <string name="btEditar">Editar Perfil</string>
+    <string name="btEditar1">Editar Email</string>
     <string name="btPerf">Resumen</string>
 
     <string name="infoPer"><u>RESUMEN PERFIL</u></string>

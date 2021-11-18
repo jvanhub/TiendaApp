@@ -40,6 +40,8 @@ public class Perfil extends AppCompatActivity {
 
         btPerfil = (Button) findViewById(R.id.buttonPerfil);
         btEditar = (Button) findViewById(R.id.buttonEdit);
+        btEditar1 = (Button) findViewById(R.id.buttonEdit2);
+
 
         btPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
