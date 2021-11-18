@@ -93,9 +93,7 @@ public class Citas extends AppCompatActivity {
                             insertElements();
                         }
                     } catch (NullPointerException n) {
-                            Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
-                            elements.clear();
-                            insertElements();
+                        Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -141,16 +139,10 @@ public class Citas extends AppCompatActivity {
                             if(((Integer.parseInt(extractFecha[2]) - anyo) >= 0) && ((Integer.parseInt(extractFecha[1]) - mes) >= 0) && ((Integer.parseInt(extractFecha[0]) - dia) >= 0)){
                                 insertElementsActual();
                             }
-                        }else{
-                            Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
-                            elements.clear();
-                            insertElementsActual();
                         }
                     }
                 }catch (NullPointerException n){
                     Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
-                    elements.clear();
-                    insertElementsActual();
                 }
             }
 
