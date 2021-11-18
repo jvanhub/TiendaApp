@@ -37,7 +37,7 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/buttonPerfil2"
+                    android:id="@+id/buttonPerfil"
                     android:layout_width="199dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

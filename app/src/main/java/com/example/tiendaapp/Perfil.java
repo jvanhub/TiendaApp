@@ -60,7 +60,7 @@ public class Perfil extends AppCompatActivity {
         btEditar1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new EditFragment());
+                replaceFragment(new EditFragment2());
             }
         });
     }

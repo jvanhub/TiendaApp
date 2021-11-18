@@ -38,25 +38,25 @@ public class EditFragment2 extends Fragment {
     DatabaseReference mDatabase;
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
     private String email,emailConf, emailNuevo, emailPass;
-    View view;
+    View view1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_edit2, container, false);
+        view1 = inflater.inflate(R.layout.fragment_edit2, container, false);
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        btConfir1 = view.findViewById(R.id.buttonModConfir1);
-        btVolver = view.findViewById(R.id.buttonModVolver);
+        btConfir1 = view1.findViewById(R.id.buttonModConfir1);
+        btVolver = view1.findViewById(R.id.buttonModVolver);
 
-        etEail = view.findViewById(R.id.editTextTextMailMod);
-        etEmailNuev = view.findViewById(R.id.editTextTextMailNuevo);
-        etEmailnuevConf = view.findViewById(R.id.editTextTextMailNuevoCon);
-        etEmailPass = view.findViewById(R.id.editTextTextMailContraseña);
+        etEail = view1.findViewById(R.id.editTextTextMailMod);
+        etEmailNuev = view1.findViewById(R.id.editTextTextMailNuevo);
+        etEmailnuevConf = view1.findViewById(R.id.editTextTextMailNuevoCon);
+        etEmailPass = view1.findViewById(R.id.editTextTextMailContraseña);
         extraerDatosBBDD();
 
         btConfir1.setOnClickListener(new View.OnClickListener() {
@@ -69,11 +69,11 @@ public class EditFragment2 extends Fragment {
                 Matcher mather = pattern.matcher(emailNuevo);
 
                 if (email.isEmpty()||emailNuevo.isEmpty()||emailConf.isEmpty()||emailPass.isEmpty()){
-                    Toast.makeText(view.getContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view1.getContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show();
                 } else if(mather.find()==false){
-                    Toast.makeText(view.getContext(), "Email no valido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view1.getContext(), "Email no valido", Toast.LENGTH_SHORT).show();
                 } else if (!emailNuevo.equals(emailConf)){
-                    Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view1.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
                 } else{
                     modificarEmailBBDD();
                 }
@@ -83,9 +83,9 @@ public class EditFragment2 extends Fragment {
         btVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(view.getContext(), Bienvenida.class));            }
+                startActivity(new Intent(view1.getContext(), Bienvenida.class));            }
         });
-        return view;
+        return view1;
     }
     public void extraerDatosBBDD() {
 

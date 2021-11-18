@@ -103,6 +103,9 @@
                 android:minHeight="48dp"
                 android:textStyle="italic"
                 android:importantForAutofill="no" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="17dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,7 +113,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/buttonModConfir1"
+                android:id="@+id/buttonModConfir"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
