@@ -95,7 +95,6 @@ public class EditFragment2 extends Fragment {
     }
 
     public void extraerDatosBBDD() {
-
         mDatabase.child("Usuarios").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -152,7 +151,7 @@ public class EditFragment2 extends Fragment {
                         }
                     });
         } else {
-            Toast.makeText(view.getContext(), "Es e mismo email", Toast.LENGTH_LONG).show();
+            Toast.makeText(view.getContext(), "El email es incorrecto.", Toast.LENGTH_LONG).show();
         }
     }
 }
