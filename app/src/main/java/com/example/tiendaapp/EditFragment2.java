@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +43,7 @@ public class EditFragment2 extends Fragment {
 
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
     private String email, emailConf, emailNuevo, emailPass;
+    private FirebaseUser user;
 
     View view;
 
@@ -133,7 +135,11 @@ public class EditFragment2 extends Fragment {
                                 map.put("emails", etEmailNuev.getText().toString());
                                 mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
                                 startActivity(new Intent(view.getContext(), Perfil.class));
-                                Toast.makeText(view.getContext(), "Se ha cambiado el email, por favor revise su correo electrónico para confirmar el nuevo email.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(view.getContext(), "Se ha modificado el email", Toast.LENGTH_LONG).show();
+                                user = mAuth.getCurrentUser();
+                                user.sendEmailVerification();
+                                Toast.makeText(view.getContext(), "Se ha enviado la verificación a su nuevo email", Toast.LENGTH_LONG).show();
+
                             }else{
                                 Toast.makeText(view.getContext(), "error", Toast.LENGTH_LONG).show();
 
