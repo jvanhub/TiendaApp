@@ -75,7 +75,7 @@ public class EditFragment2 extends Fragment {
                 } else if (!emailNuevo.equals(emailConf)){
                     Toast.makeText(view.getContext(), "Los emails no coinciden", Toast.LENGTH_SHORT).show();
                 } else{
-                    //modificarEmailBBDD();
+                    modificarEmailBBDD();
                 }
             }
         });
@@ -97,7 +97,6 @@ public class EditFragment2 extends Fragment {
                 ap2BBDD = snapshot.child("apellidos2").getValue().toString();
                 nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
                 emailBBDD = snapshot.child("emails").getValue().toString();
-
                 etEail.setText(emailBBDD);
             }
 
@@ -118,7 +117,7 @@ public class EditFragment2 extends Fragment {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Log.d(TAG, "User re-authenticated.");
+
                         }
                     });
 
