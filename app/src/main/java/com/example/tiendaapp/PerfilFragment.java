@@ -36,9 +36,6 @@ public class PerfilFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_perfil, container, false);
         mmAuth = FirebaseAuth.getInstance();
         mmDatabase = FirebaseDatabase.getInstance().getReference();
-/*
-        btConfir = view.findViewById(R.id.buttonModConfir);
-        btVolver = view.findViewById(R.id.buttonModVolver);*/
 
         btVolver = view.findViewById(R.id.buttonVolverPer);
         tvNombre = view.findViewById(R.id.textViewNom2);
