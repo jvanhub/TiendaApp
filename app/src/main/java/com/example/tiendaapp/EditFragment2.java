@@ -118,39 +118,41 @@ public class EditFragment2 extends Fragment {
     public void modificarEmailBBDD() {
         if (email.equals(emailBBDD)) {
             AuthCredential credential = EmailAuthProvider.getCredential(email, emailPass);
-
             // Prompt the user to re-provide their sign-in credentials
             mAuth.getCurrentUser().reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    mAuth.getCurrentUser().updateEmail(etEmailNuev.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Map<String, Object> map = new HashMap<>();
-                                map.put("nombres", nombreBBDD);
-                                map.put("apellidos", ap1BBDD);
-                                map.put("apellidos2", ap2BBDD);
-                                map.put("n_telefonos", nTelfBBDD);
-                                map.put("emails", etEmailNuev.getText().toString());
-                                mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
-                                startActivity(new Intent(view.getContext(), Perfil.class));
-                                Toast.makeText(view.getContext(), "Se ha modificado el email", Toast.LENGTH_LONG).show();
-                                user = mAuth.getCurrentUser();
-                                user.sendEmailVerification();
-                                Toast.makeText(view.getContext(), "Se ha enviado la verificación a su nuevo email", Toast.LENGTH_LONG).show();
+                    if (task.isSuccessful()){
+                        mAuth.getCurrentUser().updateEmail(etEmailNuev.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Map<String, Object> map = new HashMap<>();
+                                    map.put("nombres", nombreBBDD);
+                                    map.put("apellidos", ap1BBDD);
+                                    map.put("apellidos2", ap2BBDD);
+                                    map.put("n_telefonos", nTelfBBDD);
+                                    map.put("emails", etEmailNuev.getText().toString());
+                                    mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
 
-                            }else{
-                                Toast.makeText(view.getContext(), "error", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(view.getContext(), Perfil.class));
+                                    Toast.makeText(view.getContext(), "Se ha modificado el email", Toast.LENGTH_LONG).show();
 
+                                    user = mAuth.getCurrentUser();
+                                    user.sendEmailVerification();
+                                    Toast.makeText(view.getContext(), "Se ha enviado la verificación a su nuevo email", Toast.LENGTH_LONG).show();
+
+                                    mAuth.signOut();
+                                    startActivity(new Intent(view.getContext(), Login.class));
+                                }else{
+                                    Toast.makeText(view.getContext(), "error", Toast.LENGTH_LONG).show();
+
+                                }
                             }
-                        }
-                    });
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(view.getContext(), "Contraseña incorrecta.", Toast.LENGTH_LONG).show();
+                        });
+                    }else {
+                        Toast.makeText(view.getContext(), "Error con la contraseña", Toast.LENGTH_LONG).show();
+                    }
                 }
             });
         } else {
