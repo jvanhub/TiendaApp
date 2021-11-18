@@ -38,7 +38,6 @@
             <EditText
                 android:id="@+id/editTextModNombre"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:background="@drawable/txtvw"
                 android:ems="10"
@@ -57,7 +56,6 @@
             <EditText
                 android:id="@+id/editTextModApe1"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:background="@drawable/txtvw"
                 android:ems="10"
@@ -75,7 +73,6 @@
             <EditText
                 android:id="@+id/editTextModApe2"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:background="@drawable/txtvw"
                 android:ems="10"
@@ -93,7 +90,6 @@
             <EditText
                 android:id="@+id/editTextModPhone"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:background="@drawable/txtvw"
                 android:ems="10"
