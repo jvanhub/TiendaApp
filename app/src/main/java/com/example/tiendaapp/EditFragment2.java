@@ -108,32 +108,20 @@ public class EditFragment2 extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(view.getContext(), "Error al conectar en la BBDD. ", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     public void modificarEmailBBDD() {
-        if (emailBBDD.equals(email)) {
-            AuthCredential credential = EmailAuthProvider
-                    .getCredential(email, emailPass);
+        if (email.equals(emailBBDD)) {
+            AuthCredential credential = EmailAuthProvider.getCredential(email, emailPass);
 
             // Prompt the user to re-provide their sign-in credentials
             mAuth.getCurrentUser().reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(view.getContext(), "Contraseña incorrecta.", Toast.LENGTH_LONG).show();
-                }
-            });
-
-            mAuth.getCurrentUser().updateEmail(String.valueOf(etEmailNuev))
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-
+                    mAuth.getCurrentUser().updateEmail(etEmailNuev.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
@@ -142,14 +130,23 @@ public class EditFragment2 extends Fragment {
                                 map.put("apellidos", ap1BBDD);
                                 map.put("apellidos2", ap2BBDD);
                                 map.put("n_telefonos", nTelfBBDD);
-                                map.put("emails", email);
+                                map.put("emails", etEmailNuev.getText().toString());
                                 mDatabase.child("Usuarios").child(mAuth.getUid()).setValue(map);
                                 startActivity(new Intent(view.getContext(), Perfil.class));
                                 Toast.makeText(view.getContext(), "Se ha cambiado el email, por favor revise su correo electrónico para confirmar el nuevo email.", Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(view.getContext(), "error", Toast.LENGTH_LONG).show();
 
                             }
                         }
                     });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(view.getContext(), "Contraseña incorrecta.", Toast.LENGTH_LONG).show();
+                }
+            });
         } else {
             Toast.makeText(view.getContext(), "El email es incorrecto.", Toast.LENGTH_LONG).show();
         }
