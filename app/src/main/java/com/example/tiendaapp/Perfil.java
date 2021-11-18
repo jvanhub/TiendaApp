@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 
 public class Perfil extends AppCompatActivity {
 
-    private Button btPerfil, btEditar;
+    private Button btPerfil, btEditar, btEditar1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,13 @@ public class Perfil extends AppCompatActivity {
         });
 
         btEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new EditFragment());
+            }
+        });
+
+        btEditar1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new EditFragment());
