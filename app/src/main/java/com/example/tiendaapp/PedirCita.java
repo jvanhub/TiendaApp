@@ -36,9 +36,7 @@ public class PedirCita extends AppCompatActivity {
     private RadioButton hora9, hora10, hora11, hora12, hora15, hora16, hora17, hora18, hora19;
     private RadioGroup rg;
     private Button confirmar,volver,fecha;
-    private String fechaCompletaTv,horaCita,fechaBBDD,horaBBDD,servicio,textHint= "";
-
-    private String nombreBBDD,nTelfBBDD, emailBBDD;
+    private String fechaCompletaTv,horaCita,fechaBBDD,horaBBDD,servicio,textHint,nombreBBDD,nTelfBBDD, emailBBDD= "";
 
     private int contador;
     ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
