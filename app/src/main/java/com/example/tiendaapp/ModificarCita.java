@@ -34,19 +34,9 @@ public class ModificarCita extends AppCompatActivity {
 
     private RadioButton hora9, hora10, hora11, hora12, hora15, hora16, hora17, hora18, hora19;
     private RadioGroup rg;
-    private Button confirmar;
-    private Button fecha;
-    private String fechaCompletaTv = "";
-    private String horaCita = "";
-    private String fechaBBDD = "";
-    private String horaBBDD = "";
-    private String id;
-    private String servicioBBDD="";
-    private String idRefTablaButton;
-    private String nombreBBDD,nTelfBBDD, emailBBDD;
+    private Button confirmar,fecha,volver;
+    private String fechaCompletaTv,horaCita,fechaBBDD,horaBBDD,id,servicioBBDD,idRefTablaButton,nombreBBDD,nTelfBBDD, emailBBDD,textHint = "";
     int radioId;
-    private Button volver;
-    private String textHint="";
 
     RadioButton selectedbutton;
     Bundle bundle;
