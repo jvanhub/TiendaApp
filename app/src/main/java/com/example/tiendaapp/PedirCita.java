@@ -35,17 +35,9 @@ public class PedirCita extends AppCompatActivity {
 
     private RadioButton hora9, hora10, hora11, hora12, hora15, hora16, hora17, hora18, hora19;
     private RadioGroup rg;
-    private Button confirmar;
-    private Button volver;
-    private Button fecha;
-    private String fechaCompletaTv = "";
-    private String horaCita = "";
-    private String fechaBBDD = "";
-    private String horaBBDD = "";
-    private String servicio="";
+    private Button confirmar,volver,fecha;
+    private String fechaCompletaTv,horaCita,fechaBBDD,horaBBDD,servicio,textHint= "";
     private int contador;
-    private String textHint="";
-
     ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;

@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Bienvenida extends AppCompatActivity {
 
-    //
+
     private FirebaseAuth mAuth;
 
     @Override

@@ -6,10 +6,19 @@
         <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/drawable/bt.xml" value="0.14635416666666667" />
         <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/drawable/dg_color.xml" value="0.2703125" />
         <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_bienvenido.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_citas.xml" value="0.1" />
         <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_formulario.xml" value="0.13020833333333334" />
         <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/fragment_edit.xml" value="0.4" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_modificar_cita.xml" value="0.1265625" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_pedir_cita.xml" value="0.13020833333333334" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_perfil.xml" value="0.25416666666666665" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_servicios.xml" value="0.13020833333333334" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.14906832298136646" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/fragment_edit.xml" value="0.264" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/fragment_edit2.xml" value="0.12291666666666666" />
         <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/fragment_perfil.xml" value="0.4" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/list_element.xml" value="0.1265625" />
+        <entry key="..\:/Mis Documentos HD/Cursos _Programacion/DAMOnline/2021/Proyecto/APP/TiendaApp/app/src/main/res/layout/list_element_actual.xml" value="0.1265625" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/bordes_redondos.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/bordes_redondos2.xml" value="0.2890625" />
         <entry key="..\:/Users/i.mantecon/Documents/TFG/app/src/main/res/drawable/bordes_redondos2_1.xml" value="0.2890625" />
