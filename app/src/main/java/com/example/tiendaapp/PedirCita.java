@@ -37,6 +37,9 @@ public class PedirCita extends AppCompatActivity {
     private RadioGroup rg;
     private Button confirmar,volver,fecha;
     private String fechaCompletaTv,horaCita,fechaBBDD,horaBBDD,servicio,textHint= "";
+
+    private String nombreBBDD,nTelfBBDD, emailBBDD;
+
     private int contador;
     ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
@@ -105,16 +108,33 @@ public class PedirCita extends AppCompatActivity {
                     //startActivity(new Intent(PedirCita.this, Bienvenida.class));
                 }else{
                     contador++;
-                    horaCita = selectedbutton.getText().toString();
-                    String id = mAuth.getCurrentUser().getUid();
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("servicio", servicio);
-                    map.put("fecha", fechaCompletaTv);
-                    map.put("hora", horaCita);
-                    map.put("uId", id);
-                    mDatabase.child("Reservas").push().setValue(map);
-                    Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(PedirCita.this, Bienvenida.class));
+                    mDatabase.child("Usuarios").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            nombreBBDD = snapshot.child("nombres").getValue().toString();
+                            nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
+                            emailBBDD = snapshot.child("emails").getValue().toString();
+                            horaCita = selectedbutton.getText().toString();
+                            String id = mAuth.getCurrentUser().getUid();
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("servicio", servicio);
+                            map.put("fecha", fechaCompletaTv);
+                            map.put("hora", horaCita);
+                            map.put("uId", id);
+                            map.put("nombre", nombreBBDD);
+                            map.put("telefono", nTelfBBDD);
+                            map.put("email", emailBBDD);
+                            mDatabase.child("Reservas").push().setValue(map);
+                            Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(PedirCita.this, Bienvenida.class));
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
                 }
             }
         });
