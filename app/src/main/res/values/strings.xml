@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">NoaNails</string>
-    <string name="pass">Introduce contrasña</string>
+    <string name="pass">Introduzca contrasña</string>
     <string name="entrar">Entra</string>
-    <string name="registrar">Registrate</string>
+    <string name="registrar">Regístrate</string>
     <string name="nombre">Introduzca nombre</string>
     <string name="ape1">Introduzca primer apellido</string>
     <string name="ape2">Introduzca segundo apellido</string>
