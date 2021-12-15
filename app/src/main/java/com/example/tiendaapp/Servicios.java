@@ -7,13 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
+/**
+ * Esta clase es la encargada de dar funcionalidad al activity_servicios.
+ */
 public class Servicios extends AppCompatActivity {
 
     private CardView cv1,cv2,cv3,cv4,cv5;
     private TextView tv1,tv2,tv3,tv4,tv5;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,10 @@ public class Servicios extends AppCompatActivity {
 
         Intent intent = new Intent(this,PedirCita.class);
 
+        /**
+         * Evento que accede al método para que cuando pulsamos sobre el servicio
+         * envíe la información del servicio seleccionado y te cargue la pantalla de selección de fechas.
+         */
         cv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +47,10 @@ public class Servicios extends AppCompatActivity {
             }
         });
 
+        /**
+         * Evento que accede al método para que cuando pulsamos sobre el servicio
+         * envíe la información del servicio seleccionado y te cargue la pantalla de selección de fechas.
+         */
         cv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +59,10 @@ public class Servicios extends AppCompatActivity {
             }
         });
 
+        /**
+         * Evento que accede al método para que cuando pulsamos sobre el servicio
+         * envíe la información del servicio seleccionado y te cargue la pantalla de selección de fechas.
+         */
         cv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +71,10 @@ public class Servicios extends AppCompatActivity {
             }
         });
 
+        /**
+         * Evento que accede al método para que cuando pulsamos sobre el servicio
+         * envíe la información del servicio seleccionado y te cargue la pantalla de selección de fechas.
+         */
         cv4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +83,10 @@ public class Servicios extends AppCompatActivity {
             }
         });
 
+        /**
+         * Evento que accede al método para que cuando pulsamos sobre el servicio
+         * envíe la información del servicio seleccionado y te cargue la pantalla de selección de fechas.
+         */
         cv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

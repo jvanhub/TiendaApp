@@ -22,23 +22,18 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
+
+/**
+ * Esta clase es la encargada de dar funcionalidad al activity_citas.
+ */
 public class Citas extends AppCompatActivity {
-    private String servicioBBDD = "";
-    private String fechaBBDD = "";
-    private String horaBBDD = "";
-    private String uId = "";
-    private String id;
-    private String idCita;
+    private String servicioBBDD, fechaBBDD, horaBBDD, uId, id, idCita = "";
     ListAdapter2 listAdapter;
     FirebaseUser mAuth;
     DatabaseReference mDatabase;
     List<ListElemnt> elements;
-    private String servicio="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +48,21 @@ public class Citas extends AppCompatActivity {
         Button volver = (Button) findViewById(R.id.buttonVolver2);
         elements = new ArrayList<>();
 
+        /**
+         * Evento encargado de acceder al método de "recogerCitas" que se encarga de consultar la
+         * BBDD de todas las citas y mostrarlas.
+         */
         verCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               recogerCitas();
+                recogerCitas();
             }
         });
 
+        /**
+         * Evento encargado de acceder al método de "recogerCitasActualizadas" que se encarga de
+         * consultar la BBDD de las citas creadas desde el día actual en adelante y mostrarlas.
+         */
         verCitaActual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +70,9 @@ public class Citas extends AppCompatActivity {
             }
         });
 
+        /**
+         * Evento que accede a la clase y activity de "Bienvenida" al pulsar el botón "Vovler".
+         */
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,20 +81,20 @@ public class Citas extends AppCompatActivity {
         });
     }
 
-    //Se encarga de recger, comparar e insertar los datos junto con los elementos.
+    /**
+     * Método encargado de recoger, comparar e insertar los datos junto con los elementos.
+     */
     public void recogerCitas() {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 elements.clear();
-
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     try {
                         servicioBBDD = snapshot.child("servicio").getValue().toString();
                         fechaBBDD = snapshot.child("fecha").getValue().toString();
                         horaBBDD = snapshot.child("hora").getValue().toString();
                         uId = snapshot.child("uId").getValue().toString();
-
                         if (uId.equals(id)) {
                             insertElements();
                         }
@@ -97,7 +103,6 @@ public class Citas extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_SHORT).show();
@@ -105,7 +110,9 @@ public class Citas extends AppCompatActivity {
         });
     }
 
-    //Método encargado de crear e introducir los datos en cada elemento.
+    /**
+     * Método encargado de crear e introducir los datos en cada elemento.
+     */
     public void insertElements() {
         elements.add(new ListElemnt(servicioBBDD, fechaBBDD, horaBBDD, null));
         ListAdapter listAdapter = new ListAdapter(elements, this);
@@ -115,7 +122,10 @@ public class Citas extends AppCompatActivity {
         recyclerView.setAdapter(listAdapter);
     }
 
-    //Metodo para recoger todas las fechas desde el día de hoy incuido, las fechas pasadas no.
+    /**
+     * Método encargado de recoger y filtrar todas las citas desde el día de hoy incluido en adelante,
+     * las fechas pasadas no.
+     */
     public void recogerCitasActualizadas() {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -125,7 +135,6 @@ public class Citas extends AppCompatActivity {
                 int mes = (calendario.get(Calendar.MONTH) + 1);
                 int anyo = calendario.get(Calendar.YEAR);
                 elements.clear();
-
                 try {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
@@ -136,16 +145,15 @@ public class Citas extends AppCompatActivity {
                         String extractFecha[] = fechaBBDD.split("/");
                         idCita = snapshot.getKey();
                         if (uId.equals(id)) {
-                            if(((Integer.parseInt(extractFecha[2]) - anyo) >= 0) && ((Integer.parseInt(extractFecha[1]) - mes) >= 0) && ((Integer.parseInt(extractFecha[0]) - dia) >= 0)){
+                            if (((Integer.parseInt(extractFecha[2]) - anyo) >= 0) && ((Integer.parseInt(extractFecha[1]) - mes) >= 0) && ((Integer.parseInt(extractFecha[0]) - dia) >= 0)) {
                                 insertElementsActual();
                             }
                         }
                     }
-                }catch (NullPointerException n){
+                } catch (NullPointerException n) {
                     Toast.makeText(Citas.this, "No hay citas pendientes", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(Citas.this, "Error BBDD", Toast.LENGTH_LONG).show();
@@ -153,14 +161,15 @@ public class Citas extends AppCompatActivity {
         });
     }
 
-    //Método encargado de crear e introducir los datos en cada elemento.
+    /**
+     * Método encargado de crear e introducir los datos en cada elemento.
+     */
     public void insertElementsActual() {
-        elements.add(new ListElemnt(servicioBBDD,fechaBBDD, horaBBDD, idCita));
+        elements.add(new ListElemnt(servicioBBDD, fechaBBDD, horaBBDD, idCita));
         listAdapter = new ListAdapter2(elements, this);
         RecyclerView recyclerView = findViewById(R.id.listRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
     }
-
 }

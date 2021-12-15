@@ -11,21 +11,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-//Esta clase relaciona la parte grafica con los datos (Fecha y Hora) que vamos ha tratar.
+/**
+ * Esta clase relaciona la parte gráfica con los datos (Fecha y Hora) que trataremos.
+ */
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     private List<ListElemnt> mData;//Esta lista tiene todos los datos de ListElement.
     private final LayoutInflater mInflater;//Describe de que archivo proviene.
     public final Context context;//Define de que clase estamos llamando este adaptador.
 
-    //Constructor.
+    /**
+     * Método constructor.
+     */
     public ListAdapter(List<ListElemnt> itemList, Context context) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.mData = itemList;
     }
 
-    //A continuación damos la referencia de como se va a ver cada "tarjeta"
+    /**
+     * Método al que damos la referencia de como se va a ver cada "tarjeta"
+     */
     @NonNull
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,19 +39,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
-    //
     @Override
     public void onBindViewHolder(@NonNull ListAdapter.ViewHolder holder, int position) {
         holder.bindData(mData.get(position));
     }
 
-    //Método que devuelve el tamaño de elementos que hay en la lista.
+    /**
+     * Método que devuelve el tamaño de elementos que hay en la lista.
+     */
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
-    //Este metodo sirve para redefinir los elementos de la lista.
+    /**
+     * Método que se encarga de redefinir los elementos de la lista.
+     */
     public void setItems(List<ListElemnt> items) {
         mData = items;
     }

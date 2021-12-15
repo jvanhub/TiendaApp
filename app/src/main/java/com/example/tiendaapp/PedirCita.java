@@ -1,21 +1,18 @@
 package com.example.tiendaapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,13 +28,15 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Esta clase es la encargada de dar funcionalidad al activity_pedir_cita.
+ */
 public class PedirCita extends AppCompatActivity {
 
     private RadioButton hora9, hora10, hora11, hora12, hora15, hora16, hora17, hora18, hora19;
     private RadioGroup rg;
-    private Button confirmar,volver,fecha;
-    private String fechaCompletaTv,horaCita,fechaBBDD,horaBBDD,servicio,textHint,nombreBBDD,nTelfBBDD, emailBBDD= "";
-
+    private Button confirmar, volver, fecha;
+    private String fechaCompletaTv, horaCita, fechaBBDD, horaBBDD, servicio, textHint, nombreBBDD, nTelfBBDD, emailBBDD = "";
     private int contador;
     ArrayList<RadioButton> arrayRadioButtons = new ArrayList<>();
     FirebaseAuth mAuth;
@@ -50,10 +49,8 @@ public class PedirCita extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         fecha = (Button) findViewById(R.id.button_fecha);
-
         confirmar = (Button) findViewById(R.id.button_confirmar);
         volver = (Button) findViewById(R.id.buttonVolver1);
         hora9 = (RadioButton) findViewById(R.id.radiobutton9_00);
@@ -77,8 +74,12 @@ public class PedirCita extends AppCompatActivity {
         arrayRadioButtons.add(hora18);
         arrayRadioButtons.add(hora19);
 
+        //Llamada al método "calendarDate()" para seleccionar fecha.
         calendarDate();
 
+        /**
+         * Evento que accede al método "calendarDate()" para seleccionar fecha.
+         */
         fecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,13 +87,14 @@ public class PedirCita extends AppCompatActivity {
             }
         });
 
-
-        //Método para que cuando pulsamos sobre el button realice una acción.
+        /**
+         * Evento que accede al método para que cuando pulsamos sobre el botón "Confirmar" haga las
+         * comprobaciones e inserte los datos en la BBDD.
+         */
         confirmar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
                 servicio = getIntent().getStringExtra("servicio");
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
@@ -101,10 +103,10 @@ public class PedirCita extends AppCompatActivity {
                     Toast.makeText(PedirCita.this, "SELECCIONE FECHA", Toast.LENGTH_SHORT).show();
                 } else if (rg.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(PedirCita.this, "SELECCIONE HORA", Toast.LENGTH_SHORT).show();
-                }else if(contador>=2){
+                } else if (contador >= 2) {
                     Toast.makeText(PedirCita.this, "Has alcanzado el límite máximo de citas", Toast.LENGTH_SHORT).show();
                     //startActivity(new Intent(PedirCita.this, Bienvenida.class));
-                }else{
+                } else {
                     contador++;
                     mDatabase.child("Usuarios").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -132,12 +134,13 @@ public class PedirCita extends AppCompatActivity {
 
                         }
                     });
-
                 }
             }
         });
 
-        //Método para que cuando pulsamos sobre el button realice una acción.
+        /**
+         * Evento que accede a la clase y activity de "Bienvenida" al pulsar el botón "Vovler".
+         */
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,8 +149,10 @@ public class PedirCita extends AppCompatActivity {
         });
     }
 
-    //Método para que cuando pulsamos muestre calendario.
-    public void calendarDate(){
+    /**
+     * Método para que cuando pulsamos muestre el calendario.
+     */
+    public void calendarDate() {
         Calendar calendario = Calendar.getInstance();
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
         int mes = calendario.get(Calendar.MONTH);
@@ -158,20 +163,22 @@ public class PedirCita extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 fechaCompletaTv = dayOfMonth + "/" + (month + 1) + "/" + year;
-                textHint=fecha.getText().toString() + " ";
-                fecha.setText(textHint+fechaCompletaTv);
+                textHint = fecha.getText().toString() + " ";
+                fecha.setText(textHint + fechaCompletaTv);
                 extraerValores();
             }
         }
                 , anyo, mes, dia);
         datePikerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAB5B5")));
 
-        //Fecha mínima, para evitar citas de dias anteriores al actual.
+        //Fecha mínima, para evitar citas de días anteriores al actual.
         datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
         datePikerDialog.show();
     }
 
-    //Método que realiza la consulta en la base de datos para compararlos datos.
+    /**
+     * Método que realiza la consulta en la base de datos para recoger los datos.
+     */
     public void extraerValores() {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -204,7 +211,9 @@ public class PedirCita extends AppCompatActivity {
         });
     }
 
-    //Método que recorre el array y compara los datos en la base de datos para desactivar radioButtons.
+    /**
+     * Método que recorre el array y compara los datos en la base de datos para desactivar radioButtons.
+     */
     public void comparador() {
         String textoRB;
         RadioButton selectedbutton;
@@ -219,9 +228,10 @@ public class PedirCita extends AppCompatActivity {
         }
     }
 
-    //Método que activa de nuevo los radioButtons cada vez que cambias de fecha.
+    /**
+     * Método que activa de nuevo los radioButtons cada vez que cambias de fecha.
+     */
     public void retornarEstado() {
-        String textoRB;
         RadioButton selectedbutton;
         for (int i = 0; i < arrayRadioButtons.size(); i++) {
             selectedbutton = findViewById(arrayRadioButtons.get(i).getId());

@@ -9,8 +9,10 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Esta clase es la encargada de dar funcionalidad al activity_bienvenida.
+ */
 public class Bienvenida extends AppCompatActivity {
-
 
     private FirebaseAuth mAuth;
 
@@ -25,7 +27,9 @@ public class Bienvenida extends AppCompatActivity {
         Button cerrar_sesion = (Button) findViewById(R.id.buttonCerrarSession);
         Button perfil = (Button) findViewById(R.id.button_perfil);
 
-        /*Evento para pasar al activity  */
+        /**
+         * Evento para acceder a la clase y activity de "Perfil" al pulsar el botón "Perfil".
+         */
         perfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,28 +37,21 @@ public class Bienvenida extends AppCompatActivity {
             }
         });
 
-        /*Para dejarlo mejor lo convertimos:
-        public void onClick(View v) {
-        startActivity(new Intent(Bienvenida.this,PedirCita.class));
-        } a lambda.*/
+        /**
+         * Evento para acceder a la clase y activity de "Pedir Cita" al pulsar el botón "Pedir cita".
+         */
         pedir_cita.setOnClickListener(v -> startActivity(new Intent(Bienvenida.this, Servicios.class)));
 
-        /*  Para dejarlo mejor lo convertimos a lambda:
-            ver_cita.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Bienvenida.this, Citas.class));
-            }});*/
+        /**
+         * Evento para acceder a la clase y activity de "Ver cita" al pulsar el botón "Ver citas".
+         */
         ver_cita.setOnClickListener(v -> startActivity(new Intent(Bienvenida.this, Citas.class)));
 
-        /*Para dejarlo mejor lo convertimos a lambda:
-            cerrar_sesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                startActivity(new Intent(Bienvenida.this, MainActivity.class));
-                finish();
-            }});*/
+        /**
+         * Evento para acceder a la clase y activity de "Login" al pulsar el botón "Cerrar sesión" que además cierra la sesión
+         * en el servidor mediante el método signOut.
+         */
+
         cerrar_sesion.setOnClickListener(v -> {
             mAuth.signOut();
             startActivity(new Intent(Bienvenida.this, Login.class));

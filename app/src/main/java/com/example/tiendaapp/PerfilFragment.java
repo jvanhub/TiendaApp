@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,19 +19,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Esta clase es la encargada de cargar los datos en el fragment_perfil.
+ */
 public class PerfilFragment extends Fragment {
 
     private Button btVolver;
     private TextView tvNombre, tvAp, tvTelf, tvEail;
     private String nombreBBDD, ap1BBDD, ap2BBDD, nTelfBBDD, emailBBDD;
-    private String nombre, ap1, ap2, nTelf, email,emailConf;
     FirebaseAuth mmAuth;
     DatabaseReference mmDatabase;
     View view;
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_perfil, container, false);
         mmAuth = FirebaseAuth.getInstance();
         mmDatabase = FirebaseDatabase.getInstance().getReference();
@@ -43,6 +44,9 @@ public class PerfilFragment extends Fragment {
         tvTelf = view.findViewById(R.id.textViewTelf2);
         tvEail = view.findViewById(R.id.textViewEmail2);
 
+        /**
+         * Recoge los datos de la BBDD para mostrarlos.
+         */
         mmDatabase.child("Usuarios").child(mmAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -52,17 +56,19 @@ public class PerfilFragment extends Fragment {
                 nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
                 emailBBDD = snapshot.child("emails").getValue().toString();
                 tvNombre.setText(nombreBBDD);
-                tvAp.setText(ap1BBDD +" "+ap2BBDD);
+                tvAp.setText(ap1BBDD + " " + ap2BBDD);
                 tvTelf.setText(nTelfBBDD);
                 tvEail.setText(emailBBDD);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
+        /**
+         * Evento que accede a la clase y activity de "Bienvenida" al pulsar el botón "Vovler".
+         */
         btVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -19,19 +19,12 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Esta clase es la encargada de dar funcionalidad al activity_formulario.
+ */
 public class Formulario extends AppCompatActivity {
-
     private EditText et_nombre, et_ape1, et_ape2, et_n_telf, et_email, et_contrasenya1, et_contrasenya2;
-
-    private String nombre = "";
-    private String apellido1 = "";
-    private String apellido2 = "";
-    private String n_tefl = "";
-    private String email = "";
-    private String contrasenya = "";
-    private String contrasenya2 = "";
-
-    //Creación objeto Firebase:
+    private String nombre, apellido1, apellido2, n_tefl, email, contrasenya, contrasenya2 = "";
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private FirebaseUser user;
@@ -40,14 +33,10 @@ public class Formulario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
-
         mAuth = FirebaseAuth.getInstance();
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
         et_nombre = (EditText) findViewById(R.id.editTextNombre);
         et_ape1 = (EditText) findViewById(R.id.editTextApe1);
         et_ape2 = (EditText) findViewById(R.id.editTextApe2);
@@ -57,9 +46,10 @@ public class Formulario extends AppCompatActivity {
         et_contrasenya2 = (EditText) findViewById(R.id.editTextPass2);
         Button boton = (Button) findViewById(R.id.buttonRegistro2);
 
-        /*Lo paso a lambda:
-        "boton.setOnClickListener(new View.OnClickListener()"
-        */
+        /**
+         * Evento que accede a la clase y activity de "Login" al pulsar en el botón "Confirmar",
+         * realizando las diferentes condiciones y accediendo al método "registrar()".
+         */
         boton.setOnClickListener(v -> {
             nombre = et_nombre.getText().toString();
             apellido1 = et_ape1.getText().toString();
@@ -77,8 +67,8 @@ public class Formulario extends AppCompatActivity {
                     n_tefl.isEmpty() || email.isEmpty() || contrasenya.isEmpty() ||
                     contrasenya2.isEmpty()) {
                 Toast.makeText(Formulario.this, "Complete todos los campos", Toast.LENGTH_LONG).show();
-            } else if (n_tefl.length()<9 || n_tefl.length()>9) {
-            Toast.makeText(Formulario.this, "Número de telefono incorrecto", Toast.LENGTH_SHORT).show();
+            } else if (n_tefl.length() < 9 || n_tefl.length() > 9) {
+                Toast.makeText(Formulario.this, "Número de telefono incorrecto", Toast.LENGTH_SHORT).show();
             } else if (mather.find() == false) {
                 Toast.makeText(Formulario.this, "El email ingresado no es valido.", Toast.LENGTH_SHORT).show();
             } else if (contrasenya.length() < 6) {
@@ -91,13 +81,12 @@ public class Formulario extends AppCompatActivity {
         });
     }
 
+    /**
+     * Método encargado de recoger, los datos introducidos por el usuario e insertarlos en la BBDD.
+     */
     public void registrar() {
-        /* Lo paso a lambda:
-        mAuth.createUserWithEmailAndPassword(email,contrasenya).addOnCompleteListener(new OnCompleteListener<AuthResult>()
-        */
         mAuth.createUserWithEmailAndPassword(email, contrasenya).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-
                 Map<String, Object> map = new HashMap<>();
                 map.put("nombres", nombre);
                 map.put("apellidos", apellido1);

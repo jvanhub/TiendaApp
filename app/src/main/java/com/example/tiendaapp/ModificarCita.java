@@ -4,18 +4,15 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,12 +27,15 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Esta clase es la encargada de dar funcionalidad al activity_modificar_cita.
+ */
 public class ModificarCita extends AppCompatActivity {
 
     private RadioButton hora9, hora10, hora11, hora12, hora15, hora16, hora17, hora18, hora19;
     private RadioGroup rg;
-    private Button confirmar,fecha,volver;
-    private String fechaCompletaTv,horaCita,fechaBBDD,horaBBDD,id,servicioBBDD,idRefTablaButton,nombreBBDD,nTelfBBDD, emailBBDD,textHint = "";
+    private Button confirmar, fecha, volver;
+    private String fechaCompletaTv, horaCita, fechaBBDD, horaBBDD, id, servicioBBDD, idRefTablaButton, nombreBBDD, nTelfBBDD, emailBBDD, textHint = "";
     int radioId;
 
     RadioButton selectedbutton;
@@ -49,7 +49,7 @@ public class ModificarCita extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modificar_cita);
 
-        //Recibe datos (id del boton) desde ListaAdapter2.java -> bindData.
+        //Recibe datos (id del botón) desde ListaAdapter2.java -> bindData.
         bundle = getIntent().getExtras();
         idRefTablaButton = bundle.getString("boton");
 
@@ -84,6 +84,9 @@ public class ModificarCita extends AppCompatActivity {
 
         calendarDate();
 
+        /**
+         * Evento que accede al método "calendarDate()" para seleccionar fecha.
+         */
         fecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +94,10 @@ public class ModificarCita extends AppCompatActivity {
             }
         });
 
-        //Método para que cuando pulsamos sobre el button realice una acción.
+        /**
+         * Evento que accede al método para que cuando pulsamos sobre el botón "Confirmar" haga las
+         * comprobaciones y acceda al método "modificador()"
+         */
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +114,9 @@ public class ModificarCita extends AppCompatActivity {
             }
         });
 
+        /**
+         * Evento que accede a la clase y activity de "Bienvenida" al pulsar el botón "Vovler".
+         */
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,8 +125,10 @@ public class ModificarCita extends AppCompatActivity {
         });
     }
 
-    //Método para que cuando pulsamos muestre calendario.
-    public void calendarDate(){
+    /**
+     * Método para que cuando pulsamos muestre el calendario.
+     */
+    public void calendarDate() {
         Calendar calendario = Calendar.getInstance();
         int dia = calendario.get(Calendar.DAY_OF_MONTH);
         int mes = calendario.get(Calendar.MONTH);
@@ -128,20 +139,22 @@ public class ModificarCita extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 fechaCompletaTv = dayOfMonth + "/" + (month + 1) + "/" + year;
-                textHint=fecha.getText().toString() + " ";
-                fecha.setText(textHint+fechaCompletaTv);
+                textHint = fecha.getText().toString() + " ";
+                fecha.setText(textHint + fechaCompletaTv);
                 extraerValores();
             }
         }
                 , anyo, mes, dia);
         datePikerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FAB5B5")));
 
-        //Fecha mínima, para evitar citas de dias anteriores al actual.
+        //Fecha mínima, para evitar citas de días anteriores al actual.
         datePikerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
         datePikerDialog.show();
     }
 
-    //Método que realiza la consulta en la base de datos para compararlos datos.
+    /**
+     * Método que realiza la consulta en la base de datos para recoger los datos.
+     */
     public void extraerValores() {
         mDatabase.child("Reservas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -171,7 +184,9 @@ public class ModificarCita extends AppCompatActivity {
         });
     }
 
-    //Método que recorre el array y compara los datos en la base de datos para desactivar radioButtons.
+    /**
+     * Método que recorre el array y compara los datos en la base de datos para desactivar radioButtons.
+     */
     public void comparador() {
         String textoRB;
         RadioButton selectedbutton;
@@ -186,9 +201,10 @@ public class ModificarCita extends AppCompatActivity {
         }
     }
 
-    //Método que activa de nuevo los radioButtons cada vez que cambias de fecha.
+    /**
+     * Método que activa de nuevo los radioButtons cada vez que cambias de fecha.
+     */
     public void retornarEstado() {
-        String textoRB;
         RadioButton selectedbutton;
         for (int i = 0; i < arrayRadioButtons.size(); i++) {
             selectedbutton = findViewById(arrayRadioButtons.get(i).getId());
@@ -197,45 +213,47 @@ public class ModificarCita extends AppCompatActivity {
         rg.clearCheck();
     }
 
-    //Método que modifica los campos en la base de datos.
+    /**
+     * Método que modifica los campos en la base de datos.
+     */
     public void modificador() {
-            mDatabase.child("Reservas").child(idRefTablaButton).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    servicioBBDD = snapshot.child("servicio").getValue().toString();
-                    nombreBBDD = snapshot.child("nombre").getValue().toString();
-                    nTelfBBDD = snapshot.child("telefono").getValue().toString();
-                    emailBBDD = snapshot.child("email").getValue().toString();
+        mDatabase.child("Reservas").child(idRefTablaButton).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                servicioBBDD = snapshot.child("servicio").getValue().toString();
+                nombreBBDD = snapshot.child("nombre").getValue().toString();
+                nTelfBBDD = snapshot.child("telefono").getValue().toString();
+                emailBBDD = snapshot.child("email").getValue().toString();
 
-                    Calendar calendario = Calendar.getInstance();
-                    int dia = calendario.get(Calendar.DAY_OF_MONTH);
-                    int mes = (calendario.get(Calendar.MONTH) + 1);
-                    int anyo = calendario.get(Calendar.YEAR);
-                    id = mAuth.getUid();
-                    String extractFecha[] = fechaBBDD.split("/");
-                    if (Integer.parseInt(extractFecha[2]) - anyo < 0) {
-                    } else if (Integer.parseInt(extractFecha[1]) - mes < 0) {
-                    } else if (Integer.parseInt(extractFecha[0]) - dia < 0) {
-                    } else {
-                        horaCita = selectedbutton.getText().toString();
-                        Map<String, Object> map = new HashMap<>();
-                        map.put("servicio", servicioBBDD);
-                        map.put("fecha", fechaCompletaTv);
-                        map.put("hora", horaCita);
-                        map.put("uId", id);
-                        map.put("nombre", nombreBBDD);
-                        map.put("telefono", nTelfBBDD);
-                        map.put("email", emailBBDD);
-                        mDatabase.child("Reservas").child(idRefTablaButton).setValue(map);
-                        startActivity(new Intent(ModificarCita.this, Citas.class));
-                    }
+                Calendar calendario = Calendar.getInstance();
+                int dia = calendario.get(Calendar.DAY_OF_MONTH);
+                int mes = (calendario.get(Calendar.MONTH) + 1);
+                int anyo = calendario.get(Calendar.YEAR);
+                id = mAuth.getUid();
+                String extractFecha[] = fechaBBDD.split("/");
+                if (Integer.parseInt(extractFecha[2]) - anyo < 0) {
+                } else if (Integer.parseInt(extractFecha[1]) - mes < 0) {
+                } else if (Integer.parseInt(extractFecha[0]) - dia < 0) {
+                } else {
+                    horaCita = selectedbutton.getText().toString();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("servicio", servicioBBDD);
+                    map.put("fecha", fechaCompletaTv);
+                    map.put("hora", horaCita);
+                    map.put("uId", id);
+                    map.put("nombre", nombreBBDD);
+                    map.put("telefono", nTelfBBDD);
+                    map.put("email", emailBBDD);
+                    mDatabase.child("Reservas").child(idRefTablaButton).setValue(map);
+                    startActivity(new Intent(ModificarCita.this, Citas.class));
                 }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(ModificarCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
-                }
-            });
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ModificarCita.this, "Error BBDD", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
 

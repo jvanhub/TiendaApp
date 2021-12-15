@@ -1,7 +1,5 @@
 package com.example.tiendaapp;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -19,14 +17,18 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-//Esta clase relaciona la parte grafica con los datos (Fecha y Hora) que vamos ha tratar.
+/**
+ * Esta clase relaciona la parte gráfica con los datos (Fecha y Hora) que trataremos.
+ */
 public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> {
 
     private List<ListElemnt>mData;//Esta lista tiene todos los datos de ListElement.
     private LayoutInflater mInflater;//Describe de que archivo proviene.
     public Context context;//Define de que clase estamos llamando este adaptador.
 
-    //Constructor.
+    /**
+     * Método constructor.
+     */
     public ListAdapter2(List<ListElemnt> itemList, Context context){
         this.mInflater = LayoutInflater.from(context);
         this.context=context;
@@ -35,7 +37,9 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
     public ListAdapter2(){
     }
 
-    //A continuación damos la referencia de como se va a ver cada "tarjeta"
+    /**
+     * Método al que damos la referencia de como se va a ver cada "tarjeta"
+     */
     @NonNull
     @Override
     public ListAdapter2.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,19 +47,23 @@ public class ListAdapter2 extends RecyclerView.Adapter<ListAdapter2.ViewHolder> 
         return new ViewHolder(view);
     }
 
-    //
+
     @Override
     public void onBindViewHolder(@NonNull ListAdapter2.ViewHolder holder, int position) {
         holder.bindData(mData.get(position));
     }
 
-    //Método que devuelve el tamaño de elementos que hay en la lista.
+    /**
+     * Método que devuelve el tamaño de elementos que hay en la lista.
+     */
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
-    //Este metodo sirve para redefinir los elementos de la lista.
+    /**
+     * Método que se encarga de redefinir los elementos de la lista.
+     */
     public void setItems(List<ListElemnt> items){
         mData=items;
     }
