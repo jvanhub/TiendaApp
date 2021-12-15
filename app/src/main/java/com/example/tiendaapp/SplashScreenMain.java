@@ -50,6 +50,6 @@ public class SplashScreenMain extends AppCompatActivity {
 
         //Se encarga de mantener X tiempo el activity abierto.
         Timer tiempo = new Timer();
-        tiempo.schedule(tt, 5000);
+        tiempo.schedule(tt, 2500);
     }
 }
