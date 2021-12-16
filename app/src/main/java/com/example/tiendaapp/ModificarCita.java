@@ -104,12 +104,15 @@ public class ModificarCita extends AppCompatActivity {
                 radioId = rg.getCheckedRadioButtonId();
                 selectedbutton = findViewById(radioId);
 
-                if (fechaCompletaTv.equals("")) {
+                try {
+                    if (fechaCompletaTv.equals("")) {
+                    } else if (rg.getCheckedRadioButtonId() == -1) {
+                        Toast.makeText(ModificarCita.this, "SELECCIONE HORA", Toast.LENGTH_LONG).show();
+                    } else {
+                        modificador();
+                    }
+                }catch (NullPointerException np){
                     Toast.makeText(ModificarCita.this, "SELECCIONE FECHA", Toast.LENGTH_LONG).show();
-                } else if (rg.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(ModificarCita.this, "SELECCIONE HORA", Toast.LENGTH_LONG).show();
-                } else {
-                    modificador();
                 }
             }
         });

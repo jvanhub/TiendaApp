@@ -99,42 +99,46 @@ public class PedirCita extends AppCompatActivity {
                 int radioId = rg.getCheckedRadioButtonId();
                 RadioButton selectedbutton = findViewById(radioId);
 
-                if (fechaCompletaTv.equals("")) {
+                try {
+                    if (fechaCompletaTv.equals("")) {
+                        Toast.makeText(PedirCita.this, "SELECCIONE FECHA", Toast.LENGTH_SHORT).show();
+                    } else if (rg.getCheckedRadioButtonId() == -1) {
+                        Toast.makeText(PedirCita.this, "SELECCIONE HORA", Toast.LENGTH_SHORT).show();
+                    } else if (contador >= 2) {
+                        Toast.makeText(PedirCita.this, "Has alcanzado el límite máximo de citas", Toast.LENGTH_SHORT).show();
+                    } else {
+                        contador++;
+                        mDatabase.child("Usuarios").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                nombreBBDD = snapshot.child("nombres").getValue().toString();
+                                nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
+                                emailBBDD = snapshot.child("emails").getValue().toString();
+                                horaCita = selectedbutton.getText().toString();
+                                String id = mAuth.getCurrentUser().getUid();
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("servicio", servicio);
+                                map.put("fecha", fechaCompletaTv);
+                                map.put("hora", horaCita);
+                                map.put("uId", id);
+                                map.put("nombre", nombreBBDD);
+                                map.put("telefono", nTelfBBDD);
+                                map.put("email", emailBBDD);
+                                mDatabase.child("Reservas").push().setValue(map);
+                                Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(PedirCita.this, Bienvenida.class));
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                }catch (NullPointerException np){
                     Toast.makeText(PedirCita.this, "SELECCIONE FECHA", Toast.LENGTH_SHORT).show();
-                } else if (rg.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(PedirCita.this, "SELECCIONE HORA", Toast.LENGTH_SHORT).show();
-                } else if (contador >= 2) {
-                    Toast.makeText(PedirCita.this, "Has alcanzado el límite máximo de citas", Toast.LENGTH_SHORT).show();
-                    //startActivity(new Intent(PedirCita.this, Bienvenida.class));
-                } else {
-                    contador++;
-                    mDatabase.child("Usuarios").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            nombreBBDD = snapshot.child("nombres").getValue().toString();
-                            nTelfBBDD = snapshot.child("n_telefonos").getValue().toString();
-                            emailBBDD = snapshot.child("emails").getValue().toString();
-                            horaCita = selectedbutton.getText().toString();
-                            String id = mAuth.getCurrentUser().getUid();
-                            Map<String, Object> map = new HashMap<>();
-                            map.put("servicio", servicio);
-                            map.put("fecha", fechaCompletaTv);
-                            map.put("hora", horaCita);
-                            map.put("uId", id);
-                            map.put("nombre", nombreBBDD);
-                            map.put("telefono", nTelfBBDD);
-                            map.put("email", emailBBDD);
-                            mDatabase.child("Reservas").push().setValue(map);
-                            Toast.makeText(PedirCita.this, "CITA CONFIRMADA", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(PedirCita.this, Bienvenida.class));
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
                 }
+
             }
         });
 
